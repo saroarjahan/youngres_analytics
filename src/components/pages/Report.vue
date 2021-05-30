@@ -59,12 +59,16 @@
         {{result[0].chapters}}
 
 
+        {{choiceList}}
+
+
+        <!-- {{unique_decision_final}} -->
+
+
+
 
 
         <div class="row" style="padding: 20px 0">
-            <div class="col-4">
-                <button class="btn btn-primary" @click="back">Back</button>
-            </div>
             <div class="col-4 text-center">
                 <button class="btn btn-primary" @click="home">Home</button>
             </div>
@@ -196,9 +200,7 @@
               this.$modal.show('filter');
 
             },
-            back(){
-                this.$router.push('/main/single/VideoGameSelection/');
-            },
+ 
             selectGame(event){
                 this.game = event.target.value;
                 this.loadData();

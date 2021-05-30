@@ -11,15 +11,25 @@
                 <label class="custom-control-label" :class="selectedAnalysis == 'group' ? 'checked' : '' " for="customRadio2">Macro-analysis (Two groups)</label>
             </div>
         </div>
+
         <div class="row">
             <div class="col-4">
             </div>
             <div class="col-4 text-center">
             </div>
             <div class="col-4 text-right">
-                <button class="btn btn-primary" :disabled="selectedAnalysis === null" @click="next">Next</button>
+                <button class="btn btn-primary" :disabled="selectedAnalysis === null" @click="next">Go to  Analysis</button>
             </div>
         </div>
+
+
+        <div class="view">
+            <button @click="report" class="btn btn-info">
+                View Overall Game Report
+            </button>
+        </div>
+
+
     </div>
 </template>
 
@@ -35,6 +45,12 @@
 
             next(){
                 this.$router.push('/main/'+this.selectedAnalysis+'/VideoGameSelection');
+            },
+
+            report(){
+
+                this.$router.push('/main/report');
+
             }
         }
     }
@@ -46,6 +62,12 @@
         background: #e35219;
         border: 0;
     }
+
+    button.btn.btn-info {
+    padding-top: 4px;
+    padding-bottom: 6px;
+}
+
     .content{
         margin: 50px 0;
         .title{
