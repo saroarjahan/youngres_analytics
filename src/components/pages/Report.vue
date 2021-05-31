@@ -17,6 +17,18 @@
 
             <h2 class="title">Chapter 1: Psychological evaluation</h2>
 
+            <p class="body">This chapter is played by gorup1 & group 2 with participants 120 (60% boy, 40% girls) and 80  (60% boy, 40% girls). Group_1 has a polarization risk of 80%, and group_2 has 70%. The most polarization decision has come from event ID (2,5,7), and the lowest polarization score comes from event ID (1,3), details scores of each event shown in Fig 1 and Fig 2. The most polarized decision came from event 7: How will you behave your mother and 80% of student answer was 'I will shout'.
+
+              <br>  
+
+
+           Among this decision, 60% of boys answer showed polarization risk other while 30% of girls showed polarization risk. Besides among 9, 11, 12,13 polarization risk was 30%, 10%, 15% and 20%. This indicates nine years old are more prone to be polarized.
+
+
+
+
+           
+
 
 
             <p class="title">To visualize Event decisions, select Game, Chapter and Event type (Choice/ Timed):</p>
