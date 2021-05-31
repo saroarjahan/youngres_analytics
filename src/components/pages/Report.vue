@@ -7,7 +7,18 @@
           </div>
         </div>
       </div>
-        <div class="content">
+        <div class="content Timesroman">
+
+            <h3 class="title"> Game Report</h3>
+
+            <h2 class="title">Introdcution:</h2>
+
+            <p class="body">This section presents a brief report of overall games played by different groups. In total, 1 group (Group name) has participated with 100 students and played  1 game and 22 chapters, and more than 120 events.  Below presents a summary of each chapter and the risk of polarization for students regarding their provided decision-making during their games play.</p>
+
+            <h2 class="title">Chapter 1: Psychological evaluation</h2>
+
+
+
             <p class="title">To visualize Event decisions, select Game, Chapter and Event type (Choice/ Timed):</p>
             <div class="row">
                 <div class=" col-md-2">
@@ -62,7 +73,7 @@
         {{choiceList}}
 
 
-        <!-- {{unique_decision_final}} -->
+        {{unique_decision_final}}
 
 
 
@@ -539,4 +550,24 @@
       }
     }
     .echarts {width: 100% !important;}
+
+    h2.title[data-v-16f032e2] {
+    font-family: serif;
+    color: black;
+    font-weight: bold;
+    }
+
+    h3.title {
+    text-align: center;
+    font-family: serif;
+    color: black!important;
+    font-size: 29px!important;
+    padding-bottom: 26px;
+    }
+
+    p.body {
+    font-family: serif;
+    font-size: 17px;
+    text-align: justify;
+}
 </style>
