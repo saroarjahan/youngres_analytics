@@ -13,81 +13,75 @@
 
             <h2 class="title">Introdcution:</h2>
 
-            <p class="body">This section presents a brief report of overall games played by different groups. In total, 1 group (Group name) has participated with 100 students and played  1 game and 22 chapters, and more than 120 events.  Below presents a summary of each chapter and the risk of polarization for students regarding their provided decision-making during their games play.</p>
+            <p class="body">This section presents a brief report of overall games played by different groups. In total, <strong>{{GroupFilter.group_ids.length}}</strong> group (<strong> {{GroupFilter.group_ids[0].group_id}}</strong>) has participated with 100 students and played  <strong>{{result.length}}</strong> game and <strong>{{result[0].chapters.length}}</strong> chapters, and more than 120 events.  Below presents a summary of each chapter and the risk of polarization for students regarding their provided decision-making during their games play.</p>
 
             <h2 class="title">Chapter 1: Psychological evaluation</h2>
 
-            <p class="body">This chapter is played by gorup1 & group 2 with participants 120 (60% boy, 40% girls) and 80  (60% boy, 40% girls). Group_1 has a polarization risk of 80%, and group_2 has 70%. The most polarization decision has come from event ID (2,5,7), and the lowest polarization score comes from event ID (1,3), details scores of each event shown in Fig 1 and Fig 2. The most polarized decision came from event 7: How will you behave your mother and 80% of student answer was 'I will shout'.
+            <p class="body">This chapter is played by <strong>{{GroupFilter.group_ids[0].group_id}}</strong> with participants <strong>{{decisions.length}}</strong> (60% boy, 40% girls) and 80  (60% boy, 40% girls). Group_1 has a polarization risk of 80%, and group_2 has 70%. The most polarization decision has come from event ID (2,5,7), and the lowest polarization score comes from event ID (1,3), details scores of each event shown in Fig 1 and Fig 2. The most polarized decision came from event 7: How will you behave your mother and 80% of student answer was 'I will shout'.
 
-              <br>  
+            <br>  
 
 
            Among this decision, 60% of boys answer showed polarization risk other while 30% of girls showed polarization risk. Besides among 9, 11, 12,13 polarization risk was 30%, 10%, 15% and 20%. This indicates nine years old are more prone to be polarized.
 
 
+          <br>
 
-
-           
-
-
-
-            <p class="title">To visualize Event decisions, select Game, Chapter and Event type (Choice/ Timed):</p>
-            <div class="row">
-                <div class=" col-md-2">
-                    <select class="custom-select" v-model="game" @change="selectGame($event)">
-                        <option v-for="(item, index) in result" :key="index" :value="item.gameCode">{{item.gameCode}} </option>
-                    </select>
-                </div>
-                <div class="col-md-2">
-                    <select class="custom-select" v-model="chapter"  @change="selectChapter($event)">
-                        <option v-for="(item, index) in result[0].chapters" :key="index" :value="item">{{item}} </option>
-                    </select>
-                </div>
-                <div class="col-md-3">
-                    <select class="custom-select" @change="selectChoice($event)">
-                        <option selected value="choice">Multiple-choice</option>
-                        <option value="timed">Temporal</option>
-                        <!--<option value="xpe">A specific</option>-->
-                    </select>
-                </div>
-                <div class="col-md-5 mt-sm-3 mt-md-0">
-                    <button class="btn btn-primary" @click="filter()">Filter</button>
-                    <button class="btn btn-success" style="margin-left: 10px" @click="submitData()">Visualize</button>
-                    <button class="btn btn-dark" style="margin-left: 10px" @click="chapterInfo()">Chapter Info</button>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-8">
+          <div class="col-md-8">
                     <v-chart :options="chartData" width="100%"/>
-                </div>
-                <div class="col-md-4">
-                    <p class="sub-title">Click to view Single Event Info:</p>
-                    <ul class="eventlist" v-if="choice === 'choice'">
-                        <li v-for="(item, index, key) in choiceList" :key="key" @click="gotoEvent(item.value)"> {{item.value}}: {{item.description}}</li>
-                    </ul>
-
-                    <ul class="eventlist" v-if="choice === 'timed'">
-                        <li v-for="(item, index, key) in distinct_event_temp" :key="key" @click="gotoEvent(item.value)"> {{item.value}}: {{item.description}}</li>
-                    </ul>
-                    <div v-if="(unique_decision_final.length === 0 && choice === 'choice') || (distinct_event_temp.length === 0 && choice === 'timed')">
-                      No data found.
-                    </div>
-                </div>
+                
             </div>
-        </div>
 
 
-        {{result}}
+<!--  {{result}}
 
-        {{result[0].chapters}}
-
-
-        {{choiceList}}
+        {{result[0].chapters}} 
 
 
-        {{unique_decision_final}}
+        {{choiceList}} -->
 
 
+        <!-- {{unique_decision_final}} -->
+   <!--        {{GroupFilter.group_ids.length}}
+
+        {{GroupFilter.group_ids[0].group_id}} -->
+
+<!-- 
+        {{decisions.length}}
+
+
+        {{choiceList_name}}
+
+
+        {{getFilterHeader}} -->
+
+<!--         {{ decisions.sort(function (a, b) {
+  return a.eventCode - b.eventCode
+})}}
+ -->
+
+ <!-- {{unique_decision_final}} -->
+
+        <!-- {{annotation}} -->
+
+<!-- {{d_count}} -->
+
+<!-- {{emotion[0]}} -->
+
+{{new_score}}
+
+{{total_score}}
+
+
+{{chartData}}
+<!-- {{unique_decision_final_temp}}
+
+{{distinct_event_temp}} -->
+
+<!-- {{chartData}} -->
+
+<!-- {{distinct_event}} -->
+<!-- {{decisions}} -->
 
 
 
@@ -100,6 +94,7 @@
             </div>
         </div>
     </div>
+     </div>
 </template>
 
 <script>
@@ -109,7 +104,7 @@
     import 'echarts/lib/component/tooltip'
     import 'echarts-gl'
     import axios from "axios";
-    //import filterModel from "@/components/filterModel";
+
 
     export default {
         components: {
@@ -137,14 +132,17 @@
                 GroupFilter: [],
                 getFilterHeader: null,
                 choiceList: null,
-                choiceList_name: null
+                choiceList_name: null,
+                emotion:[{'positive':['Call a friend','Read','calmDown','Calm down', 'Quite a lot','A lot', 'happy','playComputer', 'Play with the computer','Happiness'],'negative':['A little','Attack the toy', 'sad','Sadness','Boringness','Complain','Complain about the director','Shout at her','Attack the toy','Anger'], 'neutral':['Girl','Boy','Yes','No','indifferent','Leave the scene','Rest','youAreAToy','No. You are a toy!'], 'complex':['no', 'Remain silent','silence','Run']}],
+
+                d_count:[],
+                new_score:[],
+                total_score:[],
+
+
             }
         },
         mounted(){
-
-
-
-
 
           this.game = 1;
           this.chapter = 1593;
@@ -166,6 +164,7 @@
             this.loadData();
             this.submitData();
 
+
           })).catch(errors => {
             console.log(errors);
           })
@@ -177,6 +176,7 @@
                 this.loading = false;
                 this.loadData();
                 this.submitData();
+
               });
 
 
@@ -198,6 +198,7 @@
 
             this.submitData();
 
+
           });
 
         }
@@ -209,14 +210,7 @@
             home(){
                 this.$router.push('/main');
             },
-          chapterInfo(){
-            this.$root.$emit('viewChapterInfo', {
-              game: this.game,
-              version: this.version,
-              chapter: this.chapter
-            });
-            this.$modal.show("chapter_info");
-          },
+
             filter(){
 
               this.$root.$emit('loadFilterDate', [this.GroupFilter, this.filterStudent, "single"]);
@@ -224,19 +218,7 @@
 
             },
  
-            selectGame(event){
-                this.game = event.target.value;
-                this.loadData();
-            },
-            selectChoice(event){
-                this.choice = event.target.value;
-                this.barChartLoad();
-
-            },
-            selectChapter(event){
-                this.chapter = event.target.value;
-
-            },
+ 
             submitData(){
 
                 this.loading = true;
@@ -244,11 +226,9 @@
 
                   axios.get("decision?gameCode=" + this.game + "&gameVersion=" + this.version + "&chapterCode=" + this.chapter, {headers: {filters: JSON.stringify(this.getFilterHeader)}}).then(res => {
                     this.decisions = res.data.decisions;
-
                     this.dataAnalysis();
-
-
                     this.barChartLoad();
+
                   });
 
                 }else {
@@ -267,7 +247,8 @@
                       });
                     });
 
-                    this.barChartLoad();
+                    this.d_counts();
+                    this.loading = false;
                   });
                 }
             },
@@ -287,19 +268,15 @@
                     res = res[0];
                     this.chapters = res.chapters;
                     this.version = res.gameVersion;
-                    //this.chapter = this.chapters[0];
                 }
 
             },
             dataAnalysis(){
                 this.distinct_event_temp = [];
-
-
                 this.unique_decision_final_temp = [];
                 this.unique_decision_final = [];
-              var eventList = [];
-              var choice = [];
-
+                var eventList = [];
+                var choice = [];
 
                 this.decisions.forEach(value => {
 
@@ -341,8 +318,6 @@
 
                 });
 
-
-
               choice.forEach(value => {
                 eventList.forEach(value1 => {
                   value.choice.push({
@@ -358,11 +333,8 @@
 
 
               this.decisions.forEach(value => {
-
                 if(value.eventType !== 'timed'){
-
                   choice.forEach(value1 => {
-
                     let x = 0;
                     for(; x < value1.choice.length; x++){
                       if(value1.choice[x].event === value.eventCode && value1.choice[x].name === value.choice)
@@ -390,14 +362,10 @@
                 });
 
               });
-
-
               this.unique_decision_final = choice;
               this.choiceList = eventList;
-
-
-
             },
+
             barChartLoad(){
 
 
@@ -481,12 +449,64 @@
 
               this.loading = false;
             },
-            gotoEvent(value){
-                if(this.getFilterHeader === null || JSON.stringify(this.getFilterHeader) === "{}")
-                  this.$router.push({path:'/main/single/VideoGameSelection/'+this.game+'/'+this.chapter+'/'+this.version+'/MicroAnalysis/' + value + '/'+this.choice+'/EventView'});
-                else
-                  this.$router.push({path:'/main/single/VideoGameSelection/'+this.game+'/'+this.chapter+'/'+this.version+'/MicroAnalysis/' + value + '/'+this.choice+'/EventView', query:  {filter: JSON.stringify(this.getFilterHeader)}});
-            }
+      
+
+      
+
+
+            d_counts(){
+                  this.unique_decision_final.forEach(( message) =>{   
+                     message.choice.forEach(( new_m) =>{
+                        if (new_m.value > 0) {
+                            this.d_count.push(new_m);
+                          }      
+                    });
+
+                  });
+
+
+                  this.d_count.sort((a, b) => a.event - b.event);
+
+                  var total_answer=0;
+                  var tpo=0, tne=0, tnu=0,tcom=0;
+
+
+                  this.d_count.forEach((m) =>{total_answer+=m.count; });
+
+                  this.d_count.forEach((m) =>{
+                              var po=0, ne=0, nu=0, com=0;
+
+                              this.emotion[0].positive.forEach((el) =>{ if(el == m.name){ po=(m.count/total_answer)*100; tpo+=po;}});
+                              this.emotion[0].negative.forEach((el) =>{ if(el == m.name){ ne=(m.count/total_answer)*100; tne+=ne;}});
+                              this.emotion[0].neutral.forEach((el) =>{ if(el == m.name){ nu=(m.count/total_answer)*100; tnu+=nu;}});
+                              this.emotion[0].complex.forEach((el) =>{ if(el == m.name){ com=(m.count/total_answer)*100; tcom+=com;}});
+
+
+                              const record = this.new_score.find(element => element.event == m.event);
+
+                              if (this.new_score.find(element => element.event == m.event)) {
+                                  record.po += po;
+                                  record.ne += ne;
+                                  record.nu += nu;
+                                  record.com += com;
+                              } else {
+                                  this.new_score.push({
+                                      event: m.event,
+                                      event_des: m.description,
+                                      po:po,
+                                      ne:ne,
+                                      nu:nu,
+                                      com:com
+                                  });
+                              }
+          
+                        
+                          });
+
+                  this.total_score.push(tpo,tne,tnu,tcom);
+            },
+
+
         }
     }
 </script>
