@@ -10,48 +10,42 @@
 
             <p class="body">This section presents a brief report of overall games played by different groups. In total, <strong>{{GroupFilter.group_ids.length}}</strong> group (<strong> {{GroupFilter.group_ids[0].group_id}}</strong>) has participated with 100 students and played  <strong>{{result.length}}</strong> game and <strong>{{result[0].chapters.length}}</strong> chapters, and more than 120 events.  Below presents a summary of each chapter and the risk of polarization for students regarding their provided decision-making during their games play.</p>
 
+            {{barGraph}}
+
             
 
-         
+            
+
+            
 
 
+            <div v-for="(data, index) in all_final_data" :key="index">
+              {{data}}
 
 
-    
+            <h2 class="title">Chapter {{data.eventid}}: Psychological evaluation</h2>
 
-            {{new_score}}
-
-            {{total_score}}
-
-  
+           
 
 
-            <div v-for="(item, index) in [1593,4474,2377]" :key="index">
-
-            {{submitData(item)}} 
-
-            <!-- {{d_counts()}} -->
-
-            <!-- {{unique_decision_final}} -->
-
-
-            <h2 class="title">Chapter {{index+1}}: Psychological evaluation</h2>
 
             <p class="body">This chapter is played by <strong>{{GroupFilter.group_ids[0].group_id}}</strong> with participants <strong>{{decisions.length}}</strong> (60% boy, 40% girls) and 80  (60% boy, 40% girls). Group_1 has a polarization risk of 80%, and group_2 has 70%. The most polarization decision has come from event ID (2,5,7), and the lowest polarization score comes from event ID (1,3), details scores of each event shown in Fig 1 and Fig 2. The most polarized decision came from event 7: How will you behave your mother and 80% of student answer was 'I will shout'.</p>
 
             <br>  
-             <v-chart :options="chartData" width="100%"/>
+
+            <v-chart :options="barGraph[index]" width="100%"/>
 
 
            Among this decision, 60% of boys answer showed polarization risk other while 30% of girls showed polarization risk. Besides among 9, 11, 12,13 polarization risk was 30%, 10%, 15% and 20%. This indicates nine years old are more prone to be polarized.
 
 
-             <br>
+          <br> 
 
+    
 
 
             </div>
-
+  
 
 
 
@@ -98,7 +92,7 @@
                 game: null,
                 version: null,
                 chapter: null,
-                chartDATA: [],
+                barGraph: [],
                 result: [],
                 chapters: [],
                 filterStudent: [],
@@ -106,11 +100,11 @@
                 getFilterHeader: null,
                 choiceList: null,
                 choiceList_name: null,
-                emotion:[{'positive':['Call a friend','Read','calmDown','Calm down', 'Quite a lot','A lot', 'happy','playComputer', 'Play with the computer','Happiness'],'negative':['A little','Attack the toy', 'sad','Sadness','Boringness','Complain','Complain about the director','Shout at her','Attack the toy','Anger'], 'neutral':['Girl','Boy','Yes','No','indifferent','Leave the scene','Rest','youAreAToy','No. You are a toy!'], 'complex':['no', 'Remain silent','silence','Run']}],
+                emotion:[{'positive':['Call a friend','Read','calmDown','Calm down', 'Quite a lot','A lot', 'happy','playComputer', 'Play with the computer','Happiness'],'negative':['A little','Attack the toy', 'sad','Sadness','Boringness','Complain','Complain about the director','Shout at her','Attack the toy','Anger','angry'], 'neutral':['Girl','Boy','Yes','No','indifferent','Leave the scene','Rest','youAreAToy','No. You are a toy!','doNotKnow'], 'complex':['no', 'Remain silent','silence','Run']}],
 
                 d_count:[],
                 new_score:[],
-                total_score:[],
+                all_final_data:[]
 
 
             }
@@ -118,7 +112,7 @@
         mounted(){
 
           this.game = 1;
-          this.chapter = 1593;
+          // this.chapter = 1593;
           this.version = 1;
 
           const requestOne = axios.get("descriptions/games");
@@ -126,21 +120,52 @@
           const requestThree = axios.get("filters/student");
 
 
+          axios.all([requestOne, requestTwo, requestThree ]).then(axios.spread((...responses) => {
+            this.$store.state.games = responses[0].data.games;
+            this.GroupFilter = responses[1].data
+            this.filterStudent = responses[2].data
+
+            this.groupsList = this.GroupFilter.group_ids;
+            this.SelectGroupOne = this.$route.params.groupOne;
+            this.SelectGroupTwo = this.$route.params.groupTwo;
+            this.loadData();
+
+          })).catch(errors => {
+            console.log(errors);
+          })
 
 
-    
+
+          this.$root.$on('loadFilterHeaderSingle', (Filter) => { 
+            this.getFilterHeader = {};
+            if(Filter.group !== null && Filter.group !== undefined) {
+              if(Filter.student === null )
+                delete  Filter.student;
+
+              this.getFilterHeader = Filter;
+
+            } else if(Filter.student !== null && Filter.student !== undefined) {
+
+              if(Filter.group === null )
+                delete  Filter.group;
+
+              this.getFilterHeader = Filter;
+            }
 
 
           });
 
+           var l=[1593,2377,3885];
+
+
+           l.forEach(x => this.submitData(x));
+
+      
+
         }
         ,
         methods: {
-            sh(item){
 
-              return item;
-
-            },
             exportOpt(){
                 window.print();
             },
@@ -163,26 +188,39 @@
 
                   axios.get("decision?gameCode=" + this.game + "&gameVersion=" + this.version + "&chapterCode=" + item, {headers: {filters: JSON.stringify(this.getFilterHeader)}}).then(res => {
                     this.decisions = res.data.decisions;
+
+
+                    if(this.decisions.length>0){
+
                     this.dataAnalysis();
-                    // this.d_counts();
-                    // this.barChartLoad();
+                    this.d_counts(item);
+       
+
+                    }
+
 
                   });
 
                 }else {
                   axios.get("decision?gameCode=" + this.game + "&gameVersion=" + this.version + "&chapterCode=" + item).then(res => {
                     this.decisions = res.data.decisions;
+
+
+                    if(this.decisions.length>0){
+
                     this.dataAnalysis();
-                    // this.d_counts();
-                    // this.barChartLoad();
+                    this.d_counts(item);
+                    
+
+                    }
+
+  
                   });
                 }
             },
             loadData(){
                 let key = this.game;
                 this.result = this.$store.state.games;
-
-                console.log(this.result);
 
                 let res = this.result.filter(
                     function(data){
@@ -291,50 +329,57 @@
               this.unique_decision_final = choice;
               this.choiceList = eventList;
             },
-            barChartLoad(){
+            // barChartLoad(){
 
-                  this.chartData = {    
-                          tooltip: {
-                              trigger: 'axis',
-                              axisPointer: {
-                                  type: 'shadow'
-                              }
-                          },
-                          legend: {
-                              data: ['2011年', '2012年']
-                          },
-                          grid: {
-                              left: '3%',
-                              right: '4%',
-                              bottom: '3%',
-                              containLabel: true
-                          },
-                          xAxis: {
-                              type: 'value',
-                              boundaryGap: [0, 0.01]
-                          },
-                          yAxis: {
-                              type: 'category',
-                              data: ['巴西', '印尼', '美国', '印度', '中国', '世界人口(万)']
-                          },
-                          series: [
-                              {
-                                  name: '2011年',
-                                  type: 'bar',
-                                  data: [18203, 23489, 29034, 104970, 131744, 630230]
-                              },
-                              {
-                                  name: '2012年',
-                                  type: 'bar',
-                                  data: [19325, 23438, 31000, 121594, 134141, 681807]
-                              }
+            //       this.chartData = {    
+            //               tooltip: {
+            //                   trigger: 'axis',
+            //                   axisPointer: {
+            //                       type: 'shadow'
+            //                   }
+            //               },
 
-                          ]
-                    };
-            },
+            //               legend: {
+            //                   data: ['2011年', '2012年']
+            //               },
+            //               grid: {
+            //                   left: '3%',
+            //                   right: '4%',
+            //                   bottom: '3%',
+            //                   containLabel: true
+            //               },
+            //               xAxis: {
+            //                   type: 'value',
+            //                   boundaryGap: [0, 0.01]
+            //               },
+            //               yAxis: {
+            //                   type: 'category',
+            //                   data: ['巴西', '印尼', '美国', '印度', '中国', '世界人口(万)']
+            //               },
+            //               series: [
+            //                   {
+            //                       name: '2011年',
+            //                       type: 'bar',
+            //                       data: [18203, 23489, 29034, 104970, 131744, 630230]
+            //                   },
+            //                   {
+            //                       name: '2012年',
+            //                       type: 'bar',
+            //                       data: [19325, 23438, 31000, 121594, 134141, 681807]
+            //                   }
+
+            //               ]
+            //         };
+            // },
+
+
+
+
+
+        
 
       
-            d_counts(){
+            d_counts(item){
                   this.unique_decision_final.forEach(( message) =>{   
                      message.choice.forEach(( new_m) =>{
                         if (new_m.value > 0) {
@@ -383,10 +428,34 @@
                         
                           });
 
-                  this.total_score.push(tpo,tne,tnu,tcom);
+                 
 
+                  this.all_final_data.push({eventid:item,sentiment_score:this.new_score, total_sentiment_score: [tpo,tne,tnu,tcom] });
+                  this.barChartTotalScore(tpo,tne,tnu,tcom);
+                  this.total_score=[];
+                  this.new_score=[];
+                  this.unique_decision_final=[];
+                  this.d_count=[];
+
+                  
+            },
+
+
+            barChartTotalScore(tpo,tne,tnu,tcom){
+                this.barGraph.push( {xAxis: {
+                                    type: 'category',
+                                    data: ['Positive', 'Negative', 'Complex','Neutral']
+                                },
+                                yAxis: {
+                                    type: 'value'
+                                },
+                                series: [{
+                                    data: [tpo,tne,tcom,tnu],
+                                    type: 'bar'
+                                }]});
 
             },
+
 
 
         }
