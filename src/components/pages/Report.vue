@@ -10,14 +10,6 @@
 
             <p class="body">This section presents a brief report of overall games played by different groups. In total, <strong>{{GroupFilter.group_ids.length}}</strong> group (<strong> {{GroupFilter.group_ids[0].group_id}}</strong>) has participated with 100 students and played  <strong>{{result.length}}</strong> game and <strong>{{result[0].chapters.length}}</strong> chapters, and more than 120 events.  Below presents a summary of each chapter and the risk of polarization for students regarding their provided decision-making during their games play.</p>
 
-            {{barGraph}}
-
-            
-
-            
-
-            
-
 
             <div v-for="(data, index) in all_final_data" :key="index">
               {{data}}
@@ -27,13 +19,21 @@
 
            
 
-
-
             <p class="body">This chapter is played by <strong>{{GroupFilter.group_ids[0].group_id}}</strong> with participants <strong>{{decisions.length}}</strong> (60% boy, 40% girls) and 80  (60% boy, 40% girls). Group_1 has a polarization risk of 80%, and group_2 has 70%. The most polarization decision has come from event ID (2,5,7), and the lowest polarization score comes from event ID (1,3), details scores of each event shown in Fig 1 and Fig 2. The most polarized decision came from event 7: How will you behave your mother and 80% of student answer was 'I will shout'.</p>
 
-            <br>  
+            <br>
 
-            <v-chart :options="barGraph[index]" width="100%"/>
+            <center>
+              
+                   <div class="col-md-6 center">
+                          <v-chart :options="barGraph[index]" width="100%"/>
+                          <p class="fig">Fig. {{index+1}}: Overall emotional statics of total student that played chapter {{data.eventid}}.  </p>
+                   </div>
+            </center>  
+
+       
+
+            
 
 
            Among this decision, 60% of boys answer showed polarization risk other while 30% of girls showed polarization risk. Besides among 9, 11, 12,13 polarization risk was 30%, 10%, 15% and 20%. This indicates nine years old are more prone to be polarized.
@@ -44,7 +44,7 @@
     
 
 
-            </div>
+          </div>
   
 
 
@@ -442,7 +442,15 @@
 
 
             barChartTotalScore(tpo,tne,tnu,tcom){
-                this.barGraph.push( {xAxis: {
+                this.barGraph.push( {
+                                 grid: {
+                                      left: '3%',
+                                      right: '4%',
+                                      bottom: '3%',
+                                      containLabel: true
+                                  },
+
+                                xAxis: {
                                     type: 'category',
                                     data: ['Positive', 'Negative', 'Complex','Neutral']
                                 },
