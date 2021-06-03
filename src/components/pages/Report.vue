@@ -12,54 +12,69 @@
 
 
             <div v-for="(data, index) in all_final_data" :key="index">
-              {{data}}
-
 
             <h2 class="title">Chapter {{data.eventid}}: Psychological evaluation</h2>
 
-           
+            <p class="body">This chapter is played by gorup <strong>{{GroupFilter.group_ids[0].group_id}}</strong> with  participants <strong>{{data.total_decision}}</strong> (60% boy, 40% girls) and 80  (60% boy, 40% girls). Group_1 has a polarization risk of 80%, and group_2 has 70%. The most polarization decision has come from event ID (2,5,7), and the lowest polarization score comes from event ID (1,3), details scores of each event shown in Fig 1 and Fig 2. The most polarized decision came from event 7: How will you behave your mother and 80% of student answer was 'I will shout'.</p><br>
 
-            <p class="body">This chapter is played by <strong>{{GroupFilter.group_ids[0].group_id}}</strong> with participants <strong>{{decisions.length}}</strong> (60% boy, 40% girls) and 80  (60% boy, 40% girls). Group_1 has a polarization risk of 80%, and group_2 has 70%. The most polarization decision has come from event ID (2,5,7), and the lowest polarization score comes from event ID (1,3), details scores of each event shown in Fig 1 and Fig 2. The most polarized decision came from event 7: How will you behave your mother and 80% of student answer was 'I will shout'.</p>
 
-            <br>
+            <p class="fig">Table. {{index+1}}: Emotional score of individual events decisions of chapter {{data.eventid}}.</p>
+
+            <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Event Question</th>
+                        <th scope="col">Decisions (decisions count)</th>
+                        <th scope="col">Sentiment Score (total 100%)</th>
+                      </tr>
+                    </thead>
+                    <tbody  v-for="(sentiment, index) in data.sentiment_score" :key="index">
+                      <tr>
+                        <th scope="row">{{sentiment.event}}</th>
+                        <td>{{sentiment.event_des}}</td>
+                        <td>Otto</td>
+                        <td>
+                            Positive: {{sentiment.po.toFixed(1)}}<br>
+                            Negative: {{sentiment.ne.toFixed(1)}}<br>
+                            Complex: {{sentiment.com.toFixed(1)}}<br>
+                            Neutral: {{sentiment.nu.toFixed(1)}}<br>
+
+                        </td>
+                      </tr>
+
+                    </tbody>
+              </table>
 
             <center>
               
-                   <div class="col-md-6 center">
-                          <v-chart :options="barGraph[index]" width="100%"/>
-                          <p class="fig">Fig. {{index+1}}: Overall emotional statics of total student that played chapter {{data.eventid}}.  </p>
-                   </div>
-            </center>  
+                <div class="col-md-6 center">
+                      <v-chart :options="barGraph[index]" width="100%"/>
+                       <p class="fig">Fig. {{index+1}}: Overall emotional statics of total student that played chapter {{data.eventid}}.  </p>
+                </div>
+            </center>
 
-       
-
-            
-
-
-           Among this decision, 60% of boys answer showed polarization risk other while 30% of girls showed polarization risk. Besides among 9, 11, 12,13 polarization risk was 30%, 10%, 15% and 20%. This indicates nine years old are more prone to be polarized.
-
-
-          <br> 
-
-    
-
-
-          </div>
-  
-
-
-
-
-
-              <div class="row" style="padding: 20px 0">
-                  <div class="col-4 text-center">
-                      <button class="btn btn-primary" @click="home">Home</button>
+  <!--           <center>
+              
+                  <div class="col-md-12 center">
+                            <v-chart :options="barGraphAll[index]" width="100%"/>
+                            <p class="fig">Fig. {{index+2}}: Emotional statics of individual events of chapter {{data.eventid}}.  </p>
                   </div>
-                  <div class="col-4 text-right">
-                      <button class="btn btn-primary export" @click="exportOpt">Export</button>
-                  </div>
-              </div>
-          </div>
+            </center>   -->
+            Among this decision, 60% of boys answer showed polarization risk other while 30% of girls showed polarization risk. Besides among 9, 11, 12,13 polarization risk was 30%, 10%, 15% and 20%. This indicates nine years old are more prone to be polarized.
+
+
+            <br> 
+            </div>
+                <div class="row" style="padding: 20px 0">
+                      <div class="col-4 text-center">
+                          <button class="btn btn-primary" @click="home">Home</button>
+                      </div>
+                      <div class="col-4 text-right">
+                          <button class="btn btn-primary export" @click="exportOpt">Export</button>
+                      </div>
+                </div>
+            </div>
 
           </div>
       </div>
@@ -93,6 +108,7 @@
                 version: null,
                 chapter: null,
                 barGraph: [],
+                barGraphAll: [],
                 result: [],
                 chapters: [],
                 filterStudent: [],
@@ -329,54 +345,6 @@
               this.unique_decision_final = choice;
               this.choiceList = eventList;
             },
-            // barChartLoad(){
-
-            //       this.chartData = {    
-            //               tooltip: {
-            //                   trigger: 'axis',
-            //                   axisPointer: {
-            //                       type: 'shadow'
-            //                   }
-            //               },
-
-            //               legend: {
-            //                   data: ['2011年', '2012年']
-            //               },
-            //               grid: {
-            //                   left: '3%',
-            //                   right: '4%',
-            //                   bottom: '3%',
-            //                   containLabel: true
-            //               },
-            //               xAxis: {
-            //                   type: 'value',
-            //                   boundaryGap: [0, 0.01]
-            //               },
-            //               yAxis: {
-            //                   type: 'category',
-            //                   data: ['巴西', '印尼', '美国', '印度', '中国', '世界人口(万)']
-            //               },
-            //               series: [
-            //                   {
-            //                       name: '2011年',
-            //                       type: 'bar',
-            //                       data: [18203, 23489, 29034, 104970, 131744, 630230]
-            //                   },
-            //                   {
-            //                       name: '2012年',
-            //                       type: 'bar',
-            //                       data: [19325, 23438, 31000, 121594, 134141, 681807]
-            //                   }
-
-            //               ]
-            //         };
-            // },
-
-
-
-
-
-        
 
       
             d_counts(item){
@@ -430,12 +398,14 @@
 
                  
 
-                  this.all_final_data.push({eventid:item,sentiment_score:this.new_score, total_sentiment_score: [tpo,tne,tnu,tcom] });
+                  this.all_final_data.push({eventid:item,total_decision:total_answer, sentiment_score:this.new_score, total_sentiment_score: [tpo,tne,tnu,tcom] });
                   this.barChartTotalScore(tpo,tne,tnu,tcom);
+                  this.barAllScore(this.new_score);
                   this.total_score=[];
                   this.new_score=[];
                   this.unique_decision_final=[];
                   this.d_count=[];
+
 
                   
             },
@@ -462,6 +432,69 @@
                                     type: 'bar'
                                 }]});
 
+            },
+
+
+              barAllScore(score){
+
+                 const title=[];
+                 const postive=[];
+                 const negative=[];
+                 const complex=[];
+                 const neutral=[];
+
+                 score.forEach((m) =>{ title.push(m.event_des); postive.push(m.po);negative.push(m.ne);complex.push(m.com);neutral.push(m.nu);});
+
+                  this.barGraphAll.push({ 
+
+                          tooltip: {
+                              trigger: 'axis',
+                              axisPointer: {
+                                  type: 'shadow'
+                              }
+                          },
+
+                          legend: {
+                              data: ['positive', 'negative','complex','neutral']
+                          },
+                          grid: {
+                              left: '3%',
+                              right: '3%',
+                              bottom: '0%',
+                              containLabel: true
+                          },
+                          xAxis: {
+                              type: 'value',
+                              boundaryGap: [0, 0.01]
+                          },
+                          yAxis: {
+                              type: 'category',
+                              data: title
+                          },
+                          series: [
+                              {
+                                  name: 'positive',
+
+                                  type: 'bar',
+                                  data: postive
+                              },
+                              {
+                                  name: 'negative',
+                                  type: 'bar',
+                                  data: negative
+                              },
+                              {
+                                  name: 'complex',
+                                  type: 'bar',
+                                  data: complex
+                              },
+                              {
+                                  name: 'neutral',
+                                  type: 'bar',
+                                  data: neutral
+                              }
+
+                          ]});
             },
 
 
@@ -515,7 +548,9 @@
         }
     }
     
-    .echarts {width: 100% !important;}
+    .echarts {width: 100% !important;height: 400px!important; }
+
+
 
     h2.title[data-v-16f032e2] {
     font-family: serif;
@@ -535,5 +570,22 @@
     font-family: serif;
     font-size: 17px;
     text-align: justify;
-}
+    }
+
+    .table th, .table td {
+    padding: 2px 5px 2px 10px;
+    vertical-align: top;
+    }
+
+    tbody {
+    font-size: 15px;
+    font-family: serif;
+    }
+
+    p.fig {
+    font-family: serif;
+    font-style: italic;
+    text-align: center;
+    font-weight: bold;
+   }
 </style>
