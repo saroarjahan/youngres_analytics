@@ -5,23 +5,16 @@
         <div class="content Timesroman">
 
             <h3 class="title"> Game Report</h3>
-
-
-
             <h2 class="title">Introdcution:</h2>
-
-            <p class="body">This section presents a brief report of overall games played by different groups. In total, <strong>{{GroupFilter.group_ids.length}}</strong> group (<strong> {{GroupFilter.group_ids[0].group_id}}</strong>) has participated with 100 students and played  <strong>{{result.length}}</strong> game and <strong>{{result[0].chapters.length}}</strong> chapters, and more than 120 events.  Below presents a summary of each chapter and the risk of polarization for students regarding their provided decision-making during their games play.</p>
+            <p class="body">This section presents a brief report of overall games played by different groups. In total, <strong>{{GroupFilter.group_ids.length}}</strong> group (<strong> {{GroupFilter.group_ids[0].group_id}}</strong>) has participated with <strong>{{result[0].numberPlayers}}</strong> students  from <strong>{{result[0].countries[0]}}</strong> and played  <strong>{{result.length}}</strong> game and <strong>{{result[0].chapters.length}}</strong> chapters, and more than <strong>{{n_decisions}}</strong> events.  Below presents a summary of each chapter and the risk of polarization for students regarding their provided decision-making during their games play.</p>
 
 
             <div v-for="(data, index) in all_final_data" :key="index">
 
                   <h2 class="title">Chapter {{data.eventid}}: Psychological evaluation</h2>
-
                   <p class="body">This chapter is played by gorup <strong>{{GroupFilter.group_ids[0].group_id}}</strong> with  participants <strong>{{data.total_decision}}</strong> (60% boy, 40% girls) and 80  (60% boy, 40% girls). Group_1 has a polarization risk of 80%, and group_2 has 70%. The most polarization decision has come from event ID (2,5,7), and the lowest polarization score comes from event ID (1,3), details scores of each event shown in Fig 1 and Fig 2. The most polarized decision came from event 7: How will you behave your mother and 80% of student answer was 'I will shout'.</p><br>
 
-
                   <p class="fig">Table. {{index+1}}: Emotional score of individual events decisions of chapter {{data.eventid}}.</p>
-
                   <table class="table table-bordered">
                           <thead>
                             <tr>
@@ -47,11 +40,10 @@
                           </tbody>
                     </table>
 
-                  <center>
-                    
+                  <center>       
                       <div class="col-md-6 center">
                             <v-chart :options="barGraph[index]" width="100%"/>
-                             <p class="fig">Fig. {{index+1}}: Overall emotional statics of total student that played chapter {{data.eventid}}.  </p>
+                            <p class="fig">Fig. {{index+1}}: Overall emotional statics of total student that played chapter {{data.eventid}}.  </p>
                       </div>
                   </center>
 
@@ -95,6 +87,7 @@
         data: function(){
             return {
                 choice: 'choice',
+                n_decisions:0,
                 decisions: [],
                 max_choice: 0,
                 distinct_event: [],
@@ -120,8 +113,6 @@
                 new_score:[],
                 all_final_data:[],
                 d_c:[],
-
-
             }
         },
         mounted(){
@@ -149,8 +140,6 @@
             console.log(errors);
           })
 
-
-
           this.$root.$on('loadFilterHeaderSingle', (Filter) => { 
             this.getFilterHeader = {};
             if(Filter.group !== null && Filter.group !== undefined) {
@@ -171,11 +160,7 @@
           });
 
            var l=[1593,2377];
-
-
            l.forEach(x => this.submitData(x));
-
-      
 
         }
         ,
@@ -210,9 +195,7 @@
                     this.dataAnalysis();
                     this.d_counts(item);
        
-
                     }
-
 
                   });
 
@@ -220,15 +203,12 @@
                   axios.get("decision?gameCode=" + this.game + "&gameVersion=" + this.version + "&chapterCode=" + item).then(res => {
                     this.decisions = res.data.decisions;
 
-
                     if(this.decisions.length>0){
 
                     this.dataAnalysis();
-                    this.d_counts(item);
-                    
+                    this.d_counts(item);             
 
                     }
-
   
                   });
                 }
@@ -394,6 +374,7 @@
                               }
                 
                           });
+                  this.n_decisions+=total_answer;
 
                   this.all_final_data.push({eventid:item,total_decision:total_answer, sentiment_score:this.new_score, total_sentiment_score: [tpo,tne,tnu,tcom] });
                   this.barChartTotalScore(tpo,tne,tnu,tcom);
