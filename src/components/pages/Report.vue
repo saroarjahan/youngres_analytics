@@ -6,15 +6,55 @@
 
             <h3 class="title"> Game Report</h3>
             <h2 class="title">Introdcution:</h2>
-            <p class="body">This section presents a brief report of overall games played by different groups. In total, <strong>{{GroupFilter.group_ids.length}}</strong> group (<strong> {{GroupFilter.group_ids[0].group_id}}</strong>) has participated with <strong>{{result[0].numberPlayers}}</strong> students  from <strong>{{result[0].countries[0]}}</strong> and played  <strong>{{result.length}}</strong> game and <strong>{{result[0].chapters.length}}</strong> chapters, and more than <strong>{{n_decisions}}</strong> events.  Below presents a summary of each chapter and the risk of polarization for students regarding their provided decision-making during their games play.</p>
+            <p class="body">This section presents a brief report of overall games played by different groups. In total, <strong>{{GroupFilter.group_ids.length}}</strong> group (<strong> {{GroupFilter.group_ids[0].group_id}}</strong>) has participated with <strong>{{result[0].numberPlayers}}</strong> students  from <strong>{{result[0].countries[0]}}</strong> and played  <strong>{{result.length}}</strong> game and <strong>{{result[0].chapters.length}}</strong> chapters, and more than <strong>{{n_decisions}}</strong> events.  Below presents a summary of each chapter and the risk of polarization for students regarding their provided decision-making during their games play. To better understand student psychology, we have labeled student sentiment in four categories (i.e., positive, negative, complex, and neutral). This sentiment analysis is prepared based on student decisions during gameplay.  Table 1 shows the example of annotations.</p>
+
+            <p class="nb">[N.B. This report is automatically generated, which is intended to help teacher assessment.]</p>
+
+            <center>
+              <div class="col-md-8">
+                <p class="fig">Table 1: example of event decision annotation.</p>
+                <table class="table table-bordered">
+                        <thead>
+                          <tr>
+                            <th scope="col">Event Question</th>
+                            <th scope="col">Decision</th>
+                            <th scope="col">Sentiment annotation</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>How happy are you with your classmates?</td>
+                            <td> A lot</td>
+                            <td>Positive</td>
+                          </tr>
+                          <tr>
+                            <td>Should you argue with your mom?</td>
+                            <td>Shout at her</td>
+                            <td>Negative</td>
+                          </tr>
+                          <tr>
+                            <td>What shall you do now?</td>
+                            <td>Run</td>
+                            <td>Complex</td>
+                          </tr>
+                          <tr>
+                            <td>Are you a boy or a girl?</td>
+                            <td>Boy</td>
+                            <td>Neutral</td>
+                          </tr>
+
+                        </tbody>
+                  </table>
+               </div>
+            </center>
 
 
-            <div v-for="(data, index) in all_final_data" :key="index">
+             <div v-for="(data, index) in all_final_data" :key="index">
 
                   <h2 class="title">Chapter {{data.eventid}}: Psychological evaluation</h2>
                   <p class="body">This chapter is played by gorup <strong>{{GroupFilter.group_ids[0].group_id}}</strong> with  participants <strong>{{data.total_decision}}</strong> (60% boy, 40% girls) and 80  (60% boy, 40% girls). Group_1 has a polarization risk of 80%, and group_2 has 70%. The most polarization decision has come from event ID (2,5,7), and the lowest polarization score comes from event ID (1,3), details scores of each event shown in Fig 1 and Fig 2. The most polarized decision came from event 7: How will you behave your mother and 80% of student answer was 'I will shout'.</p><br>
 
-                  <p class="fig">Table. {{index+1}}: Emotional score of individual events decisions of chapter {{data.eventid}}.</p>
+                  <p class="fig">Table. {{index+2}}: Emotional score of individual events decisions of chapter {{data.eventid}}.</p>
                   <table class="table table-bordered">
                           <thead>
                             <tr>
@@ -55,7 +95,7 @@
                         </div>
                   </center>   -->
                   Among this decision, 60% of boys answer showed polarization risk other while 30% of girls showed polarization risk. Besides among 9, 11, 12,13 polarization risk was 30%, 10%, 15% and 20%. This indicates nine years old are more prone to be polarized.<br> 
-            </div>
+             </div>
                 <div class="row" style="padding: 20px 0">
                       <div class="col-4 text-center">
                           <button class="btn btn-primary" @click="home">Home</button>
@@ -571,5 +611,12 @@
 
    li.nostyle {
     list-style: none;
-}
+  }
+
+  p.nb {
+      font-size: 12px;
+      font-family: serif;
+      font-style: italic;
+      font-weight: bold;
+  }
 </style>
