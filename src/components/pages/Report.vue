@@ -6,6 +6,8 @@
 
             <h3 class="title"> Game Report</h3>
 
+
+
             <h2 class="title">Introdcution:</h2>
 
             <p class="body">This section presents a brief report of overall games played by different groups. In total, <strong>{{GroupFilter.group_ids.length}}</strong> group (<strong> {{GroupFilter.group_ids[0].group_id}}</strong>) has participated with 100 students and played  <strong>{{result.length}}</strong> game and <strong>{{result[0].chapters.length}}</strong> chapters, and more than 120 events.  Below presents a summary of each chapter and the risk of polarization for students regarding their provided decision-making during their games play.</p>
@@ -13,58 +15,54 @@
 
             <div v-for="(data, index) in all_final_data" :key="index">
 
-            <h2 class="title">Chapter {{data.eventid}}: Psychological evaluation</h2>
+                  <h2 class="title">Chapter {{data.eventid}}: Psychological evaluation</h2>
 
-            <p class="body">This chapter is played by gorup <strong>{{GroupFilter.group_ids[0].group_id}}</strong> with  participants <strong>{{data.total_decision}}</strong> (60% boy, 40% girls) and 80  (60% boy, 40% girls). Group_1 has a polarization risk of 80%, and group_2 has 70%. The most polarization decision has come from event ID (2,5,7), and the lowest polarization score comes from event ID (1,3), details scores of each event shown in Fig 1 and Fig 2. The most polarized decision came from event 7: How will you behave your mother and 80% of student answer was 'I will shout'.</p><br>
-
-
-            <p class="fig">Table. {{index+1}}: Emotional score of individual events decisions of chapter {{data.eventid}}.</p>
-
-            <table class="table table-bordered">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Event Question</th>
-                        <th scope="col">Decisions (decisions count)</th>
-                        <th scope="col">Sentiment Score (total 100%)</th>
-                      </tr>
-                    </thead>
-                    <tbody  v-for="(sentiment, index) in data.sentiment_score" :key="index">
-                      <tr>
-                        <th scope="row">{{sentiment.event}}</th>
-                        <td>{{sentiment.event_des}}</td>
-                        <td>Otto</td>
-                        <td>
-                            Positive: {{sentiment.po.toFixed(1)}}<br>
-                            Negative: {{sentiment.ne.toFixed(1)}}<br>
-                            Complex: {{sentiment.com.toFixed(1)}}<br>
-                            Neutral: {{sentiment.nu.toFixed(1)}}<br>
-
-                        </td>
-                      </tr>
-
-                    </tbody>
-              </table>
-
-            <center>
-              
-                <div class="col-md-6 center">
-                      <v-chart :options="barGraph[index]" width="100%"/>
-                       <p class="fig">Fig. {{index+1}}: Overall emotional statics of total student that played chapter {{data.eventid}}.  </p>
-                </div>
-            </center>
-
-  <!--           <center>
-              
-                  <div class="col-md-12 center">
-                            <v-chart :options="barGraphAll[index]" width="100%"/>
-                            <p class="fig">Fig. {{index+2}}: Emotional statics of individual events of chapter {{data.eventid}}.  </p>
-                  </div>
-            </center>   -->
-            Among this decision, 60% of boys answer showed polarization risk other while 30% of girls showed polarization risk. Besides among 9, 11, 12,13 polarization risk was 30%, 10%, 15% and 20%. This indicates nine years old are more prone to be polarized.
+                  <p class="body">This chapter is played by gorup <strong>{{GroupFilter.group_ids[0].group_id}}</strong> with  participants <strong>{{data.total_decision}}</strong> (60% boy, 40% girls) and 80  (60% boy, 40% girls). Group_1 has a polarization risk of 80%, and group_2 has 70%. The most polarization decision has come from event ID (2,5,7), and the lowest polarization score comes from event ID (1,3), details scores of each event shown in Fig 1 and Fig 2. The most polarized decision came from event 7: How will you behave your mother and 80% of student answer was 'I will shout'.</p><br>
 
 
-            <br> 
+                  <p class="fig">Table. {{index+1}}: Emotional score of individual events decisions of chapter {{data.eventid}}.</p>
+
+                  <table class="table table-bordered">
+                          <thead>
+                            <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">Event Question</th>
+                              <th scope="col">Decisions (decisions count)</th>
+                              <th scope="col">Sentiment Score (total 100%)</th>
+                            </tr>
+                          </thead>
+                          <tbody  v-for="(sentiment, index) in data.sentiment_score" :key="index">
+                            <tr>
+                              <th scope="row">{{sentiment.event}}</th>
+                              <td>{{sentiment.event_des}}</td>
+                              <td> <li class="nostyle" v-for="(choice, index) in sentiment.choice" :key="index"> {{index+1}}. {{choice.c}} ({{choice.n}})</li></td>
+                              <td>
+                                  <span v-if="sentiment.po>0">Positive: {{sentiment.po.toFixed(1)}}<br></span>
+                                  <span v-if="sentiment.ne>0">Negative: {{sentiment.ne.toFixed(1)}}<br></span>
+                                  <span v-if="sentiment.com>0">Complex: {{sentiment.com.toFixed(1)}}<br></span>
+                                  <span v-if="sentiment.nu>0">Neutral: {{sentiment.nu.toFixed(1)}}<br></span>
+                              </td>
+                            </tr>
+
+                          </tbody>
+                    </table>
+
+                  <center>
+                    
+                      <div class="col-md-6 center">
+                            <v-chart :options="barGraph[index]" width="100%"/>
+                             <p class="fig">Fig. {{index+1}}: Overall emotional statics of total student that played chapter {{data.eventid}}.  </p>
+                      </div>
+                  </center>
+
+        <!--           <center>
+                    
+                        <div class="col-md-12 center">
+                                  <v-chart :options="barGraphAll[index]" width="100%"/>
+                                  <p class="fig">Fig. {{index+2}}: Emotional statics of individual events of chapter {{data.eventid}}.  </p>
+                        </div>
+                  </center>   -->
+                  Among this decision, 60% of boys answer showed polarization risk other while 30% of girls showed polarization risk. Besides among 9, 11, 12,13 polarization risk was 30%, 10%, 15% and 20%. This indicates nine years old are more prone to be polarized.<br> 
             </div>
                 <div class="row" style="padding: 20px 0">
                       <div class="col-4 text-center">
@@ -120,7 +118,8 @@
 
                 d_count:[],
                 new_score:[],
-                all_final_data:[]
+                all_final_data:[],
+                d_c:[],
 
 
             }
@@ -171,7 +170,7 @@
 
           });
 
-           var l=[1593,2377,3885];
+           var l=[1593,2377];
 
 
            l.forEach(x => this.submitData(x));
@@ -362,26 +361,26 @@
 
                   var total_answer=0;
                   var tpo=0, tne=0, tnu=0,tcom=0;
-
-
                   this.d_count.forEach((m) =>{total_answer+=m.count; });
-
                   this.d_count.forEach((m) =>{
                               var po=0, ne=0, nu=0, com=0;
+
+                              
 
                               this.emotion[0].positive.forEach((el) =>{ if(el == m.name){ po=(m.count/total_answer)*100; tpo+=po;}});
                               this.emotion[0].negative.forEach((el) =>{ if(el == m.name){ ne=(m.count/total_answer)*100; tne+=ne;}});
                               this.emotion[0].neutral.forEach((el) =>{ if(el == m.name){ nu=(m.count/total_answer)*100; tnu+=nu;}});
                               this.emotion[0].complex.forEach((el) =>{ if(el == m.name){ com=(m.count/total_answer)*100; tcom+=com;}});
-
+                              
 
                               const record = this.new_score.find(element => element.event == m.event);
 
-                              if (this.new_score.find(element => element.event == m.event)) {
+                              if (record) {
                                   record.po += po;
                                   record.ne += ne;
                                   record.nu += nu;
                                   record.com += com;
+                                  record.choice.push({c:m.name,n:m.count});
                               } else {
                                   this.new_score.push({
                                       event: m.event,
@@ -389,14 +388,12 @@
                                       po:po,
                                       ne:ne,
                                       nu:nu,
-                                      com:com
-                                  });
+                                      com:com,
+                                      choice:[{c:m.name,n:m.count}],
+                                  });     
                               }
-          
-                        
+                
                           });
-
-                 
 
                   this.all_final_data.push({eventid:item,total_decision:total_answer, sentiment_score:this.new_score, total_sentiment_score: [tpo,tne,tnu,tcom] });
                   this.barChartTotalScore(tpo,tne,tnu,tcom);
@@ -405,6 +402,8 @@
                   this.new_score=[];
                   this.unique_decision_final=[];
                   this.d_count=[];
+
+                  
 
 
                   
@@ -588,4 +587,8 @@
     text-align: center;
     font-weight: bold;
    }
+
+   li.nostyle {
+    list-style: none;
+}
 </style>
