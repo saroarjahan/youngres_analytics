@@ -5,14 +5,14 @@
         <div class="content Timesroman">
 
             <h3 class="title"> Game Report</h3>
-            <h2 class="title">Introdcution:</h2>
-            <p class="body">This section presents a brief report of overall games played by different groups. In total, <strong>{{GroupFilter.group_ids.length}}</strong> group (<strong> {{GroupFilter.group_ids[0].group_id}}</strong>) has participated with <strong>{{result[0].numberPlayers}}</strong> students  from <strong>{{result[0].countries[0]}}</strong> and played  <strong>{{result.length}}</strong> game and <strong>{{result[0].chapters.length}}</strong> chapters, and more than <strong>{{n_decisions}}</strong> events.  Below presents a summary of each chapter and the risk of polarization for students regarding their provided decision-making during their games play. To better understand student psychology, we have labeled student sentiment in four categories (i.e., positive, negative, complex, and neutral). This sentiment analysis is prepared based on student decisions during gameplay.  Table 1 shows the example of annotations.</p>
 
-            <p class="nb">[N.B. This report is automatically generated, which is intended to help teacher assessment.]</p>
+            <!-- {{all_final_data}} -->
+            <h2 class="title">Introdcution:</h2>
+            <p class="body">This section presents an  overall report of  gameplay by different groups. In total, <strong>{{GroupFilter.group_ids.length}}</strong> group (<strong> {{GroupFilter.group_ids[0].group_id}}</strong>) has participated with <strong>{{result[0].numberPlayers}}</strong> students  from <strong>{{result[0].countries[0]}}</strong> and played  <strong>{{result.length}}</strong> game and <strong>{{result[0].chapters.length}}</strong> chapters, and more than <strong>{{n_decisions}}</strong> decisions were made.  Below presents a summary of each chapter and the risk of polarization for students regarding their provided decision-making during  gameplay. To properly understand student psychology, we have labeled student sentiment in four categories (i.e., positive, negative, complex, and neutral). This sentiment analysis is generated on student decisions during gameplay.  Table-1 shows example of sentiment labeling.</p>
 
             <center>
               <div class="col-md-8">
-                <p class="fig">Table 1: example of event decision annotation.</p>
+                <p class="fig">Table 1: example of student decision labeling.</p>
                 <table class="table table-bordered">
                         <thead>
                           <tr>
@@ -48,20 +48,25 @@
                </div>
             </center>
 
-
+            <p class="nb">[N.B. This report is automatically generated, which only intended to help teacher assessment.]</p>
              <div v-for="(data, index) in all_final_data" :key="index">
 
                   <h2 class="title">Chapter {{data.eventid}}: Psychological evaluation</h2>
-                  <p class="body">This chapter is played by gorup <strong>{{GroupFilter.group_ids[0].group_id}}</strong> with  participants <strong>{{data.total_decision}}</strong> (60% boy, 40% girls) and 80  (60% boy, 40% girls). Group_1 has a polarization risk of 80%, and group_2 has 70%. The most polarization decision has come from event ID (2,5,7), and the lowest polarization score comes from event ID (1,3), details scores of each event shown in Fig 1 and Fig 2. The most polarized decision came from event 7: How will you behave your mother and 80% of student answer was 'I will shout'.</p><br>
+                  <p class="body">This chapter has played by group <strong>{{GroupFilter.group_ids[0].group_id}}</strong> and the number of the participant was <strong>{{total_student}}</strong>, total number of decision made <strong>{{data.total_decision}}</strong>. Table-{{index+2}} presents the emotional score of individual events decisions, and Figure-{{index+1}} presents the overall emotional scores of all students who played chapter {{data.eventid}}. The overall sentiment scores were: positive ({{data.total_sentiment_score[0]}}%), negative ({{data.total_sentiment_score[1]}} %), complex ({{data.total_sentiment_score[3]}}%), and neutral ({{data.total_sentiment_score[2]}}%). Here, {{data.total_sentiment_score[1]}}% of students contain negative sentiment that might be in polarity risk <span v-if='data.total_decision < 10'>(though for this particular chapter number of participants was small, only {{data.total_decision}}, which makes it tough to comment)</span>. In comparison, {{parseInt(data.total_sentiment_score[0], 10)+parseInt(data.total_sentiment_score[2], 10)}}% of students showed positive and neutral emotions, which seems normal. 
 
-                  <p class="fig">Table. {{index+2}}: Emotional score of individual events decisions of chapter {{data.eventid}}.</p>
+                  The most polarized decision has come from EventId (<span v-for="(sentiment, index) in data.sentiment_score" :key="index"><span v-if="sentiment.ne>0">{{sentiment.event}},</span></span>) and polarized decisions were: <span v-for="(sentiment, index) in data.sentiment_score" :key="index" ><span v-if="sentiment.ne>0"><span v-for="(s, index) in sentiment.sep_choice" :key="index">{{s.neg[0]}}</span>, </span></span>.
+
+
+                  </p><br>
+
+                  <p class="fig">Table {{index+2}}: Sentiment score of individual  decisions of chapter {{data.eventid}}.</p>
                   <table class="table table-bordered">
                           <thead>
                             <tr>
-                              <th scope="col">#</th>
+                              <th scope="col">EventId</th>
                               <th scope="col">Event Question</th>
                               <th scope="col">Decisions (decisions count)</th>
-                              <th scope="col">Sentiment Score (total 100%)</th>
+                              <th scope="col">Sentiment Score (in total of 100%)</th>
                             </tr>
                           </thead>
                           <tbody  v-for="(sentiment, index) in data.sentiment_score" :key="index">
@@ -83,7 +88,7 @@
                   <center>       
                       <div class="col-md-6 center">
                             <v-chart :options="barGraph[index]" width="100%"/>
-                            <p class="fig">Fig. {{index+1}}: Overall emotional statics of total student that played chapter {{data.eventid}}.  </p>
+                            <p class="fig">Fig. {{index+1}}: Overall sentiment score of total student from chapter {{data.eventid}}.  </p>
                       </div>
                   </center>
 
@@ -94,14 +99,14 @@
                                   <p class="fig">Fig. {{index+2}}: Emotional statics of individual events of chapter {{data.eventid}}.  </p>
                         </div>
                   </center>   -->
-                  Among this decision, 60% of boys answer showed polarization risk other while 30% of girls showed polarization risk. Besides among 9, 11, 12,13 polarization risk was 30%, 10%, 15% and 20%. This indicates nine years old are more prone to be polarized.<br> 
+                 <br> 
              </div>
                 <div class="row" style="padding: 20px 0">
                       <div class="col-4 text-center">
                           <button class="btn btn-primary" @click="home">Home</button>
                       </div>
                       <div class="col-4 text-right">
-                          <button class="btn btn-primary export" @click="exportOpt">Export</button>
+                          <button class="btn btn-primary export" @click="exportOpt">Export report as PDF</button>
                       </div>
                 </div>
             </div>
@@ -128,6 +133,7 @@
             return {
                 choice: 'choice',
                 n_decisions:0,
+                total_student:12,
                 decisions: [],
                 max_choice: 0,
                 distinct_event: [],
@@ -147,7 +153,7 @@
                 getFilterHeader: null,
                 choiceList: null,
                 choiceList_name: null,
-                emotion:[{'positive':['Call a friend','Read','calmDown','Calm down', 'Quite a lot','A lot', 'happy','playComputer', 'Play with the computer','Happiness'],'negative':['A little','Attack the toy', 'sad','Sadness','Boringness','Complain','Complain about the director','Shout at her','Attack the toy','Anger','angry'], 'neutral':['Girl','Boy','Yes','No','indifferent','Leave the scene','Rest','youAreAToy','No. You are a toy!','doNotKnow'], 'complex':['no', 'Remain silent','silence','Run']}],
+                emotion:[{'positive':['Call a friend','Read','calmDown','Calm down', 'Quite a lot','A lot', 'happy','playComputer', 'Play with the computer','Happiness','Yes'],'negative':['A little','Attack the toy', 'sad','Complain','Complain about the director','Shout at her','Anger','angry'], 'neutral':['Girl','Boy','Yes','No','indifferent','Leave the scene','Rest','youAreAToy','No. You are a toy!','doNotKnow','Boringness'], 'complex':['no', 'Remain silent','silence','Run','Sadness']}],
 
                 d_count:[],
                 new_score:[],
@@ -384,13 +390,14 @@
                   this.d_count.forEach((m) =>{total_answer+=m.count; });
                   this.d_count.forEach((m) =>{
                               var po=0, ne=0, nu=0, com=0;
+                              const pos=[], neg =[], compl=[], nut=[];
 
                               
 
-                              this.emotion[0].positive.forEach((el) =>{ if(el == m.name){ po=(m.count/total_answer)*100; tpo+=po;}});
-                              this.emotion[0].negative.forEach((el) =>{ if(el == m.name){ ne=(m.count/total_answer)*100; tne+=ne;}});
-                              this.emotion[0].neutral.forEach((el) =>{ if(el == m.name){ nu=(m.count/total_answer)*100; tnu+=nu;}});
-                              this.emotion[0].complex.forEach((el) =>{ if(el == m.name){ com=(m.count/total_answer)*100; tcom+=com;}});
+                              this.emotion[0].positive.forEach((el) =>{ if(el == m.name){ po=(m.count/total_answer)*100; tpo+=po; pos.push(m.name);}});
+                              this.emotion[0].negative.forEach((el) =>{ if(el == m.name){ ne=(m.count/total_answer)*100; tne+=ne;neg.push(m.name);}});
+                              this.emotion[0].neutral.forEach((el) =>{ if(el == m.name){ nu=(m.count/total_answer)*100; tnu+=nu;nut.push(m.name);}});
+                              this.emotion[0].complex.forEach((el) =>{ if(el == m.name){ com=(m.count/total_answer)*100; tcom+=com;compl.push(m.name);}});
                               
 
                               const record = this.new_score.find(element => element.event == m.event);
@@ -401,6 +408,7 @@
                                   record.nu += nu;
                                   record.com += com;
                                   record.choice.push({c:m.name,n:m.count});
+                                  record.sep_choice.push({pos:pos,neg:neg,compl:compl, nut:nut});
                               } else {
                                   this.new_score.push({
                                       event: m.event,
@@ -410,24 +418,20 @@
                                       nu:nu,
                                       com:com,
                                       choice:[{c:m.name,n:m.count}],
+                                      sep_choice:[{pos:pos,neg:neg,compl:compl, nut:nut}]
                                   });     
                               }
                 
                           });
                   this.n_decisions+=total_answer;
 
-                  this.all_final_data.push({eventid:item,total_decision:total_answer, sentiment_score:this.new_score, total_sentiment_score: [tpo,tne,tnu,tcom] });
+                  this.all_final_data.push({eventid:item,total_decision:total_answer, sentiment_score:this.new_score, total_sentiment_score: [tpo.toFixed(1),tne.toFixed(1),tnu.toFixed(1),tcom.toFixed(1)] });
                   this.barChartTotalScore(tpo,tne,tnu,tcom);
                   this.barAllScore(this.new_score);
                   this.total_score=[];
                   this.new_score=[];
                   this.unique_decision_final=[];
-                  this.d_count=[];
-
-                  
-
-
-                  
+                  this.d_count=[];       
             },
 
 
@@ -613,10 +617,16 @@
     list-style: none;
   }
 
-  p.nb {
+
+  p.nb[data-v-16f032e2] {
       font-size: 12px;
       font-family: serif;
       font-style: italic;
       font-weight: bold;
+      color: #c52121;
+  }
+
+  th {
+    font-family: serif;
   }
 </style>
