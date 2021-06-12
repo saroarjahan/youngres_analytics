@@ -9,6 +9,8 @@
       </div>
         <div class="content">
             <p class="title">To visualize Event decisions, select Game, Chapter and Event type (Choice/ Timed):</p>
+
+            
             <div class="row">
                 <div class=" col-md-2">
                     <select class="custom-select" v-model="game" @change="selectGame($event)">
