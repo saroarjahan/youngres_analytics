@@ -64,7 +64,7 @@
 
 
 
-                    <br>Table-{{index+2}} presents the emotional score of individual events decisions, and Figure-{{index+1}} presents the overall emotional scores of all decision from chapter {{data.eventid}}. The overall sentiment scores were: positive ({{data.total_sentiment_score[0]}}%), negative ({{data.total_sentiment_score[1]}} %), complex ({{data.total_sentiment_score[3]}}%), and neutral ({{data.total_sentiment_score[2]}}%). Here, {{data.total_sentiment_score[1]}}%  negative sentiment <span style='color:red;'> which represent <strong>~{{Math.round(((data.total_decision/(data.sentiment_score.length))* (data.total_sentiment_score[1] / 100)).toFixed(1))}}</strong> student  that might be in polarity risk </span><span v-if='data.total_decision < 10'>(though for this particular chapter number of decsion is small (only {{data.total_decision}}), which makes it tough to comment)</span>. In comparison, {{parseInt(data.total_sentiment_score[0], 10)+parseInt(data.total_sentiment_score[2], 10)}}%  showed positive and neutral emotions <span style='color:green;'> which represent <strong>~{{Math.round(((data.total_decision/(data.sentiment_score.length)) * (((parseInt(data.total_sentiment_score[0])+parseInt(data.total_sentiment_score[2])) / 100))).toFixed(1))}} </strong> students, which seems normal</span>. <strong>{{(1-(data.total_decision/(data.sentiment_score.length*12))).toFixed(1)*100}}%</strong> student has not participated in all event.
+                    <br>Table-{{index+2}} presents the emotional score of individual events decisions, and Figure-{{index+1}} presents the overall emotional scores of all decision from chapter {{data.eventid}}. The overall sentiment scores were: positive ({{data.total_sentiment_score[0]}}%), negative ({{data.total_sentiment_score[1]}} %), complex ({{data.total_sentiment_score[3]}}%), and neutral ({{data.total_sentiment_score[2]}}%). Here, {{data.total_sentiment_score[1]}}%  negative sentiment <span style='color:red;'> which represent <strong>~{{data.total_sent_student_count[1]}}</strong> student  that might be in polarity risk </span><span v-if='data.total_decision < 10'>(though for this particular chapter number of decsion is small (only {{data.total_decision}}), which makes it tough to comment)</span>. In comparison, {{parseInt(data.total_sentiment_score[0], 10)+parseInt(data.total_sentiment_score[2], 10)}}%  showed positive and neutral emotions <span style='color:green;'> which represent <strong>~{{data.total_sent_student_count[0]+data.total_sent_student_count[2]}} </strong> students, which seems normal</span>. <strong>{{(1-(data.total_decision/(data.sentiment_score.length*12))).toFixed(1)*100}}%</strong> student has not participated in all event.
 
                   The most polarized decision has come from EventId (<span v-for="(sentiment, index) in data.sentiment_score" :key="index"><span v-if="sentiment.ne>0">{{sentiment.event}},</span></span>) and polarized decisions were: <span v-for="(sentiment, index) in data.sentiment_score" :key="index" ><span v-if="sentiment.ne>0"><span v-for="(s, index) in sentiment.sep_choice" :key="index">{{s.neg[0]}}</span>, </span></span>.
 
@@ -115,25 +115,25 @@
 
                                   <tbody>
                                       <td>Number of polarized risk student</td>
-                                      <td>1</td>
+                                      <td>{{data.total_sent_student_count[1]}}</td>
                                   </tbody>
 
                                   <tbody>
                                       <td>Number of Positive studnet</td>
-                                      <td>2</td>
+                                      <td>{{data.total_sent_student_count[0]}}</td>
                                   </tbody>
                                   <tbody>
                                       <td>Number of Neutral studnet</td>
-                                      <td>2</td>
+                                      <td>{{data.total_sent_student_count[2]}}</td>
                                   </tbody>
                                    <tbody>
                                       <td>Number of complex  studnet</td>
-                                      <td>2</td>
+                                      <td>{{data.total_sent_student_count[3]}}</td>
                                   </tbody>
 
                                   <tbody>
                                       <td>Number of student has not participated in all event</td>
-                                      <td>2</td>
+                                      <td>{{total_student-data.total_sent_student_count[4]}}</td>
                                   </tbody>
                             </table>
 
@@ -277,7 +277,7 @@
               this.loading = true;
                  
               
-                  axios.get("decision?gameCode=" + this.game + "&gameVersion=" + this.version + "&chapterCode=" + item, {headers: {filters: JSON.stringify(this.getFilterHeader)}}).then(res => {
+                  axios.get("decision?gameCode=" + this.game + "&gameVersion=" + this.version + "&chapterCode=" + item).then(res => {
                     this.decisions = res.data.decisions;
 
                     if(this.decisions.length>0){
@@ -461,7 +461,7 @@
                   tnes=Math.round(((total_answer/(this.new_score.length))* (tne/ 100)).toFixed(1));
                   tnus=Math.round(((total_answer/(this.new_score.length))* (tnu/ 100)).toFixed(1));
                   tcoms=Math.round(((total_answer/(this.new_score.length))* (tcom/ 100)).toFixed(1));
-                  tnt_ply=this.total_student-(tps+tnes+tnus+tcoms); //calculation of total student that not participate in all events
+                  tnt_ply=tps+tnes+tnus+tcoms; //calculation of total student that not participate in all events
 
 
                   this.n_decisions+=total_answer;
