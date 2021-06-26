@@ -25,7 +25,7 @@
 
         <div class="view">
             <button @click="report" class="btn btn-info">
-                View Overall Game Report
+                View Game Report
             </button>
         </div>
 
