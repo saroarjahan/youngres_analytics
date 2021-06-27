@@ -3,7 +3,11 @@
       <div class="loading">
         <div class="centerScreen">
         <div class="content Timesroman">
-
+<!--             {{individual_student_sentiment.slice(1)}}
+            {{total_students}}
+            {{individual_student_sentiment.slice(1).length}}
+            {{total_students.length}}
+            {{lineGraph}} -->
             <h3 class="title"> Game Report</h3>   
             <h2 class="title">Introdcution:</h2>
             <p class="body">This section presents an  overall report of  Youngres gameplay by different groups. In total, <strong>{{GroupFilter.group_ids.length}}</strong> group (<span v-for="(group, i) in GroupFilter.group_ids" :key="i"><strong> {{group.group_id}}:</strong> {{group.description}}, </span>)  and played  <strong>{{result.length}}</strong> game and <strong>{{result[0].chapters.length}}</strong> chapters.  Below presents a summary of chapter regarding student provided decision-making during  gameplay. To properly understand student psychology, we have labeled student sentiment in several categories (i.e., positive, negative, complex, neutral, etc). This sentiment analysis is generated on student decisions during gameplay.  Event questions and corresponding student decisions have been considered together for sentiment labeling. For example, eventId 3: 'Should you remain sit?', the decision was 'Yes', which sounds positive emotion; however, since it does not relate to any polarity risk, it labeled as neutral. Table-1 shows examples of sentiment labeling.</p>
@@ -123,6 +127,14 @@
                                <p class="fig">Fig. {{index+3}}: Sentiment score of group {{groupName[1]}}.</p>
                           </div>
                        </div>
+
+                        <div class="row" v-if='groupName.length==1'>
+                          <div class="col-md-12">
+                              <v-chart :options="lineGraph[0]" width="100%"/>
+                              <p class="fig">Fig. {{index+2}}: Individual student score {{data.chapter_id}}.</p>
+                         </div>
+                       </div>
+
                  
 
                       <div class="row">
@@ -195,7 +207,7 @@
                       </div>
                   </div> <!-- v-if close -->
               </div> <!-- v-for for chapter  close--> 
-                <br> 
+       
 
               </div>
                 <div class="row" style="padding: 20px 0">
@@ -208,7 +220,7 @@
                 </div>
               </div>
 
-           {{all_final_data}}
+           <!-- {{all_final_data}} -->
 
           </div>
        </div>
@@ -232,6 +244,8 @@
                 choice: 'choice',
                 n_decisions:0,
                 total_student:0,
+                total_students:[],
+                individual_student_sentiment:[],
                 decisions: [],
                 max_choice: 0,
                 distinct_event: [],
@@ -243,7 +257,7 @@
                 version: null,
                 chapter: null,
                 barGraph: [],
-                barGraphAll: [],
+                lineGraph:[],
                 result: [],
                 chapters: [],
                 filterStudent: [],
@@ -366,55 +380,89 @@
                     this.chapters = res.chapters;
                     this.version = res.gameVersion;
                 }
-
             },
  
  
             submitData(item){
-              this.loading = true;
-
+                this.loading = true;
                 if(this.getFilterHeader !== null && JSON.stringify(this.getFilterHeader) !== JSON.stringify({})) {
-
                   axios.get("decision?gameCode=" + this.game + "&gameVersion=" + this.version + "&chapterCode=" + item, {headers: {filters: JSON.stringify(this.getFilterHeader)}}).then(res => {
                     this.decisions = res.data.decisions;
-                    this.all_final_data=[];
-                    this.barGraph=[];
-                    if(this.decisions.length>0){
-                            let counts = {};
-                            this.decisions.forEach(decision => counts[decision.student.student_code] = 1  + (counts[decision.student.student_code] || 0));
-                            this.total_student=Object.keys(counts).length;
+                    this.makeZero();
+                    this.studentCounts();
+                    this.groupCount();
+                    if(this.decisions.length>0){   
                             this.dataAnalysis(this.decisions);
                             this.d_counts(item);}
 
                     if(this.groupName.length==2 && this.decisions.length>0){
                             this.groupName.forEach(groupId => {
-                                const group = this.decisions.filter(decisions  => decisions.student.group_code == groupId);
-                                let counts = {};
-                                group.forEach(decision => counts[decision.student.student_code] = 1  + (counts[decision.student.student_code] || 0));
-                                this.total_student=Object.keys(counts).length;
+                                let group = this.decisions.filter(decisions  => decisions.student.group_code == groupId);
                                 this.dataAnalysis(group);
                                 this.d_counts(item);
-                            });
-                            
-                          }
+                            });       
+                    }
+
+                    if(this.decisions.length>0 && this.groupName.length==1){                
+                          this.eachStudentScore(item);
+                          this.lineGraphs(this.individual_student_sentiment);   
+                    }
+
                   });
 
 
                 }else {
                   axios.get("decision?gameCode=" + this.game + "&gameVersion=" + this.version + "&chapterCode=" + item).then(res => {
                     this.decisions = res.data.decisions;
-                    this.all_final_data=[];
-                    this.barGraph=[];
+                    this.makeZero();
+                    this.studentCounts();
+                    this.groupCount();
                     if(this.decisions.length>0){
-                          let counts = {};
-                          this.decisions.forEach(decision => counts[decision.student.student_code] = 1  + (counts[decision.student.student_code] || 0));
-                          this.total_student=Object.keys(counts).length;
                           this.dataAnalysis(this.decisions);
-                          this.d_counts(item);}
+                          this.d_counts(item);
+                          if(this.groupName.length==1){                
+                            this.eachStudentScore(item);
+                            this.lineGraphs(this.individual_student_sentiment);   
+                          }                  
+                     }
+
                   });
                 }
             },
- 
+
+            makeZero(){ //make some variable empty array
+
+                    this.all_final_data=[];
+                    this.individual_student_sentiment=[];
+                    this.barGraph=[];
+                    this.lineGraph=[];
+
+            },
+
+            studentCounts(){ //student count
+                    let counts = {};
+                    this.decisions.forEach(decision => counts[decision.student.student_code] = 1  + (counts[decision.student.student_code] || 0));
+                    this.total_student=Object.keys(counts).length;
+                    this.total_students=Object.keys(counts);
+            },
+
+            eachStudentScore(item){ //easch student sentiment score
+                    this.total_students.forEach(name => {
+                    let student_data = this.decisions.filter(decisions  => decisions.student.student_code == name);
+                    this.dataAnalysis(student_data);
+                    this.d_counts(item);
+                    });
+                  },
+            groupCount(){ //group count
+                    this.groupName=[];
+                    try{ 
+                      this.getFilterHeader.group.forEach((m) =>{this.groupName.push(m.min_value)});
+                    }
+                    catch{
+                      this.GroupFilter.group_ids.forEach((m) =>{this.groupName.push(m.group_id)});
+                    }
+            },
+
             dataAnalysis(decisions){
                 this.distinct_event_temp = [];
                 this.unique_decision_final_temp = [];
@@ -564,21 +612,12 @@
 
                   this.n_decisions+=total_answer;
                   this.all_final_data.push({chapter_id:item,total_student:this.total_student, total_decision:total_answer, sentiment_score:this.new_score, total_sentiment_score: [Math.round(tpo),Math.round(tne),Math.round(tnu),Math.round(tcom)], total_sent_student_count:[tps, tnes,tnus,tcoms] });
-                  
+                  this.individual_student_sentiment.push([Math.round(tpo),Math.round(tne),Math.round(tnu),Math.round(tcom)]);
                   this.barChartTotalScore(tpo,tne,tnu,tcom);
                   this.total_score=[];
                   this.new_score=[];
                   this.unique_decision_final=[];
                   this.d_count=[];  
-
-                  this.groupName=[];
-
-                  try{ 
-                    this.getFilterHeader.group.forEach((m) =>{this.groupName.push(m.min_value)});
-                  }
-                  catch{
-                    this.GroupFilter.group_ids.forEach((m) =>{this.groupName.push(m.group_id)});
-                  }
 
             },
 
@@ -605,6 +644,62 @@
                                     position: 'insideBottom',distance: 20},
                                     type: 'bar'
                                 }]});
+
+            },
+
+            lineGraphs(data){ //bar chart for total emotional score
+                let series1=[], series2=[], series3=[], series4=[];
+                data.slice(1).forEach((score) =>{series1.push(score[0]); series2.push(score[1]);series3.push(score[2]);series4.push(score[3]);});
+                this.lineGraph.push( {
+       
+                                tooltip: {
+                                    trigger: 'axis'
+                                },
+                                legend: {
+                                    data: ['Positive', 'Negative', 'Neutral', 'Complex']
+                                },
+                                grid: {
+                                    left: '3%',
+                                    right: '4%',
+                                    bottom: '3%',
+                                    containLabel: true
+                                },
+         
+                                xAxis: {
+                                    type: 'category',
+                                    boundaryGap: false,
+                                    data: this.total_students,
+                                    axisLabel: { rotate: 90 },
+
+                                },
+                                yAxis: {
+                                    type: 'value'
+                                },
+                                series: [
+                                    {
+                                        name: 'Positive',
+                                        type: 'line',
+                                        data: series1
+                                    },
+                                    {
+                                        name: 'Negative',
+                                        type: 'line',
+                                        data: series2
+                                    },
+                                    {
+                                        name: 'Neutral',
+                                        type: 'line',
+                                        data: series3
+                                    },
+                                    {
+                                        name: 'Complex',
+                                        type: 'line',
+                                        data: series4
+                                    },
+                             
+                                ]
+
+                              });
 
             },
 
@@ -657,7 +752,7 @@
         }
     }
     
-    .echarts {width: 350px !important;height: 300px!important; }
+    .echarts {width: 100% !important;height: 300px!important; }
 
 
 
