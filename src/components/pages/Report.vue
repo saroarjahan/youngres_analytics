@@ -5,10 +5,12 @@
         <div class="content Timesroman">
             <h3 class="title"> Game Report</h3>   
             <h2 class="title">Introdcution:</h2>
-            <p class="body">This section presents an  overall report of  Youngres gameplay by different groups. In total, <strong>{{GroupFilter.group_ids.length}}</strong> group (<span v-for="(group, i) in GroupFilter.group_ids" :key="i"><strong> {{group.group_id}}:</strong> {{group.description}}, </span>)  and played  <strong>{{result.length}}</strong> game and <strong>{{result[0].chapters.length}}</strong> chapters.  Below presents a summary of chapter regarding student provided decision-making during  gameplay. To properly understand student/group  performance for empathy, emotional recognition, relaxation, visualisation, breathing, active listening, Muslim culture, social skills, etc, we have labeled student decisions in several categories (i.e., positive, negative, complex, neutral, etc). Event questions, scenatios, and corresponding student decisions have been considered together for  labeling  a decsion.</p>
+            <p class="body">This section presents an  overall report of  Youngres gameplay by different groups. In total, <strong>{{GroupFilter.group_ids.length}}</strong> group (<span v-for="(group, g) in GroupFilter.group_ids" :key="g"><strong> {{group.group_id}}:</strong> {{group.description}}, </span>)  and played  <strong>{{result.length}}</strong> game and <strong>{{result[0].chapters.length}}</strong> chapters.  Below presents a summary of chapter regarding student provided decision-making during  gameplay. To properly understand student/group  performance for empathy, emotional recognition, relaxation, visualisation, breathing, active listening, Muslim culture, social skills, etc, we have labeled student decisions in several categories (i.e., Positive: suitable/correct decsion, refers to good perfromance of student/group, Negative: not expected/wrong decision, refers to lower performance, Complex: decsion not clear, Neutral: depends on the situation, could be suitable decsion, but definitely not refers to lower performance of student/group, etc). Event questions, scenatios, and corresponding student decisions have been considered together for  labeling  a decsion.</p>
+
+            <p>After calculating student decision scores, we have graded the performance of each group in five different scales: Excellent, Good, Average, Poor, and Very poor.</p>
 
             <center>
-              <div class="col-md-12">
+              <div class="col-md-8">
                 <p class="fig">Table 1: example of student decision labeling.</p>
                 <table class="table table-bordered">
                         <thead>
@@ -22,17 +24,17 @@
                           <tr>
                             <td>How is Ahmed feeling right now?</td>
                             <td> Sad </td>
-                            <td>Positive (Suitable/correct decsion, refers to good perfromance of student/group. )</td>
+                            <td>Positive </td>
                           </tr>
                           <tr>
                             <td>Should you argue with your mom?</td>
                             <td>Shout at her</td>
-                            <td>Negative (Not expected/wrong decision, refers to lower performance of student/group.)</td>
+                            <td>Negative </td>
                           </tr>
                           <tr>
                             <td>Are you a boy or a girl?</td>
                             <td>Boy</td>
-                            <td>Neutral (Depends on the situation, could be suitable decsion, but definitely not refers to lower performance of student/group.)</td>
+                            <td>Neutral</td>
                           </tr>
 
                         </tbody>
@@ -48,12 +50,12 @@
             <div class="row">
                 <div class=" col-md-2">
                     <select class="custom-select" v-model="game" @change="selectGame($event)">
-                        <option v-for="(item, index) in result" :key="index" :value="item.gameCode">{{item.gameCode}} </option>
+                        <option v-for="(item, it) in result" :key="it" :value="item.gameCode">{{item.gameCode}} </option>
                     </select>
                 </div>
                 <div class="col-md-2">
                     <select class="custom-select" v-model="chapter"  @change="selectChapter($event)">
-                        <option v-for="(item, index) in chapters" :key="index" :value="item">{{item}} </option>
+                        <option v-for="(item, iem) in chapters" :key="iem" :value="item">{{item}} </option>
                     </select>
                 </div>
                 <div class="col-md-3">
@@ -73,17 +75,24 @@
             <h2 class="title">{{chapter_info[0].title}}</h2>
             <p><strong>Chapter Objective:</strong> {{chapter_info[0].des}}.</p>
 
-            <div v-for="(data, index) in all_final_data" :key="index">
+            <div v-for="(data, index) in all_final_data.slice(0, 1)" :key="index">
                 <div v-if='index==0'>
 
-                    <p class="body"><strong>Result: </strong>This chapter has played by group <span v-for="(group, l) in groupName" :key="l"><strong> {{group}}, </strong></span> the number of students in the group <strong>{{data.total_student}}</strong>, and  the total number of decisions made <strong>{{data.total_decision}}</strong>.
+                    <p class="body"><strong>Result: </strong>This chapter has played by group <span v-for="(group, l) in groupName" :key="l"><strong> {{group}}, </strong></span> the number of students in the group <strong>{{data.total_student}}</strong>, and  the total number of decisions made <strong>{{data.total_decision}}</strong>. <br>
 
-                    <br><strong><em>Table-{{index+2}}</em></strong> presents the sentiment score of individual events decisions, and <strong><em>Figure-{{index+1}}</em></strong> presents the overall emotional scores of all decisions from chapter {{data.eventid}}. The overall sentiment scores were: positive ({{data.total_sentiment_score[0]}}%), negative ({{data.total_sentiment_score[1]}} %), complex ({{data.total_sentiment_score[3]}}%), and neutral ({{data.total_sentiment_score[2]}}%). Here, <strong>{{data.total_sentiment_score[1]}}%  negative sentiment  representing ~{{data.total_sent_student_count[1]}} student  that might be in polarity risk </strong> <span v-if='data.total_decision < 10'>(though for this particular chapter number of decisions is small, only {{data.total_decision}}, which makes it tough to comment)</span>. In comparison, <strong>{{parseInt(data.total_sentiment_score[0], 10)+parseInt(data.total_sentiment_score[2], 10)}}%  s positive and neutral emotions, representing ~{{data.total_sent_student_count[0]+data.total_sent_student_count[2]}}  students, which seems normal</strong>. <br>
+                    <br><strong><em>Table-{{index+2}}</em></strong> presents the score of individual events decisions, and <strong><em>Figure-{{index+1}}</em></strong> shows the overall scores of all decisions from {{chapter_info[0].title.split(':').shift()}} by Group (<span v-for="(group, gr) in groupName" :key="gr">{{group}}, </span>). <span v-if='data.total_sentiment_score[0]>0'>The overall group performance scores were: positive ({{data.total_sentiment_score[0]}}%), neutral ({{data.total_sentiment_score[2]}}%), complex ({{data.total_sentiment_score[3]}}%), and  negative only ({{data.total_sentiment_score[1]}}%). 
 
-                      <strong class='red'>The most polarized decision has come from EventId (<span v-for="(sentiment, index) in data.sentiment_score" :key="index"><span v-if="sentiment.ne> 0">{{sentiment.event}}, </span></span>) and polarized decisions were: <span v-for="(sentiment, index) in data.sentiment_score" :key="index" ><span v-if="sentiment.ne>0"><span v-for="(s, index) in sentiment.sep_choice" :key="index">{{s.neg[0]}}</span>, </span></span></strong>.
+                    Since {{parseInt(data.total_sentiment_score[0], 10)+parseInt(data.total_sentiment_score[2], 10)}}% of decisions were positive and neutral, which seems the majority of the students have performed <strong><span v-if='data.total_sentiment_score[1]<=10'>Excellent</span> <span v-if='data.total_sentiment_score[1]>10 && data.total_sentiment_score[1]<=15'>Good</span><span v-if='data.total_sentiment_score[1]>15 && data.total_sentiment_score[1]<=30'>Average</span></strong> in {{chapter_info[0].title.split(':')[1]}} Test. <br> <br>
+
+                    In comparison, <strong>{{data.total_sentiment_score[1]}}%  </strong>decsions were negative which  indicates some student has made few wrong decision<span v-if='data.total_decision < 10'> (though for this particular chapter number of decisions is small, only {{data.total_decision}}, which makes it tough to comment)</span>. 
+
+                    <br><br>
+                    The most negative decisions have come from EventId <strong>(<span v-for="(sentiment, s) in data.sentiment_score" :key="s"><span v-if="sentiment.ne> 0">{{sentiment.event}}, </span></span>)</strong>, and  those decisions were:<strong> <span v-for="(sentiment, t) in data.sentiment_score" :key="t" ><span v-if="sentiment.ne>0"><span v-for="(s, y) in sentiment.sep_choice" :key="y">{{s.neg[0]}}</span>, </span></span></strong>.</span>
+
+                    <span v-if='data.total_sentiment_score[1]==0'> <strong style='color:red'>Data has not calculated yet.</strong></span>
                     </p><br>
 
-                    <p class="fig">Table {{index+2}}: Group score on individual events of {{chapter_info[0].title.split(':').shift()}}.</p>
+                    <p class="fig">Table {{index+2}}: Group (<span v-for="(group, gr) in groupName" :key="gr"><strong> {{group}}, </strong></span>) score on individual events of {{chapter_info[0].title.split(':').shift()}}.</p>
                     <table class="table table-bordered">
                             <thead>
                               <tr>
@@ -111,25 +120,32 @@
                                   <td></td>
                                   <td>Total Event  Count: {{data.sentiment_score.length}}</td>
                                   <td>Total Decision made: {{data.total_decision}}</td>
-                                  <td>Positive: {{data.total_sentiment_score[0]}}%, Neutral: {{data.total_sentiment_score[2]}}%, Negative: {{data.total_sentiment_score[1]}}%</td>
+                                  <td>Total score in 100%</td>
                               </tr>
                             </tbody>
                       </table>
 
 
-                      <div class="row">
-                          <div class="col-md-4">
-                              <v-chart :options="barGraph[0]" width="100%"/>
-                              <p class="fig">Fig. {{index+1}}: Sentiment score of total decision from chapter {{data.chapter_id}}.</p>
-                         </div>
-                          <div class="col-md-4" v-if='groupName.length==2' >
+                      <div class="row" v-if='groupName.length==2'>
+
+                          <div class="col-md-12"  >
                                <v-chart :options="barGraph[1]" width="100%"/>
-                               <p class="fig">Fig. {{index+2}}: Sentiment score of group {{groupName[0]}}.</p>
+                               <p class="fig">Fig. {{index+1}}: Overall score of group {{groupName[0]}}.</p>
                           </div>
-                          <div class="col-md-4" v-if='groupName.length==2'>
+                          <div class="col-md-12">
                                <v-chart :options="barGraph[2]" width="100%"/>
-                               <p class="fig">Fig. {{index+3}}: Sentiment score of group {{groupName[1]}}.</p>
+                               <p class="fig">Fig. {{index+1}}: Overall score of group {{groupName[1]}}.</p>
                           </div>
+                       </div>
+
+                       <div class="row center" v-if='groupName.length!==2'>
+                            <div class="col-md-12">
+                                 <v-chart :options="barGraph[0]" width="100%"/>
+
+                            <p class="fig center">Fig. {{index+1}}: Overall scores of all decisions from {{chapter_info[0].title.split(':').shift()}} by Group (<span v-for="(group, gf) in groupName" :key="gf">{{group}}, </span>).</p>
+                            </div>
+
+     
                        </div>
 
                         <div class="row" v-if='groupName.length==1'>
@@ -139,15 +155,17 @@
                          </div>
                        </div>
 
-                 
+                       <p v-if='groupName.length==1 && in_analyis[0].length !==0'>From Figure-2, we can see that in a total of {{data.total_student}} students,  {{in_analyis[0].length}} students' only a few decisons were negative. <span v-if='in_analyis[1].length !==0'>Among them,  {{in_analyis[1].length}} students' overall decisions contains only 10% negative decision.</span>, <span v-if='in_analyis[2].length !==0'> and  {{in_analyis[2].length}} students' overall decision contains 10-20% negative decision.</span>,<span v-if='in_analyis[3].length !==0'> and  {{in_analyis[3].length}} students' overall decisions contains more than 20% negative decision</span>. However, from Figure-1, the overall score shows  {{parseInt(data.total_sentiment_score[0], 10)+parseInt(data.total_sentiment_score[2], 10)}}% of decisions were positive and neutral, which seems most students have performed <strong><span v-if='data.total_sentiment_score[1]<=10'>Excellent</span> <span v-if='data.total_sentiment_score[1]>10 && data.total_sentiment_score[1]<=15'>Good</span><span v-if='data.total_sentiment_score[1]>15 && data.total_sentiment_score[1]<=30'>Average</span></strong> in {{chapter_info[0].title.split(':')[1]}} Test.</p>
 
-                      <div class="row">
+                      <br>
+
+                  <div class="row" v-if='groupName.length ==2'>
                           <div class="col-md-12 verdict">
-                              <h6 class="fig">Final Verdict of  possible student  polarization: Chapter {{data.eventid}}, played by group <span v-for="(group, m) in groupName" :key="m"><strong> {{group}}, </strong></span>.</h6>
+                             <p class="fig">Table {{index+3}}: Possible student count and student percentange of group (<span v-for="(group, gr) in groupName" :key="gr"><strong> {{group}}, </strong></span>).</p>
                               <table class="table table-bordered">
                                     <thead v-if='groupName.length==2'>
                                         <td rowspan="2"></td>
-                                        <th colspan="2" scope="colgroup">Both group</th>
+                                        <th colspan="2" scope="colgroup">Both group together</th>
                                         <th colspan="2" scope="colgroup">Group: {{groupName[0]}}</th>
                                         <th colspan="2" scope="colgroup">Group: {{groupName[1]}}</th>
                                     </thead>
@@ -162,7 +180,7 @@
                                     </thead>
 
                                     <tbody class='pol'>
-                                        <td>Polarization risky student</td>
+                                        <td>Negative student</td>
                                         <td>~ {{data.total_sent_student_count[1]}}</td>
                                         <td>~ {{Math.round((data.total_sent_student_count[1]/data.total_student)*100)}}%</td>
                                         <td v-if='groupName.length==2'>~ {{all_final_data[1].total_sent_student_count[1]}}</td>
@@ -207,9 +225,13 @@
                                         <td v-if='groupName.length==2'>{{all_final_data[2].total_student}}</td>
                                         <td v-if='groupName.length==2'>100%</td>
                                     </tbody>
-                            </table>
+                            </table><!-- v-if close -->
+
+                            From Table-3, we can see group {{groupName[0]}} has {{all_final_data[1].total_student}} has 14 students, other hand {{groupName[1]}} has {{all_final_data[2].total_student}} students, which is different in number, making it difficult to compare each group's performance. However gorup  {{groupName[0]}} total (positive + neutral) score is {{parseInt(all_final_data[1].total_sentiment_score[0], 10)+parseInt(all_final_data[1].total_sentiment_score[2], 10)}}% indicates this group perfomed <strong><span v-if='all_final_data[1].total_sentiment_score[1]<=10'>Excellent</span> <span v-if='all_final_data[1].total_sentiment_score[1]>10 && all_final_data[1].total_sentiment_score[1]<=15'>Good</span><span v-if='all_final_data[1].total_sentiment_score[1]>15 && all_final_data[1].total_sentiment_score[1]<=30'>Average</span></strong> in {{chapter_info[0].title.split(':')[1]}} Test. 
+
+                            Otherhand, gorup  {{groupName[1]}} total (positive + neutral) score is {{parseInt(all_final_data[2].total_sentiment_score[0], 10)+parseInt(all_final_data[2].total_sentiment_score[2], 10)}}% indicates this group perfomed <strong><span v-if='all_final_data[2].total_sentiment_score[1]<=10'>Excellent</span> <span v-if='all_final_data[2].total_sentiment_score[1]>10 && all_final_data[2].total_sentiment_score[1]<=15'>Good</span><span v-if='all_final_data[2].total_sentiment_score[1]>15 && all_final_data[2].total_sentiment_score[1]<=30'>Average</span></strong> in {{chapter_info[0].title.split(':')[1]}} Test. 
                       </div>
-                  </div> <!-- v-if close -->
+                  </div>  
               </div> <!-- v-for for chapter  close--> 
        
 
@@ -249,6 +271,7 @@
                 total_student:0,
                 total_students:[],
                 individual_student_sentiment:[],
+                in_analyis:[],
                 decisions: [],
                 max_choice: 0,
                 distinct_event: [],
@@ -389,15 +412,17 @@
                   axios.get("decision?gameCode=" + this.game + "&gameVersion=" + this.version + "&chapterCode=" + item, {headers: {filters: JSON.stringify(this.getFilterHeader)}}).then(res => {
                     this.decisions = res.data.decisions;
                     this.makeZero();
-                    this.studentCounts();
+                    this.studentCounts(this.decisions);
                     this.groupCount();
                     if(this.decisions.length>0){   
                             this.dataAnalysis(this.decisions);
                             this.d_counts(item);}
 
                     if(this.groupName.length==2 && this.decisions.length>0){
+
                             this.groupName.forEach(groupId => {
                                 let group = this.decisions.filter(decisions  => decisions.student.group_code == groupId);
+                                this.studentCounts(group);
                                 this.dataAnalysis(group);
                                 this.d_counts(item);
                             });       
@@ -415,7 +440,7 @@
                   axios.get("decision?gameCode=" + this.game + "&gameVersion=" + this.version + "&chapterCode=" + item).then(res => {
                     this.decisions = res.data.decisions;
                     this.makeZero();
-                    this.studentCounts();
+                    this.studentCounts(this.decisions);
                     this.groupCount();
                     if(this.decisions.length>0){
                           this.dataAnalysis(this.decisions);
@@ -439,9 +464,9 @@
 
             },
 
-            studentCounts(){ //student count
+            studentCounts(decisions){ //student count
                     let counts = {};
-                    this.decisions.forEach(decision => counts[decision.student.student_code] = 1  + (counts[decision.student.student_code] || 0));
+                    decisions.forEach(decision => counts[decision.student.student_code] = 1  + (counts[decision.student.student_code] || 0));
                     this.total_student=Object.keys(counts).length;
                     this.total_students=Object.keys(counts);
             },
@@ -661,7 +686,20 @@
 
             lineGraphs(data){ //bar chart for total emotional score
                 let series1=[], series2=[], series3=[], series4=[];
+
+                
+
+
                 data.slice(1).forEach((score) =>{series1.push(score[0]); series2.push(score[1]);series3.push(score[2]);series4.push(score[3]);});
+                this.in_analyis=[]
+
+                let neg1= series2.filter(el  => el > 0);
+                let neg2= series2.filter(el  => el > 0 && el <= 10);
+                let neg3= series2.filter(el  => el > 10 && el <= 20 );
+                let neg4= series2.filter(el  =>  el > 20 );
+
+                this.in_analyis.push(neg1, neg2,neg3,neg4);
+
                 this.lineGraph.push( {
        
                                 tooltip: {
