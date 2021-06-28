@@ -1,0 +1,135 @@
+[
+
+{   "chpater":1593,
+    "title": "Chapter 1: Personality triangle (Pre)",
+    "des":"Introduction of the characters, presentation of the conflict and first choices on the behaviors chosen by the students according to the protagonist's situation"
+    
+},
+
+{   "chpater":2377,
+    "title": "Chapter 2: Personality triangle (Post)",
+    "des":"to dentify the feelings of the characters according to their facial expression. Present situations to see if the student is able to put himself in the other's place"
+    
+},
+
+{   "chpater":3009,
+    "title": "Chapter 3: Emotion recognition (Pre)",
+    "des":"to identify the feelings of the characters according to their facial expression. It presents situations to see if the player acts in an empathetic way"
+    
+},
+
+{   "chpater":4474,
+    "title": "Chapter 4: Emotion recognition (Post)",
+    "des":"to identify whether the student has understood the reason for the characters' behavior and the feelings they might be feeling"
+    
+},
+
+
+{   "chpater":5578,
+    "title": "Chapter 5: Breathing (Pre)",
+    "des":" to know what kind of strategies children use when they feel nervous, it presents a breathing game to explain relaxation. If the player performs the game well, he/she will have fewer points and this means that he/she is practising the relaxation technique correctly"
+    
+},
+
+{   "chpater":6968,
+    "title": "Chapter 6: Breathing (Post)",
+    "des":"A breathing game is presented. If the player performs the game well, he/she will have fewer points and this means that he/she is practising the relaxation technique correctly"
+    
+},
+
+{   "chpater":7511,
+    "title": "Chapter 7: Relaxation (Pre)",
+    "des":"A breathing game is presented. If the player performs the game well, he/she will have fewer points and this means that he/she is practising the relaxation technique correctly"
+    
+},
+
+{   "chpater":8744,
+    "title": "Chapter 8: Relaxation (Post)",
+    "des":"Several questions related to the process of muscle relaxation are presented. Students are asked to select the parts of the body they need to relax at each moment. This allows us to check whether the students have learnt the steps they need to follow in order to relax"
+    
+},
+
+{   "chpater":9322,
+    "title": "Chapter :9. Visualization (Pre)",
+    "des":"The main character plays on which he has to inflate a balloon until it reaches the sky. If he breathes too early, the balloon goes back, and it is count as 1 fail (this variable += 1).The less this value scores, the better the player performed"
+    
+},
+
+{   "chpater":1228,
+    "title": "Chapter 10: Visualization (Post)",
+    "des":"Ahmed experiences a new nightmare, and has to confront it with the strategies he has learnt during the last days. What shall he do before?. Three relaxation techniques are presented (breathings, muscular relaxation and visualization). If the player performs the games well, he/she will score less in the breathing exercises. And in the muscle relaxation exercise you can see if the students have learned the steps to relax.The less this value scores, the better the player performed"
+    
+},
+
+{   "chpater":6802,
+    "title": "Chapter 11: Active listening (Pre)",
+    "des":"This chapter presents situations in which we can see if the students have paid attention to the dialogues of the video game from previous chapters and if they know how to demonstrate that they are actively listening"
+    
+},
+
+{   "chpater":1477,
+    "title": "Chapter 12: Active listening (Post)",
+    "des":"Different situations are presented in which the student has to show that he/she has been attentive to the dialogues with the characters. It also allows us to see if the student uses strategies to show that he/she is interested in the conversation. More correct answers shows that the student has been paid attention to the conversation"
+    
+},
+
+{   "chpater":3858,
+    "title": "Chapter 13: Social Skills (Pre)",
+    "des":"The student assumes the role of a character and have to put into practice different social skills such as greeting, initiating dialogues, making compliments. The results will allow us to check if they have understood how to put social skills into practice in each context and situation, and if they know how to put themselves in the place of others and understand how they think and act"
+    
+},
+
+{   "chpater":9663,
+    "title": "Chapter 14: Social Skills (Post)",
+    "des":"The student assumes the role of a shy character and have to put into practice different social skills such as greeting, initiating dialogues, making compliments. The results will allow us to check if they have understood how to put social skills into practice in each context and situation, and if they know how to put themselves in the place of others and understand how they think and act"
+    
+},
+{   "chpater":3558,
+    "title": "Chapter 15: Ahmed’s past (Pre)",
+    "des":"It presents the main characteristics of Muslim culture. The video games presents some questions to she if students have paid attention to the explanations within the video game. More correct answers indicates that they have paid attention to the dialogues and narrative"
+    
+},
+{   "chpater":5576,
+    "title": "Chapter 16: Ahmed’s past (Post)",
+    "des":"It tells the story of how Ahmed left his country. No decisions are made to evaluate"
+    
+},
+
+{   "chpater":8851,
+    "title": "Chapter 17: Interpersonal styles (Pre)",
+    "des":"It presents diferents situations to demonstrate that the student can distinguish and understand the different types of interpersonal styles"
+    
+},
+
+{   "chpater":2580,
+    "title": "Chapter 18: Interpersonal styles (Post)",
+    "des":"It continues with interpersonal styles and it presents diferents situations to check that the student can distinguish and understand the different types of interpersonal styles"
+    
+},
+
+{   "chpater":7549,
+    "title": "Chapter 19: Self-instructions (Pre)",
+    "des":"It presents several questions about Muslim culture to check if the students have paid attention in the previous sessions. A new conflict between Ahmed and the protagonist is also presented. The way in which students make decisions allows us to check if they have put into practice all the contents learnt throughout the sessions: emotion recognitio, empathy, active listening, etc"
+    
+},
+
+{   "chpater":2656,
+    "title": "Chapter 20: Self-instructions (Post)",
+    "des":"It presents different situations to check that the student can understands and distinguish the types of self-instructions that exist and how they affect the way he/she thinks and behaviour"
+    
+},
+
+{   "chpater":4799,
+    "title": "Chapter 21: Problem solving (Pre)",
+    "des":"This chapter is a review of all the previous sessions, it presents questions related to on all the previous sessions: empathy, emotional recognition, relaxation, visualisation, breathing, active listening, Muslim culture, social skills, etc. If the student gets a lot of questions right, it means that he/she has paid attention to all the previous sessions and has acquired the skills taught in this programme"
+    
+},
+
+{   "chpater":3885,
+    "title": "Chapter 22: Problem solving (Post)",
+    "des":"It presents the end of the videogam. It can be seen whether the student has put into practice the steps of solve-problems to make a final decision."
+    
+}
+
+
+]

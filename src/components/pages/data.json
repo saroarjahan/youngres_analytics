@@ -1,0 +1,298 @@
+[
+
+{
+    "e":1,
+    "Name": "C1_sex_avatar",
+    "Context": "The kid selects the sex of the main character.",
+    "Type": "Multiple choice",
+    "Choices": [
+        ["Boy","neu"],
+        ["Girl","neu"]
+    ],
+    "Description": "Are you a boy or a girl?"
+},
+{
+	"e":2,
+    "Name": "C1_classmates_relation",
+    "Context": "The kid is asked about his/her relationship with his current classmates.",
+    "Type": "Multiple choice",
+    "Choices": [
+        ["Nothing","neu"],
+        ["A little","neu"],
+        ["Quite a lot", "pos"],
+        ["A lot", "pos"]
+    ],
+    "Description": "How happy are you with your classmates?"
+},
+{
+	"e":3,
+    "Name": "C1_wait_director",
+    "Context": "The kid doubts between staying sit or moving around the room.",
+    "Type": "Multiple choice",
+    "Choices": [
+        ["Yes","neu"],
+        ["No","neu"]
+    ],
+    "Description": "Should you remain sit?"
+},
+{
+	"e":4,
+    "Name": "C1_reply_director",
+    "Context": "The kid decides if he/she shall reply to the director or remain silent.",
+    "Type": "Multiple choice",
+    "Choices": [
+        ["Remain silent","neu"],
+        ["Complain","neu"]
+    ],
+    "Description": "Will you remain silent, or complain about the problem?"
+},
+{
+	"e":5,
+    "Name": "C1_slam_door",
+    "Context": "The kid decides if he/she shall slam the door.",
+    "Type": "Multiple choice",
+    "Choices": [
+        ["Slam the door","neg"],
+        ["Close normally","neu"],
+        ["happy","neu"],
+        ["sad","neu"],
+        ["indifferent","neu"]
+    ],
+    "Description": "Will you slam the door, or close normally?"
+},
+{
+	"e":6,
+    "Name": "C1_mom_conversation_begins",
+    "Context": "The kid decides how to confront the conversation with his/her mother.",
+    "Type": "Multiple choice",
+    "Choices": [
+        ["Do not answer","neu"],
+        ["Complain about the director","neg"],
+        ["Leave the scene","neu"]
+    ],
+    "Description": "How shall you answer to mom?"
+},
+{
+	"e":7,
+    "Name": "C1_mom_conversation_argument",
+    "Context": "The kid decides if he shall argue with her mother, after complaining about the director.",
+    "Type": "Multiple choice",
+    "Choices": [
+        ["Shout at her","neg"],
+        ["Answer aggressively","neg"],
+        ["Leave the scene","neu"]
+    ],
+    "Description": "Should you argue with your mom?"
+},
+{
+	"e":8,
+    "Name": "C1_first_room_decision",
+    "Context": "The kid arrives to his/her room, and decides what to do next.",
+    "Type": "Multiple choice",
+    "Choices": [
+        ["Rest","neu"],
+        ["Play with the computer.","neu"],
+        ["Read","neu"],
+        ["Call a friend","neu"]
+    ],
+    "Description": "What shall you do now?"
+},
+{
+	"e":9,
+    "Name": "C1_meeting_Kami",
+    "Context": "The kid meets Kami for the first time, and does not know how to react.",
+    "Type": "Multiple choice",
+    "Choices": [
+        ["Run","neu"],
+        ["Calm down","pos"],
+        ["Attack the toy","neg"]
+    ],
+    "Description": "What shall you do now?"
+},
+{
+	"e":10,
+    "Name": "C1_Kami_offers_help",
+    "Context": "Kami, the toy, explains to the kid that he is there to help him/her.",
+    "Type": "Multiple choice",
+    "Choices": [
+        ["Yes","pos"],
+        ["But I don’t know you!","neu"],
+        ["No. You are a toy!","neu"]
+    ],
+    "Description": "(Kami) Will you accept my help?"
+},
+{
+	"e":41,
+    "Name": "C1_playerFeelings",
+    "Context": "The player is asked about how he thinks that the character felt during the day.",
+    "Type": "Multiple choice",
+    "Choices": [
+        ["Happiness","neu"],
+        ["Anger","neu"],
+        ["Boringness","neu"],
+        ["Sadness","neu"]
+    ],
+    "Description": "Which emotion is experiencing the character after all the events occurred today?"
+},
+{   "e":11,
+    "Name": "C2_start_breakfast",
+    "Context": "The kid is told to start eating breakfast, and he/she shall what to do before.",
+    "Type": "Multiple choice",
+    "Choices": [
+        ["Yes. We are in a hurry","neu"],
+        ["First, thank mom for the breakfast","pos"]
+    ],
+    "Description": "Should you start eating?"
+},
+{   "e":12,
+    "Name": "C2_kiss_mom",
+    "Context": "The kid is now on the school, and must decide if he/she gives a kiss to her mom to say goodbye.",
+    "Type": "Multiple choice",
+    "Choices": [
+        ["Yes","pos"],
+        ["No","neu"]
+    ],
+    "Description": "Will you kiss mom?"
+},
+{   "e":13,
+    "Name": "C2_Tom_speak",
+    "Context": "The main character speaks with Tom, who leaves quickly instead of conversing with you. The kid is asked about it.",
+    "Type": "Multiple choice",
+    "Choices": [
+        ["Yes","neu"],
+        ["No","neu"]
+    ],
+    "Description": "Do you think Tom was interested in talking with you?"
+},
+{   "e":14,
+    "Name": "C2_first_conversation_Rob",
+    "Context": "The main character speaks with Rob and his group, and is asked about his feelings about the fight with Ahmed the day before.",
+    "Type": "Multiple choice",
+    "Choices": [
+        ["Just scratches. I’m ok!","neu"],
+        ["I argued with my mom…","neg"],
+        ["I shouldn’t have fight with Ahmed","pos"]
+    ],
+    "Description": "How are you feeling, mate?"
+},
+{   "e":15,
+    "Name": "C2_school_entrance",
+    "Context": "After listening to Rob and his group conversation, Kami asks the main character if he feels that they try to push him/her to be aggressive.",
+    "Type": "Multiple choice",
+    "Choices": [
+        ["Yes","neu"],
+        ["No","neu"]
+    ],
+    "Description": "Do you feel like they try to push to you be aggressive?"
+},
+{   "e":16,
+    "Name": "C2_Rebeca_first_conversation",
+    "Context": "The main character speaks with Rebeca, who blames him/her because of the fight of the previous day.",
+    "Type": "Multiple choice",
+    "Choices": [
+        ["Of course","neu"],
+        ["I didn’t want to disturb both of you","neu"]
+    ],
+    "Description": "Will you leave Ahmed alone?"
+},
+{   "e":17,
+    "Name": "C2_sit_with_Rob",
+    "Context": "The main character shall decide if he/she will sit next to Rob or not",
+    "Type": "Multiple choice",
+    "Choices": [
+        ["Yes","neu"],
+        ["No","neg"]
+    ],
+    "Description": "Will you sit next to Rob?"
+},
+{   "e":18,
+    "Name": "C2_main_character_ashamed",
+    "Context": "The professor talks about the problem that took place the day before between the main character and Ahmed.",
+    "Type": "Multiple choice",
+    "Choices": [
+        ["Yes","neu"],
+        ["No","neg"]
+    ],
+    "Description": "Will the main character be ashamed?"
+},
+{   "e":19,
+    "Name": "C2_teacher_chance_to_defend",
+    "Context": "The professor is discussing with Ahmed and the main character about the previous day events. He gives the main character the chance to defend him/herself.",
+    "Type": "Multiple choice",
+    "Choices": [
+        ["Complain","neg"],
+        ["Apologize to Ahmed","pos"],
+        ["Don’t say anything","neu"]
+    ],
+    "Description": "Do you have anything to say in your defense?"
+},
+{   "e":20,
+    "Name": "C2_recess_argument",
+    "Context": "Rob is arguing with Ahmed after the main character is named his old brother/sister. The main character shall now decide if he/she helps Ahmed, or stays with Rob during this fight.",
+    "Type": "Multiple choice",
+    "Choices": [
+        ["Ahmed","pos"],
+        ["Rob","neg"]
+    ],
+    "Description": "Who will you support?"
+},
+{   "e":21,
+    "Name": "C2_final_Tom",
+    "Context": "In the end of chapter 2, Kami asks the main character about different people and their behavior, thoughts or emotions. The first one is Tom.",
+    "Type": "Multiple choice",
+    "Choices": [
+        ["I don’t know","neu"],
+        ["Maybe that I could bully him, like with Ahmed","neg"],
+        ["Maybe he was in a hurry","neu"],
+        ["That he doesn’t like me","neu"]
+    ],
+    "Description": "What do you think Tom was thinking?"
+},
+{   "e":23,
+    "Name": "C2_final_Rebeca",
+    "Context": "In the end of chapter 2, Kami asks the main character about different people and their behavior, thoughts or emotions. The second one is Rebeca.",
+    "Type": "Multiple choice",
+    "Choices": [
+        ["She doesn’t like me","neu"],
+        ["I don’t know","neu"],
+        ["I suppose is because I bullied Ahmed","pos"],
+        ["She is jealous of my group","neg"]
+    ],
+    "Description": "Why do you think Rebeca was angry with you?"
+},
+{   "e":24,
+    "Name": "C2_final_Mom",
+    "Context": "At the end of chapter 2, Kami asks the main character about different people and their behavior, thoughts or emotions. The last one is Mom.",
+    "Type": "Multiple choice",
+    "Choices": [
+        ["She may be sad because of dad’s death","pos"],
+        ["Maybe she is still angry because of me","pos"],
+        ["I don’t know","neu"],
+        ["She’s probably having a bad day","pos"]
+    ],
+    "Description": "Why do you think mom kept distance with you all the day?"
+},
+{   "e":42,
+    "Name": "C2_school_entrance_worried",
+    "Context": "After listening to Rob and his group conversation, Kami asks the main character if he thinks Rob is worried about your discussion with mom.",
+    "Type": "Multiple choice",
+    "Choices": [
+        ["Yes","neu"],
+        ["No","neu"]
+    ],
+    "Description": "Do you think Rob is worried?"
+},
+{   "e":43,
+    "Name": "C2_school_entrance_change",
+    "Context": "After listening to Rob and his group conversation, Kami asks the main character why did he change its opinion about the fight with Ahmed.",
+    "Type": "Multiple choice",
+    "Choices": [
+        ["Due to the argument with mom","neu"],
+        ["Due to the argument with the director","neu"],
+        ["Is a general feeling","neu"],
+        ["Being alone made me think","neu"]
+    ],
+    "Description": "Why did you change your opinion about the fight yesterday?"
+}
+
+]

@@ -3,41 +3,36 @@
       <div class="loading">
         <div class="centerScreen">
         <div class="content Timesroman">
-<!--             {{individual_student_sentiment.slice(1)}}
-            {{total_students}}
-            {{individual_student_sentiment.slice(1).length}}
-            {{total_students.length}}
-            {{lineGraph}} -->
             <h3 class="title"> Game Report</h3>   
             <h2 class="title">Introdcution:</h2>
-            <p class="body">This section presents an  overall report of  Youngres gameplay by different groups. In total, <strong>{{GroupFilter.group_ids.length}}</strong> group (<span v-for="(group, i) in GroupFilter.group_ids" :key="i"><strong> {{group.group_id}}:</strong> {{group.description}}, </span>)  and played  <strong>{{result.length}}</strong> game and <strong>{{result[0].chapters.length}}</strong> chapters.  Below presents a summary of chapter regarding student provided decision-making during  gameplay. To properly understand student psychology, we have labeled student sentiment in several categories (i.e., positive, negative, complex, neutral, etc). This sentiment analysis is generated on student decisions during gameplay.  Event questions and corresponding student decisions have been considered together for sentiment labeling. For example, eventId 3: 'Should you remain sit?', the decision was 'Yes', which sounds positive emotion; however, since it does not relate to any polarity risk, it labeled as neutral. Table-1 shows examples of sentiment labeling.</p>
+            <p class="body">This section presents an  overall report of  Youngres gameplay by different groups. In total, <strong>{{GroupFilter.group_ids.length}}</strong> group (<span v-for="(group, i) in GroupFilter.group_ids" :key="i"><strong> {{group.group_id}}:</strong> {{group.description}}, </span>)  and played  <strong>{{result.length}}</strong> game and <strong>{{result[0].chapters.length}}</strong> chapters.  Below presents a summary of chapter regarding student provided decision-making during  gameplay. To properly understand student/group  performance for empathy, emotional recognition, relaxation, visualisation, breathing, active listening, Muslim culture, social skills, etc, we have labeled student decisions in several categories (i.e., positive, negative, complex, neutral, etc). Event questions, scenatios, and corresponding student decisions have been considered together for  labeling  a decsion.</p>
 
             <center>
-              <div class="col-md-8">
+              <div class="col-md-12">
                 <p class="fig">Table 1: example of student decision labeling.</p>
                 <table class="table table-bordered">
                         <thead>
                           <tr>
                             <th scope="col">Event Question</th>
                             <th scope="col">Decision</th>
-                            <th scope="col">Sentiment annotation</th>
+                            <th scope="col">Decision annotation</th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr>
-                            <td>How happy are you with your classmates?</td>
-                            <td> A lot</td>
-                            <td>Positive</td>
+                            <td>How is Ahmed feeling right now?</td>
+                            <td> Sad </td>
+                            <td>Positive (Suitable/correct decsion, refers to good perfromance of student/group. )</td>
                           </tr>
                           <tr>
                             <td>Should you argue with your mom?</td>
                             <td>Shout at her</td>
-                            <td>Negative</td>
+                            <td>Negative (Not expected/wrong decision, refers to lower performance of student/group.)</td>
                           </tr>
                           <tr>
                             <td>Are you a boy or a girl?</td>
                             <td>Boy</td>
-                            <td>Neutral</td>
+                            <td>Neutral (Depends on the situation, could be suitable decsion, but definitely not refers to lower performance of student/group.)</td>
                           </tr>
 
                         </tbody>
@@ -74,40 +69,49 @@
                 </div>
             </div>
 
-
+            <hr class='gap'>
+            <h2 class="title">{{chapter_info[0].title}}</h2>
+            <p><strong>Chapter Objective:</strong> {{chapter_info[0].des}}.</p>
 
             <div v-for="(data, index) in all_final_data" :key="index">
                 <div v-if='index==0'>
-                    <hr class='gap'>
-                    <h2 class="title">Chapter {{data.chapter_id}}: Psychological Evaluation</h2>
-                    <p class="body">This chapter has played by group <span v-for="(group, l) in groupName" :key="l"><strong> {{group}}, </strong></span> the number of students in the group <strong>{{data.total_student}}</strong>, and  the total number of decisions made <strong>{{data.total_decision}}</strong>.
+
+                    <p class="body"><strong>Result: </strong>This chapter has played by group <span v-for="(group, l) in groupName" :key="l"><strong> {{group}}, </strong></span> the number of students in the group <strong>{{data.total_student}}</strong>, and  the total number of decisions made <strong>{{data.total_decision}}</strong>.
 
                     <br><strong><em>Table-{{index+2}}</em></strong> presents the sentiment score of individual events decisions, and <strong><em>Figure-{{index+1}}</em></strong> presents the overall emotional scores of all decisions from chapter {{data.eventid}}. The overall sentiment scores were: positive ({{data.total_sentiment_score[0]}}%), negative ({{data.total_sentiment_score[1]}} %), complex ({{data.total_sentiment_score[3]}}%), and neutral ({{data.total_sentiment_score[2]}}%). Here, <strong>{{data.total_sentiment_score[1]}}%  negative sentiment  representing ~{{data.total_sent_student_count[1]}} student  that might be in polarity risk </strong> <span v-if='data.total_decision < 10'>(though for this particular chapter number of decisions is small, only {{data.total_decision}}, which makes it tough to comment)</span>. In comparison, <strong>{{parseInt(data.total_sentiment_score[0], 10)+parseInt(data.total_sentiment_score[2], 10)}}%  s positive and neutral emotions, representing ~{{data.total_sent_student_count[0]+data.total_sent_student_count[2]}}  students, which seems normal</strong>. <br>
 
                       <strong class='red'>The most polarized decision has come from EventId (<span v-for="(sentiment, index) in data.sentiment_score" :key="index"><span v-if="sentiment.ne> 0">{{sentiment.event}}, </span></span>) and polarized decisions were: <span v-for="(sentiment, index) in data.sentiment_score" :key="index" ><span v-if="sentiment.ne>0"><span v-for="(s, index) in sentiment.sep_choice" :key="index">{{s.neg[0]}}</span>, </span></span></strong>.
                     </p><br>
 
-                    <p class="fig">Table {{index+2}}: Sentiment score of individual  events of chapter {{data.eventid}}.</p>
+                    <p class="fig">Table {{index+2}}: Group score on individual events of {{chapter_info[0].title.split(':').shift()}}.</p>
                     <table class="table table-bordered">
                             <thead>
                               <tr>
                                 <th scope="col">EventId</th>
                                 <th scope="col">Event Question</th>
                                 <th scope="col">Decisions (decisions count)</th>
-                                <th scope="col">Sentiment Score (in total of 100%)</th>
+                                <th scope="col">Decsion Score (in total of 100%)</th>
                               </tr>
                             </thead>
-                            <tbody  v-for="(sentiment, index) in data.sentiment_score" :key="index">
+                            <tbody  v-for="(sentiment, i) in data.sentiment_score" :key="i">
                               <tr>
                                 <th scope="row">{{sentiment.event}}</th>
                                 <td>{{sentiment.event_des}}</td>
-                                <td> <li class="nostyle" v-for="(choice, index) in sentiment.choice" :key="index"> {{index+1}}. {{choice.c}} ({{choice.n}})</li></td>
+                                <td> <li class="nostyle" v-for="(choice, j) in sentiment.choice" :key="j"> {{j+1}}. {{choice.c}} ({{choice.n}})</li></td>
                                 <td>
                                     <span v-if="sentiment.po>0">Positive: {{sentiment.po.toFixed(1)}}<br></span>
                                     <span v-if="sentiment.ne>0">Negative: {{sentiment.ne.toFixed(1)}}<br></span>
                                     <span v-if="sentiment.com>0">Complex: {{sentiment.com.toFixed(1)}}<br></span>
                                     <span v-if="sentiment.nu>0">Neutral: {{sentiment.nu.toFixed(1)}}<br></span>
                                 </td>
+                              </tr>
+                            </tbody>
+                            <tbody class='bold'>
+                              <tr>
+                                  <td></td>
+                                  <td>Total Event  Count: {{data.sentiment_score.length}}</td>
+                                  <td>Total Decision made: {{data.total_decision}}</td>
+                                  <td>Positive: {{data.total_sentiment_score[0]}}%, Neutral: {{data.total_sentiment_score[2]}}%, Negative: {{data.total_sentiment_score[1]}}%</td>
                               </tr>
                             </tbody>
                       </table>
@@ -219,9 +223,6 @@
                       </div>
                 </div>
               </div>
-
-           <!-- {{all_final_data}} -->
-
           </div>
        </div>
      </div>
@@ -234,6 +235,8 @@
     import 'echarts/lib/component/tooltip'
     import 'echarts-gl'
     import axios from "axios";
+    import json from './data.json';
+    import chapterJ from './chapter.json'; 
 
     export default {
         components: {
@@ -266,13 +269,9 @@
                 choiceList: null,
                 choiceList_name: null,
                 groupName:[],
-
-                emotion:[{
-                'positive':['Quite a lot.2','A lot.2','Yes.10','Happiness.41'],
-                'negative':['Slam the door.5','Shout at her.7','Answer aggressively.7','Attack the toy.9','Anger.41'], 
-                'neutral':['Girl.1','Boy.1','Nothing.2','A little.2','Yes.3','No.3','Remain silent.4','Complain.4', 'Close normally.5','happy.5','sad.5','indifferent.5','Do not answer.6','Complain about the director.6','Leave the scene.6','Leave the scene.7','Rest.8','Play with the computer.8','Read.8','Call a friend.8','Run.9','Calm down.9','But… I don’t know you!.10','No. You are a toy!.10','Happiness.11','Anger.11','Boringness.11','Sadness.11','Sadness.11','Sadness.41','Boringness.41'], 
-                'complex':[]}],
-
+                label: json,
+                chapter_json:chapterJ,
+                chapter_info:[],
                 d_count:[],
                 new_score:[],
                 all_final_data:[],
@@ -385,6 +384,7 @@
  
             submitData(item){
                 this.loading = true;
+                this.chapterData(item);
                 if(this.getFilterHeader !== null && JSON.stringify(this.getFilterHeader) !== JSON.stringify({})) {
                   axios.get("decision?gameCode=" + this.game + "&gameVersion=" + this.version + "&chapterCode=" + item, {headers: {filters: JSON.stringify(this.getFilterHeader)}}).then(res => {
                     this.decisions = res.data.decisions;
@@ -461,6 +461,12 @@
                     catch{
                       this.GroupFilter.group_ids.forEach((m) =>{this.groupName.push(m.group_id)});
                     }
+            },
+
+            chapterData(item){ // rturn chapter deatils
+
+              this.chapter_info = this.chapter_json.filter(el  => el.chpater == item);
+
             },
 
             dataAnalysis(decisions){
@@ -574,10 +580,16 @@
                               var po=0, ne=0, nu=0, com=0;
                               const pos=[], neg =[], compl=[], nut=[];
 
-                              this.emotion[0].positive.forEach((el) =>{ if(el == m.name+'.'+m.event.toString()){ po=(m.count/total_answer)*100; tpo+=po; pos.push(m.name);}});
-                              this.emotion[0].negative.forEach((el) =>{ if(el == m.name+'.'+m.event.toString()){ ne=(m.count/total_answer)*100; tne+=ne;neg.push(m.name);}});
-                              this.emotion[0].neutral.forEach((el) =>{ if(el == m.name+'.'+m.event.toString()){ nu=(m.count/total_answer)*100; tnu+=nu;nut.push(m.name);}});
-                              this.emotion[0].complex.forEach((el) =>{ if(el == m.name+'.'+m.event.toString()){ com=(m.count/total_answer)*100; tcom+=com;compl.push(m.name);}});
+                              this.label.forEach((el) =>{ //calculation of positive negative and neutral
+                                if(el.e == m.event){ 
+                                  el.Choices.forEach( (choice)=> {
+                                    if(choice[0] == m.name && choice[1] == 'pos' ){po=(m.count/total_answer)*100; tpo+=po; pos.push(m.name);}
+                                    if(choice[0] == m.name && choice[1] == 'neg' ){ne=(m.count/total_answer)*100; tne+=ne;neg.push(m.name);}
+                                    if(choice[0] == m.name && choice[1] == 'neu'){nu=(m.count/total_answer)*100; tnu+=nu;nut.push(m.name);}
+                                    if(choice[0] == m.name && choice[1] == 'com'){com=(m.count/total_answer)*100;tcom+=com;compl.push(m.name);}
+                                   });
+                                 }
+                              });
                               
 
                               const record = this.new_score.find(element => element.event == m.event);
@@ -858,5 +870,10 @@ tbody.np {
 tbody.pol {
     background: red;
     color: white;
+}
+
+.bold {
+    font-weight: bold;
+
 }
 </style>
