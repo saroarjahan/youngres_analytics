@@ -3,18 +3,19 @@
 {
     "e":1,
     "Name": "C1_sex_avatar",
-    "Context": "The kid selects the sex of the main character.",
+    "Context": "The kid selects the sex of the main character",
     "Type": "Multiple choice",
     "Choices": [
         ["Boy","neu"],
         ["Girl","neu"]
     ],
-    "Description": "Are you a boy or a girl?"
+    "Description": "Are you a boy or a girl?",
+    "Score": 1
 },
 {
 	"e":2,
     "Name": "C1_classmates_relation",
-    "Context": "The kid is asked about his/her relationship with his current classmates.",
+    "Context": "The kid is asked about his/her relationship with his current classmates",
     "Type": "Multiple choice",
     "Choices": [
         ["Nothing","neu"],
@@ -22,34 +23,37 @@
         ["Quite a lot", "pos"],
         ["A lot", "pos"]
     ],
-    "Description": "How happy are you with your classmates?"
+    "Description": "How happy are you with your classmates?",
+    "Score": 3
 },
 {
 	"e":3,
     "Name": "C1_wait_director",
-    "Context": "The kid doubts between staying sit or moving around the room.",
+    "Context": "The kid doubts between staying sit or moving around the room",
     "Type": "Multiple choice",
     "Choices": [
         ["Yes","neu"],
         ["No","neu"]
     ],
-    "Description": "Should you remain sit?"
+    "Description": "Should you remain sit?",
+    "Score": 2
 },
 {
 	"e":4,
     "Name": "C1_reply_director",
-    "Context": "The kid decides if he/she shall reply to the director or remain silent.",
+    "Context": "The kid decides if he/she shall reply to the director or remain silent",
     "Type": "Multiple choice",
     "Choices": [
         ["Remain silent","neu"],
         ["Complain","neu"]
     ],
-    "Description": "Will you remain silent, or complain about the problem?"
+    "Description": "Will you remain silent, or complain about the problem?",
+    "Score": 4
 },
 {
 	"e":5,
     "Name": "C1_slam_door",
-    "Context": "The kid decides if he/she shall slam the door.",
+    "Context": "The kid decides if he/she shall slam the door",
     "Type": "Multiple choice",
     "Choices": [
         ["Slam the door","neg"],
@@ -58,142 +62,155 @@
         ["sad","neu"],
         ["indifferent","neu"]
     ],
-    "Description": "Will you slam the door, or close normally?"
+    "Description": "Will you slam the door, or close normally?",
+    "Score": 1
 },
 {
 	"e":6,
     "Name": "C1_mom_conversation_begins",
-    "Context": "The kid decides how to confront the conversation with his/her mother.",
+    "Context": "The kid decides how to confront the conversation with his/her mother",
     "Type": "Multiple choice",
     "Choices": [
         ["Do not answer","neu"],
         ["Complain about the director","neg"],
         ["Leave the scene","neu"]
     ],
-    "Description": "How shall you answer to mom?"
+    "Description": "How shall you answer to mom?",
+    "Score": 5
 },
 {
 	"e":7,
     "Name": "C1_mom_conversation_argument",
-    "Context": "The kid decides if he shall argue with her mother, after complaining about the director.",
+    "Context": "The kid decides if he shall argue with her mother, after complaining about the director",
     "Type": "Multiple choice",
     "Choices": [
         ["Shout at her","neg"],
         ["Answer aggressively","neg"],
         ["Leave the scene","neu"]
     ],
-    "Description": "Should you argue with your mom?"
+    "Description": "Should you argue with your mom?",
+    "Score": 3
 },
 {
 	"e":8,
     "Name": "C1_first_room_decision",
-    "Context": "The kid arrives to his/her room, and decides what to do next.",
+    "Context": "The kid arrives to his/her room, and decides what to do next",
     "Type": "Multiple choice",
     "Choices": [
         ["Rest","neu"],
-        ["Play with the computer.","neu"],
+        ["Play with the computer","neu"],
         ["Read","neu"],
         ["Call a friend","neu"]
     ],
-    "Description": "What shall you do now?"
+    "Description": "What shall you do now?",
+    "Score": 3
 },
 {
 	"e":9,
     "Name": "C1_meeting_Kami",
-    "Context": "The kid meets Kami for the first time, and does not know how to react.",
+    "Context": "The kid meets Kami for the first time, and does not know how to react",
     "Type": "Multiple choice",
     "Choices": [
         ["Run","neu"],
         ["Calm down","pos"],
         ["Attack the toy","neg"]
     ],
-    "Description": "What shall you do now?"
+    "Description": "What shall you do now?",
+    "Score": 3
 },
 {
 	"e":10,
     "Name": "C1_Kami_offers_help",
-    "Context": "Kami, the toy, explains to the kid that he is there to help him/her.",
+    "Context": "Kami, the toy, explains to the kid that he is there to help him/her",
     "Type": "Multiple choice",
     "Choices": [
         ["Yes","pos"],
         ["But I don’t know you!","neu"],
         ["No. You are a toy!","neu"]
     ],
-    "Description": "(Kami) Will you accept my help?"
+    "Description": "(Kami) Will you accept my help?",
+    "Score": 2
 },
 {
 	"e":41,
     "Name": "C1_playerFeelings",
-    "Context": "The player is asked about how he thinks that the character felt during the day.",
+    "Context": "The player is asked about how he thinks that the character felt during the day",
     "Type": "Multiple choice",
     "Choices": [
-        ["Happiness","neu"],
+        ["Happiness","neu"], 
         ["Anger","neu"],
         ["Boringness","neu"],
         ["Sadness","neu"]
     ],
-    "Description": "Which emotion is experiencing the character after all the events occurred today?"
+    "Description": "Which emotion is experiencing the character after all the events occurred today?",
+    "Score": 2
 },
 {   "e":11,
     "Name": "C2_start_breakfast",
-    "Context": "The kid is told to start eating breakfast, and he/she shall what to do before.",
+    "Context": "The kid is told to start eating breakfast, and he/she shall what to do before",
     "Type": "Multiple choice",
     "Choices": [
         ["Yes. We are in a hurry","neu"],
         ["First, thank mom for the breakfast","pos"]
     ],
-    "Description": "Should you start eating?"
+    "Description": "Should you start eating?",
+    "Score": 1
 },
 {   "e":12,
     "Name": "C2_kiss_mom",
-    "Context": "The kid is now on the school, and must decide if he/she gives a kiss to her mom to say goodbye.",
+    "Context": "The kid is now on the school, and must decide if he/she gives a kiss to her mom to say goodbye",
     "Type": "Multiple choice",
     "Choices": [
         ["Yes","pos"],
         ["No","neu"]
     ],
-    "Description": "Will you kiss mom?"
+    "Description": "Will you kiss mom?",
+    "Score": 3
 },
 {   "e":13,
     "Name": "C2_Tom_speak",
-    "Context": "The main character speaks with Tom, who leaves quickly instead of conversing with you. The kid is asked about it.",
+    "Context": "The main character speaks with Tom, who leaves quickly instead of conversing with you. The kid is asked about it",
     "Type": "Multiple choice",
     "Choices": [
         ["Yes","neu"],
-        ["No","neu"]
+        ["No","pos"]
     ],
-    "Description": "Do you think Tom was interested in talking with you?"
+    "Description": "Do you think Tom was interested in talking with you?",
+    "Score": 2
 },
 {   "e":14,
     "Name": "C2_first_conversation_Rob",
-    "Context": "The main character speaks with Rob and his group, and is asked about his feelings about the fight with Ahmed the day before.",
+    "Context": "The main character speaks with Rob and his group, and is asked about his feelings about the fight with Ahmed the day before",
     "Type": "Multiple choice",
     "Choices": [
         ["Just scratches. I’m ok!","neu"],
         ["I argued with my mom…","neg"],
         ["I shouldn’t have fight with Ahmed","pos"]
     ],
-    "Description": "How are you feeling, mate?"
+    "Description": "How are you feeling, mate?",
+    "Score": 2
 },
 {   "e":15,
     "Name": "C2_school_entrance",
-    "Context": "After listening to Rob and his group conversation, Kami asks the main character if he feels that they try to push him/her to be aggressive.",
+    "Context": "After listening to Rob and his group conversation, Kami asks the main character if he feels that they try to push him/her to be aggressive",
     "Type": "Multiple choice",
     "Choices": [
         ["Yes","neu"],
         ["No","neu"]
     ],
-    "Description": "Do you feel like they try to push to you be aggressive?"
+    "Description": "Do you feel like they try to push to you be aggressive?",
+    "Score": 3
 },
 {   "e":16,
     "Name": "C2_Rebeca_first_conversation",
-    "Context": "The main character speaks with Rebeca, who blames him/her because of the fight of the previous day.",
+    "Context": "The main character speaks with Rebeca, who blames him/her because of the fight of the previous day",
     "Type": "Multiple choice",
     "Choices": [
-        ["Of course","neu"],
+        ["Of course","pos"],
         ["I didn’t want to disturb both of you","neu"]
     ],
-    "Description": "Will you leave Ahmed alone?"
+    "Description": "Will you leave Ahmed alone?",
+    "Score": 4
 },
 {   "e":17,
     "Name": "C2_sit_with_Rob",
@@ -203,42 +220,46 @@
         ["Yes","neu"],
         ["No","neg"]
     ],
-    "Description": "Will you sit next to Rob?"
+    "Description": "Will you sit next to Rob?",
+    "Score": 3
 },
 {   "e":18,
     "Name": "C2_main_character_ashamed",
-    "Context": "The professor talks about the problem that took place the day before between the main character and Ahmed.",
+    "Context": "The professor talks about the problem that took place the day before between the main character and Ahmed",
     "Type": "Multiple choice",
     "Choices": [
-        ["Yes","neu"],
+        ["Yes","pos"],
         ["No","neg"]
     ],
-    "Description": "Will the main character be ashamed?"
+    "Description": "Will the main character be ashamed?",
+    "Score": 4
 },
 {   "e":19,
     "Name": "C2_teacher_chance_to_defend",
-    "Context": "The professor is discussing with Ahmed and the main character about the previous day events. He gives the main character the chance to defend him/herself.",
+    "Context": "The professor is discussing with Ahmed and the main character about the previous day events. He gives the main character the chance to defend him/herself",
     "Type": "Multiple choice",
     "Choices": [
         ["Complain","neg"],
         ["Apologize to Ahmed","pos"],
         ["Don’t say anything","neu"]
     ],
-    "Description": "Do you have anything to say in your defense?"
+    "Description": "Do you have anything to say in your defense?",
+    "Score": 3
 },
 {   "e":20,
     "Name": "C2_recess_argument",
-    "Context": "Rob is arguing with Ahmed after the main character is named his old brother/sister. The main character shall now decide if he/she helps Ahmed, or stays with Rob during this fight.",
+    "Context": "Rob is arguing with Ahmed after the main character is named his old brother/sister. The main character shall now decide if he/she helps Ahmed, or stays with Rob during this fight",
     "Type": "Multiple choice",
     "Choices": [
         ["Ahmed","pos"],
         ["Rob","neg"]
     ],
-    "Description": "Who will you support?"
+    "Description": "Who will you support?",
+    "Score": 1
 },
 {   "e":21,
     "Name": "C2_final_Tom",
-    "Context": "In the end of chapter 2, Kami asks the main character about different people and their behavior, thoughts or emotions. The first one is Tom.",
+    "Context": "In the end of chapter 2, Kami asks the main character about different people and their behavior, thoughts or emotions. The first one is Tom",
     "Type": "Multiple choice",
     "Choices": [
         ["I don’t know","neu"],
@@ -246,23 +267,25 @@
         ["Maybe he was in a hurry","neu"],
         ["That he doesn’t like me","neu"]
     ],
-    "Description": "What do you think Tom was thinking?"
+    "Description": "What do you think Tom was thinking?",
+    "Score": 5
 },
 {   "e":23,
     "Name": "C2_final_Rebeca",
-    "Context": "In the end of chapter 2, Kami asks the main character about different people and their behavior, thoughts or emotions. The second one is Rebeca.",
+    "Context": "In the end of chapter 2, Kami asks the main character about different people and their behavior, thoughts or emotions. The second one is Rebeca",
     "Type": "Multiple choice",
     "Choices": [
-        ["She doesn’t like me","neu"],
+        ["She doesn’t like me","neg"],
         ["I don’t know","neu"],
         ["I suppose is because I bullied Ahmed","pos"],
         ["She is jealous of my group","neg"]
     ],
-    "Description": "Why do you think Rebeca was angry with you?"
+    "Description": "Why do you think Rebeca was angry with you?",
+    "Score": 3
 },
 {   "e":24,
     "Name": "C2_final_Mom",
-    "Context": "At the end of chapter 2, Kami asks the main character about different people and their behavior, thoughts or emotions. The last one is Mom.",
+    "Context": "At the end of chapter 2, Kami asks the main character about different people and their behavior, thoughts or emotions. The last one is Mom",
     "Type": "Multiple choice",
     "Choices": [
         ["She may be sad because of dad’s death","pos"],
@@ -270,29 +293,1724 @@
         ["I don’t know","neu"],
         ["She’s probably having a bad day","pos"]
     ],
-    "Description": "Why do you think mom kept distance with you all the day?"
+    "Description": "Why do you think mom kept distance with you all the day?",
+    "Score": 4
 },
 {   "e":42,
     "Name": "C2_school_entrance_worried",
-    "Context": "After listening to Rob and his group conversation, Kami asks the main character if he thinks Rob is worried about your discussion with mom.",
+    "Context": "After listening to Rob and his group conversation, Kami asks the main character if he thinks Rob is worried about your discussion with mom",
     "Type": "Multiple choice",
     "Choices": [
         ["Yes","neu"],
         ["No","neu"]
     ],
-    "Description": "Do you think Rob is worried?"
+    "Description": "Do you think Rob is worried?",
+    "Score": 4
 },
 {   "e":43,
     "Name": "C2_school_entrance_change",
-    "Context": "After listening to Rob and his group conversation, Kami asks the main character why did he change its opinion about the fight with Ahmed.",
+    "Context": "After listening to Rob and his group conversation, Kami asks the main character why did he change its opinion about the fight with Ahmed",
     "Type": "Multiple choice",
     "Choices": [
         ["Due to the argument with mom","neu"],
         ["Due to the argument with the director","neu"],
         ["Is a general feeling","neu"],
-        ["Being alone made me think","neu"]
+        ["Being alone made me think","pos"]
     ],
-    "Description": "Why did you change your opinion about the fight yesterday?"
-}
+    "Description": "Why did you change your opinion about the fight yesterday?",
+    "Score": 2
+},
+
+  {   "e": 25,
+      "Name": "C3_Kami_advice",
+        "Context": "At the beginning of chapter 3, the main character thinks about what Kami said the night before",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Yes","pos"],
+            ["No","neg"],
+            ["I don’t know","neu"]
+        ],
+        "Description": "Do you think this advice can be useful?",
+        "Score": 1
+    },
+   {   "e": 26,
+        "Name": "C3_breakfast_mom_wait",
+        "Context": "At the beginning of chapter 3, the main character walks down to eat breakfast. However, he/she cant see mom anywhere",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Start eating","neu"],
+            ["Where is she?","pos"]
+        ],
+        "Description": "Shall I wait for mom?",
+        "Score": 2
+    },
+   {   "e": 27,
+        "Name": "C3_mom_from_window",
+        "Context": "Kami points out that mom is outside, and he asks the main character about her feelings",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Happy","neg"],
+            ["Scared","neg"],
+            ["Angry","neg"],
+            ["Sad","pos"]
+        ],
+        "Description": "How do you think mom is feeling right now?",
+        "Score": 1
+    },
+   {   "e": 28,
+        "Name": "C3_mom_from_outside",
+        "Context": "When looking for mom, the main character founds her at the backyard. Kami asks the main character about her feelings",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Happy","neg"],
+            ["Scared","neg"],
+            ["Angry","neg"],
+            ["Sad","pos"]
+        ],
+        "Description": "How do you think mom is feeling right now?",
+        "Score": 1
+    },
+   {   "e": 29,
+       "Name": "C3_Mike_apoligies",
+        "Context": "When arriving to school, Mike apologies for his behavior with you",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["It’s Ok. I forgive you","pos"],
+            ["I won’t forgive you. You could have supported me","neg"]
+        ],
+        "Description": "What would you say to Mike?",
+        "Score": 1
+    },
+   {   "e": 30,
+       "Name": "C3_Ahmed_greetings",
+        "Context": "When the main character meets Ahmed, the last greets him with an Islamic term, Salam Alaikum. How should the main character answer?",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["That’s stupid. Hi, that’s all","neg"],
+            ["Eh hi?","neu"],
+            ["I didn’t know that term. What does it mean?","pos"]
+        ],
+        "Description": "How should you answer?",
+        "Score": 3
+    },
+   {   "e": 31,
+        "Name": "C3_Ahmed_greetings_continue",
+        "Context": "When you ask Ahmed about the meaning of that expression, the main character has the chance to say it back or not",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Malekum Salam","pos"],
+            ["Wa Alaikum Assalam","pos"],
+            ["That’s stupid","neg"],
+            ["Could you repeat, please?","neu"]
+        ],
+        "Description": "How should you answer?",
+        "Score": 2
+    },
+   {   "e": 32,
+        "Name": "C3_Ahmed_greetings_emotion",
+        "Context": "Once the main character tries to answer Ahmed using his language, he changes his expression. The player shall identify the emotion",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Happy","pos"],
+            ["Sad","neg"],
+            [ "Upset","neg"],
+            ["Scared","neg"]
+        ],
+        "Description": "How does Ahmed feel right now?",
+        "Score": 1
+    },
+   {   "e": 33,
+       "Name": "C3_Kami_bathroom",
+        "Context": "After seeing the argument between Ahmed and Kong, the main character gets involved into another argument with Ahmed, who finally leaves the scene. Then, Kami makes the main character wonder how does Ahmed feels about being constantly bullied",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["I think I didn’t do anything bad","pos"],
+            ["Maybe I should had stopped before","neu"]
+        ],
+        "Description": "How would you feel if you were accused of getting into troubles on Ahmed’s condition?",
+        "Score": 1
+    },
+   {   "e": 44,
+       "Name": "C3_Tom_emotion",
+        "Context": "The main character starts a conversation with Tom, and is questioned about what Tom feels watching his expression",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["He is angry with you","neg"],
+            ["He is scared of you","neg"],
+            ["He is ashamed","pos"]
+        ],
+        "Description": "Check Tom’s expression. Why is he so evasive with you?",
+        "Score": 4
+    },
+   {   "e": 45,
+        "Name": "C3_Tom_answer",
+        "Context": "The main character starts a conversation with Tom, and he decides how to answer Tom",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Why don’t you stop this attitude?","neg"],
+            ["Calm down, Tom. I don’t want to bother you","pos"]
+        ],
+        "Description": "How should you answer Tom?",
+        "Score": 2
+    },
+   {   "e": 34,
+       "Name": "C4_emotion_Ahmed_recess",
+        "Context": "The main character arrives outside in time to see how his/her friends are throwing a ball, without letting Ahmed to play. The player shall first try to understand how Ahmed is feeling on this situation",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Happy","neg"],
+            ["Angry","neu"],
+            ["Sad","pos"],
+           [ "Scard","neu"]
+        ],
+        "Description": "How is Ahmed feeling right now?",
+        "Score": 1
+    },
+   {   "e": 35,
+        "Name": "C4_integration_Ahmed_recess",
+        "Context": "The main character arrives outside in time to see how his/her friends are throwing a ball, without letting Ahmed to play. Now, the player must decide if he shall try to include Ahmed in the game, or leave the scene to avoid problems",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Include Ahmed","pos"],
+            ["Leave the scene with Ahmed, to avoid problems","neu"]
+        ],
+        "Description": "Should you try to include Ahmed in the game?",
+        "Score": 4
+    },
+   {   "e": 36,
+       "Name": "C4_emotion_Rob_recess",
+        "Context": "After starting to play with the Ahmed and Rob’s group, you throw the ball so Ahmed can catch it. Rob then starts feeling angry. The player must identify this emotion",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Happy","neg"],
+            ["Sad","neg"],
+            ["Surpised","neg"],
+            ["Angry","pos"]
+        ],
+        "Description": "How is Rob feeling right now?",
+        "Score": 3
+    },
+   {   "e": 37,
+       "Name": "C4_confronting_Rob_recess",
+        "Context": "The third time he receives the ball, the main character shall decide if he is going to throw the ball to Ahmed again, challenging Rob, or if Rob is right",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Rob is right. Let’s stop","neg"],
+            ["Challenge Rob. Ahmed should be included","pos"]
+        ],
+        "Description": "What do you think that you should do now?",
+        "Score": 5
+    },
+   {   "e": 38,
+       "Name": "C4_tell_professor",
+        "Context": "The main character shall decide if he tells the whole problem with Rob to the professor",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Tell him","pos"],
+            ["Remain silent","neu"]
+        ],
+        "Description": "The questions are:",
+        "Score": 4
+    },
+   {   "e": 39,
+       "Name": "C4_final_questions_Kami_Ahmed",
+        "Context": "Kami and the main character maintain a final talk on the backyard. Kami asks the player how does he think that Ahmed felt after the recess scene",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Sad","pos"],
+            ["Angry","neu"],
+            ["Happy","neg"]
+        ],
+        "Description": "How do you think that Ahmed felt after all the recess problem?",
+        "Score": 3
+    },
+   {   "e": 40,
+       "Name": "C4_final_questions_Kami_Player",
+        "Context": "Kami and the main character maintain a final talk on the backyard. Kami asks the player how did he/she felt when helping Ahmed",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Very well","pos"],
+            ["Nor good or bad","neu"],
+            ["Sad. I don’t like to argue with my friends","neu"]
+        ],
+        "Description": "How do you feel after helping Ahmed?",
+        "Score": 1
+    },
+   {   "e": 46,
+       "Name": "C5_stress",
+        "Context": "The player is questioned about how he manages the stress",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["I hit things","neg"],
+            ["I breathe deeply and try to calm down","pos"],
+            ["I look for someone to help me","pos"],
+            ["Nothing, I don’t usually lose my temper","neu"]
+        ],
+        "Description": "How do you manage stress?",
+        "Score": 2
+    },
+   {   "e": 47,
+       "Name": "C5_sit_companion",
+        "Context": "The player shall decide who to sit with",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Kong","neu"],
+            ["Ahmed","pos"]
+        ],
+        "Description": "Who will you choose as bus companion?",
+        "Score": 3
+    },
+    {   "e":168,
+        "Name": "Egg_game_fails",
+        "Context": "First breathing game, on which the player must move the character according to the breathing rhythm. If he moves it too early, the character goes back, and it is count as 1 fail (this variable += 1)",
+        "Type": "summary",
+        "Description": "The less this value scores, the better the player performed",
+        "Score": 0
+    },
+   {   "e": 48,
+       "Name": "C5_egg_game_wins",
+        "Context": "The player participates in the first breathing game",
+        "Type": "Achievement/failure",
+        "Choices": [
+            ["Yes","pos"],
+            ["No","neu"]
+
+        ],
+        "Description": "Did the player won the game?",
+        "Score": 1
+    },
+   {   "e": 49,
+       "Name": "C5_after_game_questions",
+        "Context": "The player is questioned by Kami about his nerves",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Because of what happened yesterday during recess","pos"],
+            ["Is just due to the game","neu"],
+            ["I don’t know","neu"],
+            ["I’m not nervous","neu"]
+        ],
+        "Description": "Why do you seem nervous?",
+        "Score": 2
+    },
+   {   "e": 50,                
+       "Name": "C5_after_game_questions_2",
+        "Context": "If you are trembling, that’s a mirror of your emotions. How do we call this?",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Behavior triangle","pos"],
+            ["Empathy","neg"],
+            ["Worries","pos"]
+        ],
+        "Description": "How do you call this effect?",
+        "Score": 4
+    },
+    {   "e":169,
+       "Name": "C6_nightmare_breath",
+        "Context": "During his nightmare, Ahmed needs to use his breath to control his movements, in order to be silent enough to stay hide. If he moves it too early, the character goes back, and it is count as 1 fail (this variable += 1)",
+        "Type": "summary",
+        "Description": "The less this value scores, the better the player performed",
+        "Score": 0
+    },
+   {   "e": 51,
+       "Name": "C6_nightmare_emotion",
+        "Context": "the player is questioned about how he thinks Ahmed felt during the dream",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Surprise","neu"],
+            ["Anger","neg"],
+            ["Sadness","neg"],
+            ["Fear","pos"]
+        ],
+        "Description": "Which emotion do you think Ahmed felt during the dream?",
+        "Score": 4
+    },
+   {   "e": 52,
+       "Name": "C7_reasons_nightmare_Kami",
+        "Context": "the main character discuss with Kami about the reasons why Ahmed had a nightmare",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Maybe he is not confident when he is away from home","neu"],
+            ["Maybe he is still scared of me","neu"],
+            ["Well... I saw Kong talking with him at the school bathroom","neu"],
+            ["How could I know it?","neu"]
+        ],
+        "Description": "Why do you think Ahmed had a nightmare?",
+        "Score": 5
+    },
+   {   "e": 53,                "Name": "C7_reasons_help_Kami",
+        "Context": "the main character is questioned about what should he do with Ahmed",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Help him","pos"],
+            ["Let him be","neu"]
+        ],
+        "Description": "What do you think that you should do with Ahmed?",
+        "Score": 2
+    },
+   {   "e": 54,
+       "Name": "C7_Elle_manipulates",
+        "Context": "Elle tries to deceive the main character, telling him that Ahmed wants to speak with Kong. The player shall decide if he believes it or not",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Yes","neg"],
+            ["No","pos"]
+        ],
+        "Description": "Do you believe Elle?",
+        "Score": 2
+    },
+   {   "e": 55,
+       "Name": "C7_Ahmed_worried",
+        "Context": "Ahmed asks if the player thinks that he is trying to get into troubles with Kong",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Yes, you need to be more careful","neg"],
+            ["No, it wasn’t your fault","pos"]
+        ],
+        "Description": "Are you going to ask me if I try to get into troubles with Kong?",
+        "Score": 1
+    },
+    {   "e":170,
+        "Name": "C7_boat_game",
+        "Context": "The main character explains Ahmed how to control his breath, using a boat moving as an example. If he moves it too early, the character goes back, and it is count as 1 fail (this variable += 1)",
+        "Type": "summary",
+        "Description": "The less this value scores, the better the player performed",
+        "Score": 0
+    },
+   {   "e": 56,
+       "Name": "C7_boat_difficulty",
+        "Context": "The main character is asked to score the difficulty of the boat game",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["It cost me a little…","neu"],
+            ["Quite easy!","neu"],
+            ["It was difficult…","neu"]
+        ],
+        "Description": "How difficult was the boat game?",
+        "Score": 1
+    },
+   {   "e": 57,
+       "Name": "C8_relaxation_1",
+        "Context": "Rebeca asks Ahmed about the order of the body parts for relaxation. This is the first question",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Relax the eyes","neg"],
+            ["Relax the eyebrows","neg"],
+            ["Take a sit relaxed","pos"]
+        ],
+        "Description": "What shall you do first?",
+        "Score": 1
+    },
+   {   "e": 58,
+       "Name": "C8_relaxation_2",
+        "Context": "Rebeca asks Ahmed about the order of the body parts for relaxation. This is the second question",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Relax the legs","neg"],
+            ["Relax the head","neg"],
+            ["Relax the arms","pos"]
+        ],
+        "Description": "What shall you do next?",
+        "Score": 2
+    },
+   {   "e": 59,
+        "Name": "C8_relaxation_3",
+        "Context": "Rebeca asks Ahmed about the order of the body parts for relaxation. This is the third question",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Relax the legs","neg"],
+            ["Relax the head","pos"],
+            ["Relax the arms","neg"]
+        ],
+        "Description": "What shall you do next?",
+        "Score": 3
+    },
+   {   "e": 60,
+        "Name": "C8_relaxation_4",
+        "Context": "Rebeca asks Ahmed about the order of the body parts for relaxation. This is the fourth question",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Relax the neck","pos"],
+            ["Relax the head","neg"],
+            ["Relax the nose","neg"],
+            ["Relax the mouth","neg"]
+        ],
+        "Description": "What shall you do next?",
+        "Score": 3
+    },
+   {   "e": 61,
+        "Name": "C8_relaxation_5",
+        "Context": "Rebeca asks Ahmed about the order of the body parts for relaxation. This is the fifth question",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Relax the neck","neg"],
+            ["Relax the shoulders","pos"],
+            ["Relax the legs","neg"]
+        ],
+        "Description": "What shall you do next?",
+        "Score": 4
+    },
+   {   "e": 62,
+        "Name": "C8_relaxation_6",
+        "Context": "Rebeca asks Ahmed about the order of the body parts for relaxation. This is the sixth question",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Relax the stomach","neg"],
+            ["Relax the rest of the body","neg"],
+            ["Relax the upper chest","pos"]
+        ],
+        "Description": "What shall you do next?",
+        "Score": 5
+    },
+   {   "e": 63,
+        "Name": "C8_relaxation_7",
+        "Context": "Rebeca asks Ahmed about the order of the body parts for relaxation. This is the seventh question",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Relax the legs","neg"],
+            ["Relax the himps","neg"],
+            ["Relax the stomach","pos"]
+        ],
+        "Description": "What shall you do next?",
+        "Score": 1
+    },
+   {   "e": 64,
+        "Name": "C8_relaxation_9",
+        "Context": "Rebeca asks Ahmed about the order of the body parts for relaxation. This is the final question",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Relax the legs","neg"],
+            ["Relax the feet","neg"],
+            ["Relax the body in general","pos"]
+        ],
+        "Description": "What shall you do next?",
+        "Score": 1
+    },
+   {   "e": 65,
+        "Name": "C8_Rebeca_thanks",
+        "Context": "Rebeca thinks that Rob and the others are a bad influence for you. Do you think so?",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["I think you are right","neu"],
+            ["I don’t agree","neu"]
+        ],
+        "Description": "Do you think they are a bad influence for you?",
+        "Score": 3
+    },
+   {   "e": 66,
+       "Name": "C8_Rebeca_thanks_2",
+        "Context": "Rebeca thinks that the players bad behaviour was influenced by Rob",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["I am also responsible","neu"],
+            ["Yes, you are right","pos"]
+        ],
+        "Description": "Do you think Rob influenced you?",
+        "Score": 3
+    },
+    {   "e":171,
+       "Name": "C9_balloon_game",
+        "Context": "The main character plays on which he has to inflate a balloon until it reaches the sky. If he breathes too early, the balloon goes back, and it is count as 1 fail (this variable += 1)",
+        "Type": "summary",
+        "Description": "The less this value scores, the better the player performed",
+        "Score": 0
+    },
+   {   "e": 67,
+       "Name": "C10_Second_nightmare_first_decision",
+        "Context": "Ahmed experiences a new nightmare, and has to confront it with the strategies he has learnt during the last days. What shall he do before?",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Breathing","pos"],
+            ["Visualization","neg"],
+            ["Relaxation","neg"]
+        ],
+        "Description": "Which is the first strategy you learnt?",
+        "Score": 1
+    },
+    {   "e":172,
+       "Name": "C10_Second_nightmare_breath",
+        "Context": "During the second nightmare, Ahmed needs to use his breath to control his movements, in order to be silent enough to stay hide. If he moves it too early, the character goes back, and it is count as 1 fail (this variable += 1)",
+        "Type": "summary",
+        "Description": "The less this value scores, the better the player performed",
+        "Score": 0
+    },
+   {   "e": 68,
+       "Name": "C10_Second_nightmare_second_decision",
+        "Context": "Ahmed experiences a new nightmare, and has to confront it with the strategies he has learnt during the last days. What shall he do as a second step?",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Visualization","neg"],
+            ["Relaxation","pos"]
+        ],
+        "Description": "Which is the second strategy you learnt?",
+        "Score": 1
+    },
+   {   "e": 69,
+       "Name": "C10_Second_nightmare_relax_1",
+        "Context": "Ahmed needs to apply relaxation techniques while he is inside the nightmare. This is the first step",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Relax the eyes","neg"],
+            ["Relax the eyebrows","neg"],
+            ["Sit in a relaxed position","pos"]
+        ],
+        "Description": "What shall you do first?",
+        "Score": 1
+    },
+   {   "e": 70,
+       "Name": "C10_Second_nightmare_relax_2",
+        "Context": "Ahmed needs to apply relaxation techniques while he is inside the nightmare. This is the second step",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Relax the legs","neg"],
+            ["Relax the head","neg"],
+            ["Relax the arms","pos"]
+        ],
+        "Description": "What shall you do next?",
+        "Score": 2
+    },
+   {   "e": 71,
+       "Name": "C10_Second_nightmare_relax_3",
+        "Context": "Ahmed needs to apply relaxation techniques while he is inside the nightmare. This is the third step",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Relax the mouth","neg"],
+            ["Relax the eyes","neg"],
+            ["Relax the head in general","pos"]
+        ],
+        "Description": "What shall you do next?",
+        "Score": 3
+    },
+   {   "e": 72,
+        "Name": "C10_Second_nightmare_relax_4",
+        "Context": "Ahmed needs to apply relaxation techniques while he is inside the nightmare. This is the fourth step",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Relax the neck","pos"],
+            ["Relax the nose","neg"],
+            ["Relax the mouth","neu"]
+        ],
+        "Description": "What shall you do next?",
+        "Score": 4
+    },
+   {   "e": 73,
+        "Name": "C10_Second_nightmare_relax_5",
+        "Context": "Ahmed needs to apply relaxation techniques while he is inside the nightmare. This is the fifth step",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Relax the neck","neg"],
+            ["Relax the shoulders","pos"],
+            ["Relax the legs","neg"]
+        ],
+        "Description": "What shall you do next?",
+        "Score": 4
+    },
+   {   "e": 74,
+        "Name": "C10_Second_nightmare_relax_6",
+        "Context": "Ahmed needs to apply relaxation techniques while he is inside the nightmare. This is the sixth step",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Relax the stomach","neg"],
+            ["Relax the rest of the body","neg"],
+            ["Relax the upper chest","pos"]
+        ],
+        "Description": "What shall you do next?",
+        "Score": 4
+    },
+   {   "e": 75,
+        "Name": "C10_Second_nightmare_relax_7",
+        "Context": "Ahmed needs to apply relaxation techniques while he is inside the nightmare. This is the seventh step",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Relax the legs","pos"],
+            ["Relax the himps","neg"],
+            ["Relax the stomach","neg"]
+        ],
+        "Description": "What shall you do next?",
+        "Score": 4
+    },
+   {   "e": 76,
+        "Name": "C10_Second_nightmare_relax_8",
+        "Context": "Ahmed needs to apply relaxation techniques while he is inside the nightmare. This is the final step",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Relax the legs","neg"],
+            ["Relax the feet","neg"],
+            ["Relax the body in general","pos"]
+        ],
+        "Description": "What shall you do next?",
+        "Score": 4
+    },
+   {   "e": 77,
+        "Name": "C10_Second_nightmare_Kong_balloon",
+        "Context": "During the second nightmare, Ahmed needs to use his breath to end up with Kong. If he breathes too early, Kong goes back, and it is count as 1 fail (this variable += 1)",
+        "Type": "summary",
+        "Description": "The less this value scores, the better the player performed",
+        "Score": 0
+    },
+   {   "e": 78,
+       "Name": "C11_cat",
+        "Context": "Kami is being pursued by the cat. The main character helps him capturing the cat, but he/she shall decide what to do with the cat",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Throw it through the window!","neg"],
+            ["Put it in a box","pos"]
+        ],
+        "Description": "What shall you do with the cat?",
+        "Score": 1
+    },
+   {   "e": 79,
+       "Name": "C11_Kami_after_cat",
+        "Context": "Kami and the main character are back in the room. Kami says that the main character would have done the same with the cat",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Actually, is very funny","neu"],
+            ["You said that we shall be kind with others","pos"],
+            ["value","neu"],
+            ["My mom could hear us with the cat. Be careful next time!","neu"]
+        ],
+        "Description": "What shall you answer to Kami?",
+        "Score": 1
+    },
+   {   "e": 80,
+       "Name": "C11_Kami_introduces_active_listening",
+        "Context": "Kami uses the example of a conversation between Ahmed and the main character to explain what the active listening is",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["He is engineer","neg"],
+            ["He works in a pie shop","neg"],
+            ["It does not have any relevance","neg"],
+            ["His father died","pos"]
+        ],
+        "Description": "Do you remember what is the current job of Ahmed’s father?",
+        "Score": 2
+    },
+   {   "e": 81,
+        "Name": "C11_Kami_introduces_active_listening_2",
+        "Context": "Kami uses the example of a conversation between mom and the main character to explain what the active listening is",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Yes","pos"],
+            ["No","neu"]
+        ],
+        "Description": "Do you think that you and your mother listened actively to each other?",
+        "Score": 3
+    },
+   {   "e": 82,
+        "Name": "C11_Mom_active_listening_1",
+        "Context": "The main character starts talking with his/her mother. After the first question, the main character shall decide if he/she is going to continue with the conversation",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Yes","pos"],
+            ["No","neu"]
+        ],
+        "Description": "Will you follow the conversation?",
+        "Score": 2
+    },
+   {   "e": 83,
+       "Name": "C11_Mom_active_listening_2",
+        "Context": "The main character starts talking with his/her mother. After the second question, the main character shall decide if he/she is going to continue with the conversation",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Would you like to tell me more?","pos"],
+            ["Ok, I don’t want to disturb you","neg"]
+        ],
+        "Description": "Will you follow the conversation?",
+        "Score": 2
+    },
+   {   "e": 84,                
+        "Name": "C11_Mom_active_listening_3",
+        "Context": "The main character starts talking with his/her mother. After the third question, the main character shall decide if he/she is going to continue with the conversation",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Keep asking","pos"],
+            ["Leave it now","neg"]
+        ],
+        "Description": "Will you follow the conversation?",
+        "Score": 2
+    },
+   {   "e": 85,                
+       "Name": "C11_Mom_active_listening_4",
+        "Context": "The main character starts talking with his/her mother. After the fourth question, in this case related with his/her dad’s death, the main character shall decide how is he going to end the conversation",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["If it helps you feel more comfortable, I can go with you","pos"],
+            ["I understand you. It makes me feel bad too","pos"]
+        ],
+        "Description": "What will you answer?",
+        "Score": 4
+    },
+   {   "e": 86,                
+       "Name": "C11_Kami_advice_usefulness",
+        "Context": "The main character is questioned about the usefulness of Kami’s advice to resolve conflicts like the one he/she has with his/her mother",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Yes","pos"],
+            ["No","neg"]
+        ],
+        "Description": "Do you think that Kami’s advice is useful to solve this kind of conflicts?",
+        "Score": 2
+    },
+   {   "e": 87,                
+       "Name": "C12_active_listening_Ana",
+        "Context": "The main character shall talk with 5 different partners to try his/her active listening skills. In this case, the questions are directed to Ana, while she says that she likes horses",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["It is a very beautiful sport","pos"],
+            ["Horses are a waste of time","neg"]
+        ],
+        "Description": "What do you think about horse riding?",
+        "Score": 1
+    },
+   {   "e": 88,                
+       "Name": "C12_active_listening_Ana_2",
+        "Context": "The main character shall talk with 5 different partners to try his/her active listening skills. In this case, the questions are directed to Ana",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Her father","pos"],
+            ["Her mother","neg"],
+            ["Her grandmother","neg"],
+            ["Her grandfather","neg"]
+        ],
+        "Description": "Which member of Ana’s family decided to teach him to ride horses?",
+        "Score": 1
+    },
+   {   "e": 89,
+       "Name": "C12_active_listening_Tom_feelings",
+        "Context": "The main character shall talk with 5 different partners to try his/her active listening skills. In this case, the questions are directed to Tom",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Fine","neg"],
+            ["Bad","pos"]
+        ],
+        "Description": "How do you think Tom is feeling?",
+        "Score": 3
+    },
+    {   "e": 90,
+       "Name": "C12_active_listening_Tom_1",
+        "Context": "The main character shall talk with 5 different partners to try his/her active listening skills. In this case, the questions are directed to Tom",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["I understand how are you feeling", "pos"],
+            ["That won’t happen", "neu"],
+            ["That’s stupid", "neg"]
+        ],
+        "Description": "Do you understand how Tom is feeling about your previous behavior?",
+        "Score": 3
+    },
+    {   "e": 91,
+        "Name": "C12_active_listening_Tom_2",
+        "Context": "The main character shall talk with 5 different partners to try his/her active listening skills. In this case, the questions are directed to Tom. Kami asks the main character if he/she understands how Tom is feeling",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Yes. I understand how he is feeling", "pos"],
+            ["No. I think he is exaggerating", "neu"]
+        ],
+        "Description": "Do you understand why Tom behaved like that before?",
+        "Score": 3
+    },
+    {   "e": 92,
+       "Name": "C12_active_listening_Antonio_1",
+        "Context": "The main character shall talk with 5 different partners to try his/her active listening skills. In this case, the questions are directed to Antonio. But he starts talking about completely different topics, so the main character must understand that he is now listening him/her",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Yes", "pos"],
+            ["No", "neu"]
+        ],
+        "Description": "Do you think Antonio is listening to you?",
+        "Score": 2
+    },
+    {   "e": 93,
+       "Name": "C12_active_listening_Antonio_2",
+        "Context": "The main character shall talk with 5 different partners to try his/her active listening skills. In this case, the questions are directed to Antonio. Now, the main character has to answer regarding Antonio’s preferences",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Maths", "neu"],
+            ["Gimnastics", "neu"],
+            ["Literature", "neu"],
+            ["All the previous ones", "neu"]
+        ],
+        "Description": "Which is the favorite subject of Antonio?",
+        "Score": 1
+    },
+    {   "e": 94,
+       "Name": "C12_active_listening_Rebeca_1",
+        "Context": "The main character shall talk with 5 different partners to try his/her active listening skills. In this case, the questions are directed to Rebeca. The main character asks her about Ahmed, but she prefers not to talk. The main character must decide if insisting or not",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Insist", "neu"],
+            ["Don’t insist", "pos"]
+        ],
+        "Description": "Will you insist?",
+        "Score": 1
+    },
+    {   "e": 95,
+       "Name": "C12_active_listening_Rebeca_2",
+        "Context": "The main character shall talk with 5 different partners to try his/her active listening skills. In this case, the questions are directed to Rebeca. The main character asks her about Ahmed, but she prefers not to talk. The main character insists, but she doesn’t want to talk. What to do next?",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Keep insisting", "neg"],
+            ["Stop insisting", "pos"]
+        ],
+        "Description": "Will you keep insisting?",
+        "Score": 1
+    },
+    {   "e": 96,
+       "Name": "C12_active_listening_Lori",
+        "Context": "The main character shall talk with 5 different partners to try his/her active listening skills. In this case, the questions are directed to Lori",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Cat, dog, turtle, hamster", "pos"],
+            ["Dog, hamster, canary and lizard", "pos"],
+            ["She does not like animals", "neg"],
+            ["Hamster, dog, turtle, cat", "pos"]
+        ],
+        "Description": "Which animals did Lori said, and on which order?",
+        "Score": 1
+    },
+    {   "e": 97,
+       "Name": "C12_active_listening_final_value",
+        "Context": "Summary of correct answers during the active listening game",
+        "Type": "Numerical",
+        "Description": "How many questions has the player answered correctly",
+        "Score": 0
+    },
+    {   "e": 98,
+       "Name": "C12_Ahmed_arrives",
+        "Context": "After the questions, Ahmed arrives, and he asks the main character who is he/she talking with",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["With my toy Kami. He is helping me behave properly", "pos"],
+            ["With no one", "neu"]
+        ],
+        "Description": "Who were you talking with?",
+        "Score": 2
+    },
+    {   "e": 99,
+       "Name": "C12_Mike_gym_1",
+        "Context": "Mike comes to Ahmed, Rebeca and the main character to ask them to participate with the group",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Rebeca is right. Mike should leave", "neu"],
+            ["We should help Mike", "pos"]
+        ],
+        "Description": "What do you think? Should the group include Mike?",
+        "Score": 2
+    },
+    {   "e":100,
+       "Name": "C12_Mike_gym_2",
+        "Context": "After denying the help, Ahmed justifies why does he think Mike should stay. The main character shall decide again",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["If we kick him out, we will be like Rob", "pos"],
+            ["If he apologies, he can stay", "pos"],
+            ["I still think is not a good idea", "neu"]
+        ],
+        "Description": "What do you think?",
+        "Score": 3
+    },
+    {   "e":101,
+       "Name": "C13_Initial_question",
+        "Context": "The chapter starts asking the player if he remembers what is to listen actively",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["It implies remaining quiet when the other speaks", "pos"],
+            ["It implies listening and asking questions", "neu"],
+            ["Both 1 and 2 are true", "pos"],
+            ["Everything is not correct", "neg"]
+        ],
+        "Description": "Do you remember what is to listen actively?",
+        "Score": 1
+    },
+    {   "e":102,
+        "Name": "C13_Tom_Martin",
+        "Context": "The player plays the role of Tom, as he has to deal with different social situations acting as he thinks Tom would act. The first decision is related with Martin, surprisingly appearing behind the player. The decision involves how the character greets someone",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Hi Martin! How are you?", "pos"],
+            ["H-hi Martin", "pos"],
+            ["I would not answer", "neu"],
+            ["Wow, you stink!", "neg"]
+        ],
+        "Description": "How would Tom answer to Martin?",
+        "Score": 2
+    },
+    {   "e":103,
+       "Name": "C13_Tom_Lori",
+        "Context": "The player plays the role of Tom, as he has to deal with different social situations acting as he thinks Tom would act. The second decision is related with Lori, who asks the player about his opinion of Antonio’s clothes. The decision involves how the character praise someone",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Well I think. It suits you", "pos"],
+            ["It looks great!", "pos"],
+            ["You look like a mummy!", "neg"]
+        ],
+        "Description": "How would Tom answer to Lori?",
+        "Score": 1
+    },
+    {   "e":104,
+       "Name": "C13_Tom_Rebeca",
+        "Context": "The player plays the role of Tom, as he has to deal with different social situations acting as he thinks Tom would act. The third decision is related with Rebeca, who is blocking the way. The decision involves how the character asks things",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Hi eh.. could I pass?", "neu"],
+            ["Hi Rebeca! Could you please let me pass?", "pos"],
+            ["Move away, you idiot!", "neg"]
+        ],
+        "Description": "How would Tom ask Rebeca to let him pass?",
+        "Score": 1
+    },
+    {   "e":105,
+       "Name": "C13_Tom_Elle",
+        "Context": "The player plays the role of Tom, as he has to deal with different social situations acting as he thinks Tom would act. The forth decision is related with Lori and Kong, who are messing with him. The decision involves how the character deals with a problem",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Well I don’t want to have a problem with you", "pos"],
+            ["Let me alone. Don’t you have anything better to do?", "neu"],
+            ["You look like a whole circus, Kong", "neg"],
+            ["Don’t say nothing and leave", "pos"]
+        ],
+        "Description": "How would Tom answer Kong and Lori insults?",
+        "Score": 3
+    },
+    {   "e":106,
+       "Name": "C13_Tom_teacher",
+        "Context": "The player plays the role of Tom, as he has to deal with different social situations acting as he thinks Tom would act. The fifth decision is related with the teacher, who unfairly accuses Tom of being late. The decision involves how the character deals with criticism",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Yes", "neu"],
+            ["No", "pos"]
+        ],
+        "Description": "Do you think Tom would accept the critic without complaining?",
+        "Score": 2
+    },
+    {   "e":107,
+        "Name": "C13_Tom_teacher_yes",
+        "Context": "After saying yes to the first question, the player justifies why he thinks Tom would accept without complaining",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["He does not care", "neu"],
+            ["He is too shy?", "pos"]
+        ],
+        "Description": "Why?",
+        "Score": 1
+    },
+    {   "e":108,
+       "Name": "C13_Tom_teacher_no",
+        "Context": "After saying no to the first question, the player justifies why he thinks Tom would accept without complaining",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Because he likes to complain", "neu"],
+            ["He know it isn’t his fault", "pos"],
+            ["He does not like to be criticize in public", "pos"]
+        ],
+        "Description": "Why?",
+        "Score": 1
+    },
+    {   "e":109,
+       "Name": "C14_Rob_Martin",
+        "Context": "The player plays the role of Rob, as he has to deal with different social situations acting as he thinks Rob would act. The first decision is related with Martin, surprisingly appearing behind the player. The decision involves how the character greets someone",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Hi Martin! How are you?", "pos"],
+            ["H-hi Martin", "pos"],
+            ["I would not answer", "neu"],
+            ["Wow, you stink!", "neg"]
+        ],
+        "Description": "How would Rob answer to Martin?",
+        "Score": 2
+    },
+    {   "e":110,
+        "Name": "C14_Rob_Lori",
+        "Context": "The player plays the role of Rob, as he has to deal with different social situations acting as he thinks Rob would act. The second decision is related with Lori, who asks the player about his opinion of Antonio’s clothes. The decision involves how the character praise someone",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Well I think. It suits you", "pos"],
+            ["It looks great!", "pos"],
+            ["You look like a mummy!", "neg"]
+        ],
+        "Description": "How would Rob answer to Lori?",
+        "Score": 1
+    },
+    {   "e":111,
+       "Name": "C14_Rob_Rebeca",
+        "Context": "The player plays the role of Rob, as he has to deal with different social situations acting as he thinks Rob would act. The third decision is related with Rebeca, who is blocking the way. The decision involves how the character asks things",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Hi eh.. could I pass?", "pos"],
+            ["Hi Rebeca! Could you please let me pass?", "pos"],
+            ["Move away, you idiot!", "neg"]
+        ],
+        "Description": "How would Rob ask Rebeca to let him pass?",
+        "Score": 2
+    },
+    {   "e":112,
+       "Name": "C14_Rob_Elle",
+        "Context": "The player plays the role of Rob, as he has to deal with different social situations acting as he thinks Rob would act. The forth decision is related with Lori and Kong, who are messing with him. The decision involves how the character deals with a problem",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Well I don’t want to have a problem with you", "pos"],
+            ["Let me alone. Don’t you have anything better to do?", "neu"],
+            ["You look like a whole circus, Kong", "neg"],
+            ["Don’t say nothing and leave", "pos"]
+        ],
+        "Description": "How would Rob answer Kong and Lori insults?",
+        "Score": 3
+    },
+    {   "e":113,
+       "Name": "C14_Rob_teacher",
+        "Context": "The player plays the role of Rob, as he has to deal with different social situations acting as he thinks Rob would act. The fifth decision is related with the teacher, who unfairly accuses Rob of being late. The decision involves how the character deals with criticism",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Yes", "neu"],
+            ["No", "pos"]
+        ],
+        "Description": "Do you think Rob would accept the critic without complaining?",
+        "Score": 2
+    },
+    {   "e":114,
+        "Name": "C14_Rob_teacher_yes",
+        "Context": "After saying yes to the first question, the player justifies why he thinks Rob would accept without complaining",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["He does not care", "neu"],
+            ["He is too shy?", "pos"]
+        ],
+        "Description": "Why?",
+        "Score": 1
+    },
+    {   "e":115,
+       "Name": "C14_Rob_teacher_no",
+        "Context": "After saying no to the first question, the player justifies why he thinks Rob would accept without complaining",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Because he likes to complain", "neu"],
+            ["He know it isn’t his fault", "pos"],
+            ["He does not like to be criticize in public", "pos"]
+        ],
+        "Description": "Why?",
+        "Score": 1
+    },
+    {   "e":116,
+       "Name": "C15_Rebeca_question_Ahmed_mom",
+        "Context": "While waiting for Mike, Rebeca asks the main character about Ahmed’s mother",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["She is engineer, but works as backer", "neu"],
+            ["Baker, but she works as engineer", "neu"],
+            ["His mother died", "neu"],
+            ["I don’t remember", "neu"]
+        ],
+        "Description": "Which job has Ahmed’s mother?",
+        "Score": 3
+    },
+    {   "e":117,
+        "Name": "C15_Ahmed_second_greeting",
+        "Context": "Once arrived to Ahmed’s house, the main character decides how to greet him",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Salam Alaikum, Ahmed!", "pos"],
+            ["Good morning, Ahmed!", "pos"]
+        ],
+        "Description": "How will you greet Ahmed?",
+        "Score": 2
+    },
+    {   "e":118,
+        "Name": "C15_Mosque_question_1",
+        "Context": "When remembering his past, Ahmed talks about the Mosque and how did he learnt there about the Islam principles. The imam asks him about the pillar of fasting",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["The fasting during Saturday night", "neg"],
+            ["The fasting during the Ramadan", "pos"],
+            ["The fasting during all mornings of the year", "neg"]
+        ],
+        "Description": "What is exactly the pillar of fasting?",
+        "Score": 1
+    },
+    {   "e":119,
+        "Name": "C15_Mosque_question_2",
+        "Context": "When remembering his past, Ahmed talks about the Mosque and how did he learnt there about the Islam principles. Second, the imam asks him about the Mecca",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["The sacred city for Islam", "pos"],
+            ["The most important prophet", "neg"],
+            ["The name of the mandatory payment", "neg"]
+        ],
+        "Description": "What is the Mecca?",
+        "Score": 2
+    },
+    {   "e":120,
+       "Name": "C15_Mosque_question_3",
+        "Context": "When remembering his past, Ahmed talks about the Mosque and how did he learnt there about the Islam principles. Third, the imam asks Ahmed how many times shall he pray per day",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["One", "neg"],
+            ["Three", "neg"],
+            ["Five", "pos"],
+            ["No one", "neg"]
+        ],
+        "Description": "How many times shall a Muslim pray per day?",
+        "Score": 2
+    },
+    {   "e":121,
+       "Name": "C15_Mosque_question_4",
+        "Context": "When remembering his past, Ahmed talks about the Mosque and how did he learnt there about the Islam principles. Finally, the imam asks Ahmed about the Quran",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["The Bible", "neg"],
+            ["The Torah", "neg"],
+            ["The Quran", "pos"]
+        ],
+        "Description": "Which is a holy book for Muslims?",
+        "Score": 2
+    },
+    {   "e":122,
+       "Name": "C17_reasons_apologies",
+        "Context": "After listening to Ahmed’s story, Mike apologizes to Ahmed. This is the reason that the player uses to justify it",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Because of your past behavior with Ahmed", "pos"],
+            ["Because he is sorry about what happened to his city", "neg"],
+            ["Because you don’t have more baklavas", "neg"],
+            ["I don’t know", "neg"]
+        ],
+        "Description": "Why do you think Mike has apologize?",
+        "Score": 1
+    },
+    {   "e":123,
+       "Name": "C17_Ahmed_style",
+        "Context": "The player has to define the interpersonal style of Ahmed",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Aggressive", "neg"],
+            ["Shy", "pos"],
+            ["Assertive", "neu"]
+        ],
+        "Description": "How do you think Ahmed is?",
+        "Score": 2
+    },
+    {   "e":124,
+       "Name": "C17_Mike_style",
+        "Context": "The player has to define the interpersonal style of Mike",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Aggressive", "pos"],
+            ["Shy", "neg"],
+            ["Assertive", "neu"]
+        ],
+        "Description": "How do you think Mike is?",
+        "Score": 2
+    },
+    {   "e":125,
+       "Name": "C17_Rebeca_style",
+        "Context": "The player has to define the interpersonal style of Rebeca",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Aggressive", "neg"],
+            ["Shy", "neu"],
+            ["Assertive", "pos"]
+        ],
+        "Description": "How do you think Rebeca is?",
+        "Score": 2
+    },
+    {   "e":126,
+        "Name": "C17_Player_style",
+        "Context": "The player has to define the interpersonal style of the main character",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Aggressive","neg"],
+            ["Shy","neg"],
+            ["Assertive","neg"]
+        ],
+        "Description": "How do you think the main character is?",
+        "Score": 2
+    },
+    {   "e":127,
+        "Name": "C18_first_solicitude",
+        "Context": "The player has to define the interpersonal style of the first person that denies their solicitude",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Aggressive", "neg"],
+            ["Assertive", "neu"],
+            ["Shy", "pos"]
+        ],
+        "Description": "How do you think this type of person was?",
+        "Score": 1
+    },
+    {   "e":128,
+        "Name": "C18_second_solicitude",
+        "Context": "The player has to define the interpersonal style of the second person that denies their solicitude",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Aggressive", "neg"],
+            ["Assertive", "neu"],
+            ["Shy", "pos"]
+        ],
+        "Description": "How do you think this type of person was?",
+        "Score": 1
+    },
+    {   "e":129,
+        "Name": "C18_third_solicitude",
+        "Context": "The player has to define the interpersonal style of the third person that denies their solicitude",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Aggressive", "neg"],
+            ["Assertive", "neu"],
+            ["Shy", "pos"]
+        ],
+        "Description": "How do you think this type of person was?",
+        "Score": 1
+    },
+    {   "e":130,
+        "Name": "C19_nervous",
+        "Context": "After hearing the exposition of the team, the teacher asks them questions about the story to find out if they truly paid attention to the whole content. The main character begins to feel nervous",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["I’m getting so nervous", "pos"],
+            ["Come on, it can be that bad", "neu"],
+            ["I’m really anxious when I have to speak in public", "pos"]
+        ],
+        "Description": "What do you think the main character thinks?",
+        "Score": 1
+    },
+    {   "e":131,
+        "Name": "C19_teacher_question_team_1",
+        "Context": "After hearing the exposition of the team, the teacher asks them questions about the story to find out if they truly paid attention to the whole content. The first question is about the Mosque",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Church", "neg"],
+            ["School", "neg"],
+            ["Mosque", "neu"],
+            ["Temple", "neg"]
+        ],
+        "Description": "How is named the place where Ahmed went to pray on his town?",
+        "Score": 1
+    },
+    {   "e":132,
+       "Name": "C19_teacher_question_team_2",
+        "Context": "After hearing the exposition of the team, the teacher asks them questions about the story to find out if they truly paid attention to the whole content. The second question is related with the pillars of Islam",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["One", "neg"],
+            ["Three", "neg"],
+            ["Five", "pos"],
+            ["Seven", "neg"]
+        ],
+        "Description": "How many rules has Ahmed’s religion?",
+        "Score": 2
+    },
+    {   "e":133,
+       "Name": "C19_teacher_question_team_3",
+        "Context": "After hearing the exposition of the team, the teacher asks them questions about the story to find out if they truly paid attention to the whole content. Last question regards a typical food from Ahmed’s land",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Baklavas", "neu"],
+            ["Kebab", "neu"],
+            ["Humus", "neu"],
+            ["Market fruit", "neg"]
+        ],
+        "Description": "Can you tell me a typical dish from Ahmed’s land?",
+        "Score": 1
+    },
+    {   "e":134,
+       "Name": "C19_team_question_final_value",
+        "Context": "Summary of correct answers during the questions to the team",
+        "Type": "Numerical",
+        "Description": "How many questions has the player answered correctly?",
+        "Range": "0-3",
+        "Score": 3
+    },
+    {   "e":135,
+       "Name": "C19_Ahmed_face_news",
+        "Context": "After telling Ahmed that Rob has proposed you to come back to the group, he leaves the room. The main character must identify his face to understand what he feels",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Happy", "pos"],
+            ["Normal", "neu"],
+            ["Sad", "neg"],
+            ["Angry", "neg"]
+        ],
+        "Description": "What do you think Ahmed was feeling?",
+        "Score": 1
+    },
+    {   "e":136,
+       "Name": "C19_Ahmed_face_news_feeling",
+        "Context": "After identifying the problem, the main character express how he feels about it",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["It pisses me that he behaves like that, after all this time", "neu"],
+            ["I think I understand how he feels", "pos"],
+            ["He could be happy for me, instead of only thinking about himself", "neu"]
+        ],
+        "Description": "How do you feel about this problem?",
+        "Score": 2
+    },
+    {   "e":137,
+        "Name": "C19_next_movement",
+        "Context": "After identifying the problem, the main character shall decide what to do next",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["I will look for him", "pos"],
+            ["I will wait for him", "pos"],
+            ["I’m tired of this", "neg"]
+        ],
+        "Description": "What are you going to do now?",
+        "Score": 1
+    },
+    {   "e":138,
+       "Name": "C19_Ahmed_conversation_bathroom",
+        "Context": "Ahmed tries to stop the conversation about the problem. The main character must decide if he wants to show interest on the conversation",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Let him talk. It matters", "neu"],
+            ["Stop the conversation. It doesn’t matter", "pos"]
+        ],
+        "Description": "What should you do?",
+        "Score": 1
+    },
+    {   "e":139,
+       "Name": "C19_mom_question",
+        "Context": "Once he arrives home, the main character looks for Kami. However, your mother interrupts you",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["I’m in a hurry, I can’t talk now! Sorry!", "pos"],
+            ["I didn’t do it!", "neu"],
+            ["Yes continue", "neu"]
+        ],
+        "Description": "What should you tell her?",
+        "Score": 1
+    },
+    {   "e":140,
+       "Name": "C20_self_instruction_1",
+        "Context": "The chapter begins with Kami asking you what should you tell yourself to escape from a toxic thinking",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Everything is over", "pos"],
+            ["I messed it up", "neg"],
+            ["I can change it", "neu"]
+        ],
+        "Description": "What should you tell yourself?",
+        "Score": 1
+    },
+    {   "e":141,
+       "Name": "C20_self_instruction_type_1",
+        "Context": "The chapter begins with Kami asking which kind of sentence would you needf to escape from a toxic thinking",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Action", "pos"],
+            ["Reflection", "neg"],
+            ["Value", "neu"]
+        ],
+        "Description": "What kind of sentence would you need?",
+        "Score": 3
+    },
+    {   "e":142,
+        "Name": "C20_self_instruction_2",
+        "Context": "The second question asked by Kami is related with which sentence would have been useful to avoid a problem with Ahmed",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["He is trying to piss me off", "neg"],
+            ["He is feeling bad", "pos"],
+            ["Why should I accept that he treats me like that?", "neu"]
+        ],
+        "Description": "What should you have told yourself?",
+        "Score": 2
+    },
+    {   "e":143,
+        "Name": "C20_self_instruction_type_2",
+        "Context": "The second question asked by Kami is related with which type of self-instruction would have been useful to avoid a problem with Ahmed",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Action", "pos"],
+            ["Value", "neu"],
+            ["Sympathy", "pos"]
+        ],
+        "Description": "What kind of sentence would you need?",
+        "Score": 3
+    },
+    {   "e":144,
+        "Name": "C20_self_instruction_3",
+        "Context": "The third question asked by Kami is related with which sentence would have been useful to avoid getting nervous on classroom",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["I’m very nervous", "neg"],
+            ["For god’s sake, calm down", "pos"],
+            ["I should use a relaxation technique", "pos"]
+        ],
+        "Description": "What should you have told yourself?",
+        "Score": 2
+    },
+    {   "e":145,
+        "Name": "C20_self_instruction_type_3",
+        "Context": "The third question asked by Kami is related with which type of self-instruction would have been useful to avoid getting nervous on classroom",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Control", "pos"],
+            ["Sympathy", "pos"],
+            ["Value", "neu"]
+        ],
+        "Description": "What kind of sentence would you need?",
+        "Score": 3
+    },
+    {   "e":146,
+        "Name": "C20_self_instruction_4",
+        "Context": "The forth question asked by Kami is related with which sentence would Ahmed being thinking about his problems on the lake",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["He thought he couldn’t achieve it", "pos"],
+            ["He thought everything was going to be alright", "neu"],
+            ["He thought he could resolve it himself", "neu"]
+        ],
+        "Description": "What could Ahmed being thinking?",
+        "Score": 2
+    },
+    {   "e":147,
+        "Name": "C20_self_instruction_type_4",
+        "Context": "The forth question asked by Kami is related with which type of self-instruction would have been useful to avoid getting nervous on classroom",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Control", "pos"],
+            ["Sympathy", "pos"],
+            ["Value", "neu"]
+        ],
+        "Description": "What kind of sentence would you need?",
+        "Score": 3
+    },
+    {   "e":148,
+        "Name": "C21_behavior_pyramid",
+        "Context": "The player is asked about the concepts underlying the behavior pyramid",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Emotion, thinking and behavior", "neg"],
+            ["Emotion and thinking", "neg"],
+            ["Relaxation, breathing and visualization", "pos"]
+        ],
+        "Description": "What concepts underly the behavior pyramid?",
+        "Score": 3
+    },
+    {   "e":149,
+        "Name": "C21_behavior_pyramid_mom_question",
+        "Context": "The player is asked about how his mother knew he was upset",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["My acting", "pos"],
+            ["My feelings", "neu"],
+            ["My thoughts", "neu"]
+        ],
+        "Description": "What did your mother notice to know you were nervous?",
+        "Score": 2
+    },
+    {   "e":150,
+        "Name": "C21_emotion_Mike",
+        "Context": "The player is asked about how he thinks Mike is feeling",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Happy", "pos"],
+            ["Angry", "neu"],
+            ["Sad", "neu"],
+            ["Scared", "neu"]
+        ],
+        "Description": "How do you think Mike is feeling?",
+        "Score": 3
+    },
+    {   "e":151,
+       "Name": "C21_emotion_Rebeca",
+        "Context": "The player is asked about how he thinks Rebeca is feeling",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Happy", "pos"],
+            ["Angry", "neu"],
+            ["Sad", "neu"],
+            ["Scared", "neu"]
+        ],
+        "Description": "How do you think Rebeca is feeling?",
+        "Score": 2
+    },
+    {   "e":152,
+       "Name": "C21_emotion_yourself",
+        "Context": "The player is asked what is he feeling after talking with his friends",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Happy", "pos"],
+            ["Angry", "neu"],
+            ["Sad", "neu"],
+            ["Scared", "neu"]
+        ],
+        "Description": "How do you feel after talking with your friends?",
+        "Score": 2
+    },
+    {   "e":153,
+       "Name": "C21_breathing",
+        "Context": "Summary of wrong jumps",
+        "Type": "Numerical",
+        "Description": "-",
+        "Score": 0
+    },
+    {   "e":154,
+       "Name": "C21_relaxation",
+        "Context": "The player is asked what should he relax first, before meeting Ahmed",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Arms", "pos"],
+            ["Head", "neg"],
+            ["Shoulders", "neg"]
+        ],
+        "Description": "What should you relax first?",
+        "Score": 1
+    },
+    {   "e":155,
+       "Name": "C21_relaxation_2",
+        "Context": "The player is asked what should he relax second, before meeting Ahmed",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Arms", "neg"],
+            ["Head", "neg"],
+            ["Shoulders", "pos"]
+        ],
+        "Description": "What should you relax second?",
+        "Score": 1
+    },
+    {   "e":156,
+       "Name": "C21_relaxation_3",
+        "Context": "The player is asked what should he relax finally, before meeting Ahmed",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Arms", "neg"],
+            ["Head", "pos"],
+            ["Shoulders", "neg"]
+        ],
+        "Description": "What should you relax finally?",
+        "Score": 1
+    },
+    {   "e":157,
+        "Name": "C21_visualization_Ahmed",
+        "Context": "The player suggests Ahmed to use a relaxing technique. Which one?",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Relaxation", "neu"],
+            ["Breathing", "pos"],
+            ["Visualization", "neg"]
+        ],
+        "Description": "Which technique should Ahmed use?",
+        "Score": 2
+    },
+    {   "e":158,
+        "Name": "C21_Ahmed_angry_reason",
+        "Context": "The player shall answer why he thinks Ahmed was angry",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["He thought you were going to leave him alone", "neg"],
+            ["He knew you were going to punch him", "pos"],
+            ["Because you keep talking with Rob", "neu"]
+        ],
+        "Description": "Why was Ahmed angry?",
+        "Score": 2
+    },
+    {   "e":159,
+        "Name": "C21_Ahmed_angry_who",
+        "Context": "The player shall answer who did Ahmed talked to about this problem",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Mike", "neu"],
+            ["Rebeca", "pos"],
+            ["Both of them", "neu"]
+        ],
+        "Description": "Who did Ahmed talked to?",
+        "Score": 1
+    },
+    {   "e":160,
+        "Name": "C21_Rob_reason",
+        "Context": "The player doubts about Rob’s reason to ask him to get back to his group",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["To apologize", "pos"],
+            ["To have a good relationship with Ahmed", "neu"],
+            ["To confront the main character and Ahmed", "neg"]
+        ],
+        "Description": "What was Rob’s intention?",
+        "Score": 3
+    },
+    {   "e":161,
+        "Name": "C21_Social_skills_1",
+        "Context": "The player doubts about how to confront Rob. Mike gives his opinion",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Yes", "pos"],
+            ["Too aggressive", "neg"],
+            ["Too shy", "neu"]
+        ],
+        "Description": "Do you think Mike’s idea is correct?",
+        "Score": 2
+    },
+    {   "e":162,
+        "Name": "C21_Social_skills_2",
+        "Context": "The player doubts about how to confront Rob. Ahmed gives his opinion",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Yes", "pos"],
+            ["Too aggressive", "neg"],
+            ["Too shy", "neu"]
+        ],
+        "Description": "Do you think Ahmed’s idea is correct?",
+        "Score": 2
+    },
+    {   "e":163,
+        "Name": "C21_Social_skills_3",
+        "Context": "The player doubts about how to confront Rob. Rebeca gives his opinion",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Yes", "pos"],
+            ["Too aggressive", "neg"],
+            ["Too shy", "neu"]
+        ],
+        "Description": "Do you think Rebeca’s idea is correct?",
+        "Score": 2
+    },
+    {   "e":164,
+        "Name": "C21_Social_recognition",
+        "Context": "The player is asked to identify the social style of a person",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Assertive", "neu"],
+            ["Shy", "neu"],
+            ["Aggressive", "neg"]
+        ],
+        "Description": "Do you think Rob is assertive, shy or aggressive?",
+        "Score": 2
+    },
+    {   "e":165,
+        "Name": "C21_Social_recognition_2",
+        "Context": "The player is asked to identify the social style of a person",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Assertive", "neu"],
+            ["Shy", "neu"],
+            ["Aggressive", "neg"]
+        ],
+        "Description": "Do you think Elle is assertive, shy or aggressive?",
+        "Score": 2
+    },
+    {   "e":166,
+        "Name": "C21_Social_recognition_3",
+        "Context": "The player is asked to identify the social style of a person",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Assertive", "neg"],
+            ["Shy", "neg"],
+            ["Aggressive", "pos"]
+        ],
+        "Description": "Do you think Kong is assertive, shy or aggressive?",
+        "Score": 2
+    },
+    {   "e":167,
+        "Name": "C21_group_decision",
+        "Context": "The main character must decide what to do. If he/she goes back with Rob, stays with the new group, or stays with both of them",
+        "Type": "Multiple choice",
+        "Choices": [
+            ["Go back with Rob", "neg"],
+            ["Stay with Ahmed", "pos"],
+            ["Stay with both of them", "pos"]
+        ],
+        "Description": "What shall you do?",
+        "Score": 1
+    }
 
 ]
