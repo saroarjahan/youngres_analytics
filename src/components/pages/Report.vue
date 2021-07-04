@@ -5,16 +5,19 @@
         <div class="content Timesroman">
             <h3 class="title"> Game Report</h3>   
             <h2 class="title">Introdcution:</h2>
-            <p class="body">This section presents an  overall report of  Youngres gameplay by different groups. In total, <strong>{{GroupFilter.group_ids.length}}</strong> group (<span v-for="(group, g) in GroupFilter.group_ids" :key="g"><strong> {{group.group_id}}:</strong> {{group.description}}, </span>)  and played  <strong>{{result.length}}</strong> game and <strong>{{result[0].chapters.length}}</strong> chapters.  Below presents a summary of chapter regarding student provided decision-making during  gameplay. To properly understand student/group  performance for empathy, emotional recognition, relaxation, visualisation, breathing, active listening, Muslim culture, social skills, etc, we have labeled student decisions in several categories (i.e., <strong>Positive:</strong> suitable/correct decision, refers to good perfromance of student/group, <strong>Negative:</strong>  not expected/wrong decision, refers to lower performance, <strong>Complex:</strong> decision not clear, <strong>Neutral:</strong> depends on the situation, could be suitable decision, but definitely not refers to lower performance of student/group, etc). Event questions, scenatios, and corresponding student decisions have been considered together for  labeling  a decision.</p>
+            <p class="body">This section presents a comprehensive report of Youngres gameplay by different groups. In total, 3 <strong>{{GroupFilter.group_ids.length}}</strong> group (<span v-for="(group, g) in GroupFilter.group_ids" :key="g"><strong> {{group.group_id}}:</strong> {{group.description}}, </span>) have played  <strong>{{result.length}}</strong> game and <strong>{{result[0].chapters.length}}</strong> chapters.  Below presents a summary of the chapter regarding student-provided decisions during gameplay. <br>
 
-            <p>After calculating student decision scores, we have graded the performance of each group in five different scales: Excellent, Good, Average, Poor, and Very poor. The higher number of wrong answers indicates a student/group's lower performance.</p>
+            <br>To properly understand student/group performance for empathy, emotional recognition, relaxation, visualization, breathing, active listening, Muslim culture, social skills, etc., we have labeled student decisions in several categories (i.e., <strong>Positive:</strong> suitable/correct decision, refers to good perfromance of student/group, <strong>Negative:</strong>  not expected/wrong decision, refers to lower performance, <strong>Complex:</strong> decision not clear, <strong>Neutral:</strong> depends on the situation, could be a suitable decision, but not refers to lower performance of student/group, etc.). Event questions, scenarios, and corresponding student decisions have been considered together for labeling a decision.</p>
+
+            <p class="body">After calculating student decision scores, we have graded the performance of each group in five different scales: Excellent, Good, Average, Poor, and Very poor. The higher number of wrong answers indicates a student/group's lower performance.</p>
 
             <center>
-              <div class="col-md-10">
+              <div class="col-md-11">
                 <p class="fig">Table 1: example of student decision labeling.</p>
                 <table class="table table-bordered">
                         <thead>
                           <tr>
+                            <th scope="col">Event ID</th>
                             <th scope="col">Event Question</th>
                             <th scope="col">Decision</th>
                             <th scope="col">Decision annotation</th>
@@ -22,16 +25,19 @@
                         </thead>
                         <tbody>
                           <tr>
+                            <td>34</td>
                             <td>How is Ahmed feeling right now?</td>
                             <td> Sad </td>
                             <td>Positive (this is a right decision because player identified Ahmed emotion correctly)</td>
                           </tr>
                           <tr>
+                            <td>7</td>
                             <td>Should you argue with your mom?</td>
                             <td>Shout at her </td>
                             <td>Negative (wrong decision, not expected behavior from player) </td>
                           </tr>
                           <tr>
+                            <td>1</td>
                             <td>Are you a boy or a girl?</td>
                             <td>Boy</td>
                             <td>Neutral (in this case both boy/girl would be right  and neutral asnwer)</td>
@@ -78,11 +84,11 @@
             <div v-for="(data, index) in all_final_data.slice(0, 1)" :key="index">
                 <div v-if='index==0'>
 
-                    <p class="body"><strong>Result: </strong>This chapter has played by group <span v-for="(group, l) in groupName" :key="l"><strong> {{group}}, </strong></span> the number of students in the group <strong>{{data.total_student}}</strong>, and  the total number of decisions made <strong>{{data.total_decision}}</strong>. <br>
+                    <p class="body"><strong>Result: </strong>This section present the result of group <span v-for="(group, l) in groupName" :key="l"><strong> {{group}}, </strong></span>  the total number of students  <strong>{{data.total_student}}</strong>, and  the total number of decisions made <strong>{{data.total_decision}}</strong>. <br>
 
                     <br><strong><em>Table-{{index+2}}</em></strong> presents the score of individual events decisions, and <strong><em>Figure-{{index+1}}</em></strong> shows the overall scores of all decisions from {{chapter_info[0].title.split(':').shift()}} by Group (<span v-for="(group, gr) in groupName" :key="gr">{{group}}, </span>). <span v-if='data.total_sentiment_score[0]>0'>The overall group performance scores were: positive ({{data.total_sentiment_score[0]}}%), neutral ({{data.total_sentiment_score[2]}}%), complex ({{data.total_sentiment_score[3]}}%), and  negative only ({{data.total_sentiment_score[1]}}%). 
 
-                    Since positive + neutral decisions were {{parseInt(data.total_sentiment_score[0], 10)+parseInt(data.total_sentiment_score[2], 10)}}% and negative decisions  ({{data.total_sentiment_score[1]}}%), which seems the majority of the students have performed <strong><span v-if='data.total_sentiment_score[1]<=10'>Excellent</span> <span v-if='data.total_sentiment_score[1]>10 && data.total_sentiment_score[1]<=15'>Good</span><span v-if='data.total_sentiment_score[1]>15 && data.total_sentiment_score[1]<=30'>Average</span><span v-if='data.total_sentiment_score[1]>30 && data.total_sentiment_score[1]<=45'>Poor</span><span v-if='data.total_sentiment_score[1]>45 && data.total_sentiment_score[1]<=60'>Very Poor</span></strong> in {{chapter_info[0].title.split(':')[1]}} Test. <br> <br>
+                    Since positive + neutral decisions were {{parseInt(data.total_sentiment_score[0], 10)+parseInt(data.total_sentiment_score[2], 10)}}% and negative decisions  ({{data.total_sentiment_score[1]}}%), which seems the majority of the students in <span v-if='groupName.length==2'>both groups altogether </span> <span v-else-if='groupName.length>2'>all thsese {{groupName.length}} groups</span> <span v-else>group</span> have performed <strong><span v-if='data.total_sentiment_score[1]<=10'>Excellent</span> <span v-if='data.total_sentiment_score[1]>10 && data.total_sentiment_score[1]<=20'>Good</span><span v-if='data.total_sentiment_score[1]>20 && data.total_sentiment_score[1]<=30'>Average</span><span v-if='data.total_sentiment_score[1]>30 && data.total_sentiment_score[1]<=40'>Poor</span><span v-if='data.total_sentiment_score[1]>45'>Very Poor</span></strong> in {{chapter_info[0].title.split(':')[1]}} Test. <br> <br>
 
                     <span v-if='data.total_sentiment_score[1]!==0'>
                     In comparison, <strong>{{data.total_sentiment_score[1]}}%  </strong>decsions were negative which  indicates some student has made few wrong decision<span v-if='data.total_decision < 10'> (though for this particular chapter number of decisions is small, only {{data.total_decision}}, which makes it tough to comment)</span>. 
@@ -90,8 +96,12 @@
                     <br><br>
                     The most negative decisions have come from EventId <strong>(<span v-for="(sentiment, s) in data.sentiment_score" :key="s"><span v-if="sentiment.ne> 0">{{sentiment.event}}, </span></span>)</strong>, and  those decisions were:<strong> <span v-for="(sentiment, t) in data.sentiment_score" :key="t" ><span v-if="sentiment.ne>0"><span v-for="(s, y) in sentiment.sep_choice" :key="y">{{s.neg[0]}}</span>, </span></span></strong>.</span>
 
-                     </span>
+                     </span> 
                     </p><br>
+
+                    <p class="body">
+                      <span class='bluesm' v-if='groupName.length>2'>[N.B. This result is showing {{groupName.length}} groups' results altogether. Please select a single group from the filter option to see individual group results, and to compare two different groups, please select two different groups from the filter option.]</span>
+                    </p>
 
                     <p class="fig">Table {{index+2}}: Group (<span v-for="(group, gr) in groupName" :key="gr"><strong> {{group}}, </strong></span>) score on individual events of {{chapter_info[0].title.split(':').shift()}}.</p>
                     <table class="table table-bordered">
@@ -152,19 +162,25 @@
                         <div class="row" v-if='groupName.length==1'>
                           <div class="col-md-12">
                               <v-chart :options="lineGraph[0]" width="100%"/>
-                              <p class="fig">Fig. {{index+2}}: Individual student score {{data.chapter_id}}.</p>
+                              <p class="fig">Fig. {{index+2}}: Individual student score from {{chapter_info[0].title.split(':').shift()}}.</p>
                          </div>
                        </div>
 
-                       <p v-if='groupName.length==1 && in_analyis[0].length !==0'>From Figure-2, we can see that in a total of {{data.total_student}} students,  {{in_analyis[0].length}} students' only a few decisons were negative. <span v-if='in_analyis[1].length !==0'>Among them,  {{in_analyis[1].length}} students' overall decisions contains only 10% negative decision.</span>, <span v-if='in_analyis[2].length !==0'> and  {{in_analyis[2].length}} students' overall decision contains 10-20% negative decision.</span>,<span v-if='in_analyis[3].length !==0'> and  {{in_analyis[3].length}} students' overall decisions contains more than 20% negative decision</span>. However, from Figure-1, the overall score shows  {{parseInt(data.total_sentiment_score[0], 10)+parseInt(data.total_sentiment_score[2], 10)}}% of decisions were positive and neutral, which seems most students have performed <strong><span v-if='data.total_sentiment_score[1]<=10'>Excellent</span> <span v-if='data.total_sentiment_score[1]>10 && data.total_sentiment_score[1]<=15'>Good</span><span v-if='data.total_sentiment_score[1]>15 && data.total_sentiment_score[1]<=30'>Average</span></strong> in {{chapter_info[0].title.split(':')[1]}} Test.</p>
+                       <p v-if='groupName.length==1 && in_analyis[0].length !==0'>From Figure-2, we can see that in a total of {{data.total_student}} students,  {{in_analyis[0].length}} students' only a few decisions were negative. <span v-if='in_analyis[1].length !==0'>Among them,  {{in_analyis[1].length}} students' overall decisions contain only 10% negative decision</span>, <span v-if='in_analyis[2].length !==0'> and  {{in_analyis[2].length}} students' overall decisions contain 10-20% negative decisions</span>,<span v-if='in_analyis[3].length !==0'> and  {{in_analyis[3].length}} students' overall decisions contain more than 20% negative decisions</span>. However, from Figure-1, the overall score shows  {{parseInt(data.total_sentiment_score[0], 10)+parseInt(data.total_sentiment_score[2], 10)}}% of decisions were (positive + neutral) and negative decisions  ({{data.total_sentiment_score[1]}}%), which seems most students in group <strong>{{groupName[0]}}</strong> have performed <strong class='green'><span v-if='data.total_sentiment_score[1]<=10'>Excellent</span> <span v-if='data.total_sentiment_score[1]>10 && data.total_sentiment_score[1]<=20'>Good</span><span v-if='data.total_sentiment_score[1]>20 && data.total_sentiment_score[1]<=30'>Average</span><span v-if='data.total_sentiment_score[1]>30 && data.total_sentiment_score[1]<=40'>Poor</span><span v-if='data.total_sentiment_score[1]>45'>Very Poor</span></strong> in {{chapter_info[0].title.split(':')[1]}} Test.</p>
 
                       <br>
 
-                  <div class="row" v-if='groupName.length ==2'>
+                  <div class="row body" v-if='groupName.length ==2'>
                           <div class="col-md-12 verdict">
                              <p class="fig">Table {{index+3}}: Possible  number of student count and percentange from group (<span v-for="(group, gr) in groupName" :key="gr"><strong> {{group}}, </strong></span>). This present how many possible student might have given right, wrong or neutral answer.</p>
                               <table class="table table-bordered">
-                                    <thead v-if='groupName.length==2'>
+                                  <colgroup>
+                                    <col class="grey" />
+                                    <col class="red" span="2" />
+                                    <col class="blue" span="2" />
+                                    <col class="yellow" span="2" />
+                                  </colgroup>
+                                    <thead>
                                         <td rowspan="2"></td>
                                         <th colspan="2" scope="colgroup">Both group together</th>
                                         <th colspan="2" scope="colgroup">Group: {{groupName[0]}}</th>
@@ -180,45 +196,45 @@
                                         <th scope="col" >Percentange</th>
                                     </thead>
 
-                                    <tbody class='pol'>
-                                        <td>Wrong answer student</td>
+                                    <tbody>
+                                        <td class='bold'>Wrong answer student</td>
                                         <td>~ {{data.total_sent_student_count[1]}}</td>
-                                        <td>~ {{Math.round((data.total_sent_student_count[1]/data.total_student)*100)}}%</td>
+                                        <td>~ {{data.s_per[1]}}%</td>
                                         <td >~ {{all_final_data[1].total_sent_student_count[1]}}</td>
-                                        <td >~ {{Math.round((all_final_data[1].total_sent_student_count[1]/all_final_data[1].total_student)*100)}}%</td>
+                                        <td >~ {{all_final_data[1].s_per[1]}}%</td>
                                         <td >~ {{all_final_data[2].total_sent_student_count[1]}}</td>
-                                        <td >~ {{Math.round((all_final_data[2].total_sent_student_count[1]/all_final_data[2].total_student)*100)}}%</td>
+                                        <td >~ {{all_final_data[2].s_per[1]}}%</td>
                                     </tbody>
 
-                                    <tbody class='po'>
-                                        <td>Right answer student</td>
+                                    <tbody >
+                                        <td class='bold'>Right answer student</td>
                                         <td>~ {{data.total_sent_student_count[0]}}</td>
-                                        <td>~ {{Math.round((data.total_sent_student_count[0]/data.total_student)*100)}}%</td>
+                                        <td>~ {{data.s_per[0]}}%</td>
                                         <td >~ {{all_final_data[1].total_sent_student_count[0]}}</td>
-                                        <td >~ {{Math.round((all_final_data[1].total_sent_student_count[0]/all_final_data[1].total_student)*100)}}%</td>
+                                        <td >~ {{all_final_data[1].s_per[0]}}%</td>
                                         <td >~ {{all_final_data[2].total_sent_student_count[0]}}</td>
-                                        <td >~ {{Math.round((all_final_data[2].total_sent_student_count[0]/all_final_data[2].total_student)*100)}}%</td>
+                                        <td >~ {{all_final_data[2].s_per[0]}}%</td>
                                     </tbody>
-                                    <tbody class='neu'>
-                                        <td>Neutral answer student</td>
+                                    <tbody >
+                                        <td class='bold'>Neutral answer student</td>
                                         <td>~ {{data.total_sent_student_count[2]}}</td>
-                                        <td>~ {{Math.round((data.total_sent_student_count[2]/data.total_student)*100)}}%</td>
+                                        <td>~ {{data.s_per[2]}}%</td>
                                         <td >~ {{all_final_data[1].total_sent_student_count[2]}}</td>
-                                        <td >~ {{Math.round((all_final_data[1].total_sent_student_count[2]/all_final_data[1].total_student)*100)}}%</td>
+                                        <td >~ {{all_final_data[1].s_per[2]}}%</td>
                                         <td >~ {{all_final_data[2].total_sent_student_count[2]}}</td>
-                                        <td >~ {{Math.round((all_final_data[2].total_sent_student_count[2]/all_final_data[2].total_student)*100)}}%</td>
+                                        <td >~ {{all_final_data[2].s_per[2]}}%</td>
                                     </tbody>
-                                    <tbody class='com' v-if='Math.round((data.total_sent_student_count[3]/data.total_student)*100) !==0'>
-                                        <td>Complex  answer student</td>
+                                    <tbody  v-if='data.s_per[3] !==0'>
+                                        <td class='bold'>Complex  answer student</td>
                                         <td>~ {{data.total_sent_student_count[3]}}</td>
-                                        <td>~ {{Math.round((data.total_sent_student_count[3]/data.total_student)*100)}}%</td>
+                                        <td>~ {{data.s_per[3]}}%</td>
                                         <td >~ {{all_final_data[1].total_sent_student_count[3]}}</td>
-                                        <td >~ {{Math.round((all_final_data[1].total_sent_student_count[3]/all_final_data[1].total_student)*100)}}%</td>
+                                        <td >~ {{all_final_data[1].s_per[3]}}%</td>
                                         <td >~ {{all_final_data[2].total_sent_student_count[3]}}</td>
-                                        <td >~ {{Math.round((all_final_data[2].total_sent_student_count[3]/all_final_data[2].total_student)*100)}}%</td>
+                                        <td >~ {{all_final_data[2].s_per[3]}}%</td>
                                     </tbody>
-                                    <tbody class='tot'>
-                                        <td>Total Student</td>
+                                    <tbody >
+                                        <td class='bold'>Total Student</td>
                                         <td>{{data.total_student}}</td>
                                         <td>100%</td>
                                         <td >{{all_final_data[1].total_student}}</td>
@@ -227,16 +243,25 @@
                                         <td >100%</td>
                                     </tbody>
                             </table><!-- v-if close -->
+                            <br>
+                            <strong class='stitle'>Performance comparison of group <span class='bluee'>{{groupName[0]}}</span> and <span class='yellowe'>{{groupName[1]}}</span>:</strong> <br><br>
 
-                            From Table-3, we can see group {{groupName[0]}} has {{all_final_data[1].total_student}}  students, other hand {{groupName[1]}} has {{all_final_data[2].total_student}} students, which is different in number, making it difficult to compare each group's performance. However gorup  {{groupName[0]}} total (positive + neutral) score is {{parseInt(all_final_data[1].total_sentiment_score[0], 10)+parseInt(all_final_data[1].total_sentiment_score[2], 10)}}% indicates this group perfomed <strong><span v-if='data.total_sentiment_score[1]<=10'>Excellent</span> <span v-if='all_final_data[1].total_sentiment_score[1]>10 && all_final_data[1].total_sentiment_score[1]<=15'>Good</span><span v-if='all_final_data[1].total_sentiment_score[1]>15 && all_final_data[1].total_sentiment_score[1]<=30'>Average</span><span v-if='all_final_data[1].total_sentiment_score[1]>30 && all_final_data[1].total_sentiment_score[1]<=45'>Poor</span><span v-if='all_final_data[1].total_sentiment_score[1]>45 && all_final_data[1].total_sentiment_score[1]<=60'>Very Poor</span></strong> in {{chapter_info[0].title.split(':')[1]}} Test. 
+                            From Table-3, we can see group first group <strong class='bluee'>{{groupName[0]}} has {{all_final_data[1].total_student}}  students</strong>, and the second group <strong class='yellowe'>{{groupName[1]}} has {{all_final_data[2].total_student}} students</strong><span v-if='all_final_data[1].total_student!==all_final_data[2].total_student'>, which is different in number</span>. <br> 
 
-                            Otherhand, gorup  {{groupName[1]}} total (positive + neutral) score is {{parseInt(all_final_data[2].total_sentiment_score[0], 10)+parseInt(all_final_data[2].total_sentiment_score[2], 10)}}% indicates this group perfomed <strong><span v-if='all_final_data[2].total_sentiment_score[1]<=10'>Excellent</span> <span v-if='all_final_data[2].total_sentiment_score[1]>10 && all_final_data[2].total_sentiment_score[1]<=15'>Good</span><span v-if='all_final_data[2].total_sentiment_score[1]>15 && all_final_data[2].total_sentiment_score[1]<=30'>Average</span><span v-if='all_final_data[2].total_sentiment_score[1]>30 && all_final_data[2].total_sentiment_score[1]<=45'>Poor</span><span v-if='all_final_data[2].total_sentiment_score[1]>45 && all_final_data[2].total_sentiment_score[1]<=60'>Very Poor</span></strong> in {{chapter_info[0].title.split(':')[1]}} Test. <span v-if='Math.abs(all_final_data[2].total_sent_student_count[1]-all_final_data[1].total_sent_student_count[1])>0'>From Fig-1 and Fig-2, we can see that both group performances were close to each other, though <span v-if='all_final_data[2].total_sent_student_count[1]>all_final_data[1].total_sent_student_count[1]'> {{groupName[1]}} has performed {{Math.abs(all_final_data[2].total_sent_student_count[1]-all_final_data[1].total_sent_student_count[1])}}% better than {{groupName[0]}} <span v-if='all_final_data[2].total_sent_student_count[1]<all_final_data[1].total_sent_student_count[1]'>{{groupName[0]}} has performed {{Math.abs(all_final_data[2].total_sent_student_count[1]-all_final_data[1].total_sent_student_count[1])}}% better than  {{groupName[1]}}</span></span> </span>.
+                            However, the group  <strong class='bluee'>{{groupName[0]}}</strong> total (positive + neutral) score is {{parseInt(all_final_data[1].total_sentiment_score[0], 10)+parseInt(all_final_data[1].total_sentiment_score[2], 10)}}%, and the negative score of {{all_final_data[1].total_sentiment_score[1]}}% indicates this group performed <strong class='bluee'><span v-if='data.total_sentiment_score[1]<=10'>Excellent</span> <span v-if='all_final_data[1].total_sentiment_score[1]>10 && all_final_data[1].total_sentiment_score[1]<=20'>Good</span><span v-if='all_final_data[1].total_sentiment_score[1]>20 && all_final_data[1].total_sentiment_score[1]<=30'>Average</span><span v-if='all_final_data[1].total_sentiment_score[1]>30 && all_final_data[1].total_sentiment_score[1]<=40'>Poor</span><span v-if='all_final_data[1].total_sentiment_score[1]>40'>Very Poor</span></strong> in {{chapter_info[0].title.split(':')[1]}} Test.<br> 
+
+                            Otherhand, the group  <strong class='yellowe'>{{groupName[1]}} </strong> total (positive + neutral) score is {{parseInt(all_final_data[2].total_sentiment_score[0], 10)+parseInt(all_final_data[2].total_sentiment_score[2], 10)}}%, and the negative score of {{all_final_data[2].total_sentiment_score[1]}}% indicates this group performed <strong class='yellowe'><span v-if='all_final_data[2].total_sentiment_score[1]<=10'>Excellent</span> <span v-if='all_final_data[2].total_sentiment_score[1]>10 && all_final_data[2].total_sentiment_score[1]<=20'>Good</span><span v-if='all_final_data[2].total_sentiment_score[1]>20 && all_final_data[2].total_sentiment_score[1]<=30'>Average</span><span v-if='all_final_data[2].total_sentiment_score[1]>30 && all_final_data[2].total_sentiment_score[1]<=40'>Poor</span><span v-if='all_final_data[2].total_sentiment_score[1]>40'>Very Poor</span></strong> in {{chapter_info[0].title.split(':')[1]}} Test. 
+
+                            <br><br>
+
+                            <span v-if='Math.abs(all_final_data[2].s_per[1]-all_final_data[1].s_per[1])>0'>From Table-3, we can see that both group performances were close to each other, though, in terms of the Wrong answer students percentage,   <span v-if='all_final_data[2].s_per[1]>all_final_data[1].s_per[1]'> <strong class='bluee'>{{groupName[0]}}</strong> has performed {{Math.abs(all_final_data[2].s_per[1]-all_final_data[1].s_per[1])}}% better than <strong class='yellowe'>{{groupName[1]}} </strong> </span> <span v-else-if='all_final_data[2].s_per[1]<all_final_data[1].s_per[1]'><strong class='yellowe'>{{groupName[1]}} </strong> has performed {{Math.abs(all_final_data[2].s_per[1]-all_final_data[1].s_per[1])}}% better than  <strong class='bluee'>{{groupName[0]}}</strong>.</span> </span> <span v-if='all_final_data[2].s_per[1]==all_final_data[1].s_per[1]' class='green'>Both groups have performed equally.</span>
+                            <br>
 
 
                       </div>
                   </div>  
               </div> <!-- v-for for chapter  close--> 
-       
+              <br> <br>
 
               </div>
                 <div class="row" style="padding: 20px 0">
@@ -650,8 +675,16 @@
                   tcoms=Math.round((this.total_student)* (tcom/ 100));
 
 
+                  var ras=0, nuas=0, was=0, cas=0; //right, neutral, wrong and complex student possible percentange, remember its not a exact value.
+
+                  ras= Math.round((tps/this.total_student)*100);
+                  nuas= Math.round((tnus/this.total_student)*100);
+                  was= Math.round((tnes/this.total_student)*100);
+                  cas= Math.round((tcoms/this.total_student)*100);
+
+
                   this.n_decisions+=total_answer;
-                  this.all_final_data.push({chapter_id:item,total_student:this.total_student, total_decision:total_answer, sentiment_score:this.new_score, total_sentiment_score: [Math.round(tpo),Math.round(tne),Math.round(tnu),Math.round(tcom)], total_sent_student_count:[tps, tnes,tnus,tcoms] });
+                  this.all_final_data.push({chapter_id:item,total_student:this.total_student, total_decision:total_answer, sentiment_score:this.new_score, total_sentiment_score: [Math.round(tpo),Math.round(tne),Math.round(tnu),Math.round(tcom)], total_sent_student_count:[tps, tnes,tnus,tcoms], s_per:[ras,was, nuas,cas]});
                   this.individual_student_sentiment.push([Math.round(tpo),Math.round(tne),Math.round(tnu),Math.round(tcom)]);
                   this.barChartTotalScore(tpo,tne,tnu,tcom);
                   this.total_score=[];
@@ -915,6 +948,42 @@ tbody.pol {
 
 .bold {
     font-weight: bold;
+
+}
+.green{color:red;font-weight:bold;}
+
+span.bluesm {
+    color: #0000e0;
+    font-size: 14px;
+}
+
+.grey {
+  background-color: rgba(128,128,128,.25);
+}
+.red {
+  background-color: rgba(255,0,0,.25);
+}
+.blue {
+  background-color: rgba(0,0,255,.25);
+}
+
+.yellow {
+  background-color: #d9d93a;
+}
+
+.bluee {
+  color: rgb(0 0 255 / 54%);
+}
+
+.yellowe {
+  color: #d0d010;
+}
+
+td.bold {
+    font-size: 17px;
+}
+.stitle {
+    font-size: 19px;
 
 }
 </style>

@@ -1066,9 +1066,9 @@
         "Context": "The main character shall talk with 5 different partners to try his/her active listening skills. In this case, the questions are directed to Ana",
         "Type": "Multiple choice",
         "Choices": [
-            ["Her father","pos"],
+            ["Her father","neg"],
             ["Her mother","neg"],
-            ["Her grandmother","neg"],
+            ["Her grandmother","pos"],
             ["Her grandfather","neg"]
         ],
         "Description": "Which member of Ana’s family decided to teach him to ride horses?",
@@ -1103,7 +1103,7 @@
         "Type": "Multiple choice",
         "Choices": [
             ["Yes. I understand how he is feeling", "pos"],
-            ["No. I think he is exaggerating", "neu"]
+            ["No. I think he is exaggerating", "neg"]
         ],
         "Description": "Do you understand why Tom behaved like that before?",
         "Score": 3
@@ -1124,13 +1124,13 @@
         "Context": "The main character shall talk with 5 different partners to try his/her active listening skills. In this case, the questions are directed to Antonio. Now, the main character has to answer regarding Antonio’s preferences",
         "Type": "Multiple choice",
         "Choices": [
-            ["Maths", "neu"],
-            ["Gimnastics", "neu"],
-            ["Literature", "neu"],
-            ["All the previous ones", "neu"]
+            ["Maths", "neg"],
+            ["Gimnastics", "neg"],
+            ["Literature", "neg"],
+            ["All the previous ones", "pos"]
         ],
         "Description": "Which is the favorite subject of Antonio?",
-        "Score": 1
+        "Score": 3
     },
     {   "e": 94,
        "Name": "C12_active_listening_Rebeca_1",
@@ -1138,7 +1138,7 @@
         "Type": "Multiple choice",
         "Choices": [
             ["Insist", "neu"],
-            ["Don’t insist", "pos"]
+            ["Don´t insist", "pos"]
         ],
         "Description": "Will you insist?",
         "Score": 1
@@ -1160,12 +1160,12 @@
         "Type": "Multiple choice",
         "Choices": [
             ["Cat, dog, turtle, hamster", "pos"],
-            ["Dog, hamster, canary and lizard", "pos"],
+            ["Dog, hamster, canary and lizard", "neg"],
             ["She does not like animals", "neg"],
-            ["Hamster, dog, turtle, cat", "pos"]
+            ["Hamster, dog, turtle, cat", "neg"]
         ],
         "Description": "Which animals did Lori said, and on which order?",
-        "Score": 1
+        "Score": 5
     },
     {   "e": 97,
        "Name": "C12_active_listening_final_value",
